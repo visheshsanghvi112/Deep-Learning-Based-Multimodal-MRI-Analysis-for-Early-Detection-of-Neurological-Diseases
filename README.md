@@ -1,38 +1,93 @@
+<div align="center">
+
 # 🧠 Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases
 
-> **National Research Conference Paper Implementation**
+### 📑 National Research Conference Paper Implementation
 
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen)]()
-[![Dataset](https://img.shields.io/badge/Dataset-OASIS--1-blue)]()
-[![Subjects](https://img.shields.io/badge/Subjects-436-orange)]()
-[![Best AUC](https://img.shields.io/badge/Late%20Fusion%20AUC-0.80-success)]()
-[![Python](https://img.shields.io/badge/Python-3.8+-blue)]()
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red)]()
+<p>
+  <img src="https://img.shields.io/badge/Status-Active-00C853?style=for-the-badge&logo=statuspage&logoColor=white" alt="Status"/>
+  <img src="https://img.shields.io/badge/Dataset-OASIS--1-2196F3?style=for-the-badge&logo=databricks&logoColor=white" alt="Dataset"/>
+  <img src="https://img.shields.io/badge/Subjects-436-FF6F00?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="Subjects"/>
+  <img src="https://img.shields.io/badge/Best%20AUC-0.80-9C27B0?style=for-the-badge&logo=target&logoColor=white" alt="AUC"/>
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch"/>
+  <img src="https://img.shields.io/badge/scikit--learn-1.0+-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="Sklearn"/>
+  <img src="https://img.shields.io/badge/NumPy-1.21+-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"/>
+</p>
 
 ---
 
-## 👤 Author
+### 👨‍💻 Author
 
 **Vishesh Sanghvi**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Vishesh%20Sanghvi-0077B5?logo=linkedin)](https://linkedin.com/in/vishesh-sanghvi-96b16a237/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-visheshsanghvi.me-000000?logo=vercel)](https://www.visheshsanghvi.me/)
+<a href="https://linkedin.com/in/vishesh-sanghvi-96b16a237/">
+  <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+</a>
+<a href="https://www.visheshsanghvi.me/">
+  <img src="https://img.shields.io/badge/Portfolio-Visit-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio"/>
+</a>
+<a href="mailto:vishesh@example.com">
+  <img src="https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+</a>
+
+</div>
 
 ---
 
 ## 📄 About This Research
 
-This repository contains the complete implementation and research code for my paper:
+<table>
+<tr>
+<td width="60%">
 
-**"Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases"**
+This repository contains the **complete implementation and research code** for my paper:
 
-*Submitted to National Research Conference*
+> **"Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases"**
+>
+> *Submitted to National Research Conference*
 
-The research explores multimodal fusion strategies combining:
-- **MRI imaging features** extracted via CNN (ResNet18)
-- **Clinical/demographic data** (Age, Brain Volumes, Education, etc.)
+The research explores **multimodal fusion strategies** combining:
 
-To detect early-stage dementia (CDR 0.5: Very Mild Dementia) from the OASIS-1 dataset.
+🔬 **MRI imaging features** extracted via CNN (ResNet18)  
+📊 **Clinical/demographic data** (Age, Brain Volumes, Education, etc.)
+
+To detect **early-stage dementia** (CDR 0.5: Very Mild Dementia) from the OASIS-1 dataset.
+
+</td>
+<td width="40%">
+
+```
+┌─────────────────────────┐
+│      🧠 MRI Scans       │
+│    (512-dim vectors)    │
+└───────────┬─────────────┘
+            │
+            ▼
+    ┌───────────────┐
+    │  🔗 FUSION    │
+    │   (Late/Attn) │
+    └───────┬───────┘
+            │
+            ▼
+┌─────────────────────────┐
+│   📋 Clinical Data      │
+│    (6 features)         │
+└─────────────────────────┘
+            │
+            ▼
+    ┌───────────────┐
+    │  🎯 Predict   │
+    │  Normal/MCI   │
+    └───────────────┘
+```
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -162,11 +217,28 @@ See [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md) for full details.
 
 ## 📝 Key Findings
 
-1. **Late fusion achieves best performance** (AUC 0.80) on small medical datasets
-2. **MRI provides meaningful signal** beyond brain volume baselines (0.78 vs 0.75)
-3. **Attention mechanisms require more data** - higher variance with N=205 subjects
-4. **MMSE dominates clinical features** but has data leakage concern with CDR labels
-5. **ResNet18 transfer learning works** for dementia detection from structural MRI
+<table>
+<tr>
+<td>🥇</td>
+<td><b>Late fusion achieves best performance</b> (AUC 0.80) on small medical datasets</td>
+</tr>
+<tr>
+<td>🧠</td>
+<td><b>MRI provides meaningful signal</b> beyond brain volume baselines (0.78 vs 0.75)</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td><b>Attention mechanisms require more data</b> - higher variance with N=205 subjects</td>
+</tr>
+<tr>
+<td>📊</td>
+<td><b>MMSE dominates clinical features</b> but has data leakage concern with CDR labels</td>
+</tr>
+<tr>
+<td>✅</td>
+<td><b>ResNet18 transfer learning works</b> for dementia detection from structural MRI</td>
+</tr>
+</table>
 
 ---
 
@@ -194,15 +266,32 @@ This project is for academic and research purposes. The OASIS dataset is publicl
 
 ## 🙏 Acknowledgments
 
-- **OASIS Project** for providing the open-access MRI dataset
-- **PyTorch** and **scikit-learn** communities for excellent ML libraries
+- 🏥 **OASIS Project** for providing the open-access MRI dataset
+- 🔥 **PyTorch** and **scikit-learn** communities for excellent ML libraries
+- 🎓 Research guidance and support from mentors
 
 ---
 
-<p align="center">
-  <b>Vishesh Sanghvi</b><br>
-  <a href="https://linkedin.com/in/vishesh-sanghvi-96b16a237/">LinkedIn</a> • 
-  <a href="https://www.visheshsanghvi.me/">Portfolio</a>
-</p>
+<div align="center">
 
-*Last Updated: December 18, 2025*
+### 🌟 Star this repo if you find it helpful!
+
+---
+
+**Made with ❤️ by Vishesh Sanghvi**
+
+<a href="https://linkedin.com/in/vishesh-sanghvi-96b16a237/">
+  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+</a>
+<a href="https://www.visheshsanghvi.me/">
+  <img src="https://img.shields.io/badge/Portfolio-FF5722?style=flat-square&logo=google-chrome&logoColor=white" alt="Portfolio"/>
+</a>
+<a href="https://github.com/visheshsanghvi112">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/>
+</a>
+
+<br/><br/>
+
+<sub>📅 Last Updated: December 18, 2025</sub>
+
+</div>
