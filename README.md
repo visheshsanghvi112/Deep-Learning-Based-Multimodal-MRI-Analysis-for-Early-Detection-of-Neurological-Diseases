@@ -1,11 +1,38 @@
-# 🧠 Early Dementia Detection from MRI
+# 🧠 Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases
 
-**Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases**
+> **National Research Conference Paper Implementation**
 
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen)]()
 [![Dataset](https://img.shields.io/badge/Dataset-OASIS--1-blue)]()
 [![Subjects](https://img.shields.io/badge/Subjects-436-orange)]()
-[![AUC](https://img.shields.io/badge/Best%20AUC-0.78-success)]()
+[![Best AUC](https://img.shields.io/badge/Late%20Fusion%20AUC-0.80-success)]()
+[![Python](https://img.shields.io/badge/Python-3.8+-blue)]()
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red)]()
+
+---
+
+## 👤 Author
+
+**Vishesh Sanghvi**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Vishesh%20Sanghvi-0077B5?logo=linkedin)](https://linkedin.com/in/vishesh-sanghvi-96b16a237/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-visheshsanghvi.me-000000?logo=vercel)](https://www.visheshsanghvi.me/)
+
+---
+
+## 📄 About This Research
+
+This repository contains the complete implementation and research code for my paper:
+
+**"Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases"**
+
+*Submitted to National Research Conference*
+
+The research explores multimodal fusion strategies combining:
+- **MRI imaging features** extracted via CNN (ResNet18)
+- **Clinical/demographic data** (Age, Brain Volumes, Education, etc.)
+
+To detect early-stage dementia (CDR 0.5: Very Mild Dementia) from the OASIS-1 dataset.
 
 ---
 
@@ -14,11 +41,12 @@
 | Metric | Value |
 |--------|-------|
 | **Dataset** | OASIS-1 Cross-sectional |
-| **Total Subjects** | 436 |
+| **Total Subjects** | 436 (205 for classification) |
 | **Classification Task** | CDR=0 (Normal) vs CDR=0.5 (Very Mild Dementia) |
-| **Best AUC (Realistic)** | 0.78 |
-| **MRI Features** | 512-dim (ResNet18) |
+| **Best AUC** | **0.80** (Late Fusion) |
+| **MRI Features** | 512-dim (ResNet18 CNN) |
 | **Clinical Features** | 6-dim (Age, MMSE, nWBV, eTIV, ASF, Educ) |
+| **Fusion Strategies** | Late Fusion, Attention-Gated Fusion |
 
 ---
 
@@ -72,12 +100,19 @@ print(f"MRI-only AUC: {scores.mean():.3f} ± {scores.std():.3f}")
 
 ## 📊 Classification Results
 
-### Realistic Early Detection (Without MMSE)
+### Deep Learning Fusion Models
+| Model | AUC | Description |
+|-------|-----|-------------|
+| **Late Fusion** | **0.80** | Concatenate MRI + Clinical → MLP |
+| Attention-Gated Fusion | 0.79 | Learnable attention weights |
+| MRI-Only (CNN) | 0.78 | Pure imaging biomarker |
+
+### Traditional ML Baselines (Without MMSE)
 | Feature Set | AUC | Notes |
 |-------------|-----|-------|
-| MRI only (512d) | **0.78** | Pure imaging biomarker |
+| MRI only (512d) | 0.78 | ResNet18 transfer learning |
 | Clinical w/o MMSE (5d) | 0.74 | Demographics + brain volumes |
-| Combined (517d) | **0.78** | Best realistic combination |
+| Combined (517d) | 0.78 | Feature concatenation |
 | nWBV only (baseline) | 0.75 | Brain volume reference |
 
 ### With MMSE (⚠️ Data Leakage Concern)
@@ -85,6 +120,9 @@ print(f"MRI-only AUC: {scores.mean():.3f} ± {scores.std():.3f}")
 |-------------|-----|-------|
 | Clinical + MMSE (6d) | 0.87 | MMSE highly correlated with CDR |
 | Combined (518d) | 0.82 | MMSE dominates |
+
+### Key Research Finding
+> **Attention fusion underperforms late fusion on small datasets (N=205)**. Multi-seed analysis showed attention has 22% higher variance than late fusion. This is a valid research finding—attention mechanisms require larger datasets to learn meaningful cross-modal interactions.
 
 ---
 
@@ -111,9 +149,12 @@ D:/discs/
 ## 🔬 Methodology
 
 1. **MRI Processing**: 2.5D multi-slice approach (axial, coronal, sagittal)
-2. **Feature Extraction**: ResNet18 pretrained on ImageNet → 512-dim
+2. **Feature Extraction**: ResNet18 pretrained on ImageNet → 512-dim embeddings
 3. **Clinical Features**: Age, MMSE, brain volumes (z-score normalized)
-4. **Classification**: Logistic Regression, Random Forest, Gradient Boosting
+4. **Fusion Strategies**:
+   - **Late Fusion**: Concatenate feature vectors → MLP classifier
+   - **Attention-Gated Fusion**: Learnable cross-modal attention weights
+5. **Evaluation**: 5-fold cross-validation with multiple random seeds
 
 See [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md) for full details.
 
@@ -121,14 +162,15 @@ See [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md) for full details.
 
 ## 📝 Key Findings
 
-1. **MRI provides meaningful signal** (AUC 0.78 > nWBV baseline 0.75)
-2. **MMSE dominates clinical features** but has data leakage concern
-3. **ResNet18 transfer learning works** for dementia detection
-4. **205 subjects usable** for binary classification
+1. **Late fusion achieves best performance** (AUC 0.80) on small medical datasets
+2. **MRI provides meaningful signal** beyond brain volume baselines (0.78 vs 0.75)
+3. **Attention mechanisms require more data** - higher variance with N=205 subjects
+4. **MMSE dominates clinical features** but has data leakage concern with CDR labels
+5. **ResNet18 transfer learning works** for dementia detection from structural MRI
 
 ---
 
-## 📚 Citation
+## 📚 References
 
 ```bibtex
 @article{marcus2007oasis,
@@ -143,5 +185,24 @@ See [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md) for full details.
 ```
 
 ---
+
+## 📜 License
+
+This project is for academic and research purposes. The OASIS dataset is publicly available for research use.
+
+---
+
+## 🙏 Acknowledgments
+
+- **OASIS Project** for providing the open-access MRI dataset
+- **PyTorch** and **scikit-learn** communities for excellent ML libraries
+
+---
+
+<p align="center">
+  <b>Vishesh Sanghvi</b><br>
+  <a href="https://linkedin.com/in/vishesh-sanghvi-96b16a237/">LinkedIn</a> • 
+  <a href="https://www.visheshsanghvi.me/">Portfolio</a>
+</p>
 
 *Last Updated: December 18, 2025*
