@@ -4,21 +4,36 @@ __pycache__/
 *.pyc
 
 # Node / Next.js
-frontend/node_modules/
-frontend/.next/
-frontend/.turbo/
+project/frontend/node_modules/
+project/frontend/.next/
+project/frontend/.turbo/
+
+# Raw imaging data (very large – usually DO NOT push)
+disc1/
+disc2/
+disc3/
+disc4/
+disc5/
+disc6/
+disc7/
+disc8/
+disc9/
+disc10/
+disc11/
+disc12/
+ADNI/
+
+# Large experiment artifacts
+project/results/models/
+project/results/evaluation/predictions.npz
+project/results/training_history_*.json
+
+# Optional: intermediate numpy / torch blobs (keep extracted_features/)
+# *.npz
+# *.pt
 
 # Editor / OS
 .DS_Store
 *.log
-
-# Large experiment artifacts
-results/models/
-results/evaluation/predictions.npz
-results/training_history_*.json
-
-# Optional: intermediate numpy / torch blobs
-*.npz
-*.pt
 
 

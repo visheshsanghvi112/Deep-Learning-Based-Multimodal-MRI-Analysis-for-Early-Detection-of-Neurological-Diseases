@@ -1,0 +1,45 @@
+# Requirements for MRI Feature Extraction Pipeline
+# Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases
+
+# Core dependencies
+numpy>=1.21.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Medical imaging
+nibabel>=4.0.0          # MRI file loading (ANALYZE, NIfTI formats)
+
+# Data handling (optional but recommended)
+pandas>=1.5.0           # CSV handling for clinical data
+
+# Visualization (optional, for debugging)
+matplotlib>=3.5.0       # Plotting slices and features
+seaborn>=0.12.0         # Statistical visualizations
+
+# Scientific computing (optional, for analysis)
+scipy>=1.9.0            # Statistical tests, signal processing
+scikit-learn>=1.1.0     # ML utilities, preprocessing, evaluation
+
+# Progress tracking (optional)
+tqdm>=4.64.0            # Progress bars for batch processing
+
+# GPU support (install appropriate version for your CUDA)
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# Installation (using uv for faster installs):
+# uv pip install -r requirements.txt
+#
+# For GPU support with CUDA 11.8:
+# uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+#
+# For GPU support with CUDA 12.1:
+# uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#
+# CPU only (recommended for development):
+# uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# API & web backend
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+

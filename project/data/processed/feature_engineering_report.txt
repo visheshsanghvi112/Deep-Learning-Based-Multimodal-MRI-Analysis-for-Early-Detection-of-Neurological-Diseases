@@ -1,0 +1,76 @@
+FEATURE ENGINEERING REPORT
+================================================================================
+
+PRIORITY FEATURES:
+--------------------------------------------------------------------------------
+
+TIER1: 0 features
+
+TIER2: 3 features
+  - ETIV
+  - NWBV
+  - mri_brain_percentage
+
+TIER3: 0 features
+
+TIER4: 0 features
+
+TIER5: 4 features
+  - mri_mean_intensity
+  - mri_std_intensity
+  - mri_min_intensity
+  - mri_max_intensity
+
+OTHER: 41 features
+  - SESSION_ID
+  - AGE
+  - GENDER
+  - HAND
+  - EDUC
+  - SES
+  - CDR
+  - MMSE
+  - ASF
+  - SCAN NUMBER
+
+
+AGE CONFOUNDING ANALYSIS:
+--------------------------------------------------------------------------------
+Highly age-confounded features (|r| > 0.5): 2
+  - NWBV
+  - mri_mean_intensity
+
+
+SELECTED FEATURES:
+--------------------------------------------------------------------------------
+Total selected: 35
+  - AGE
+  - EDUC
+  - SES
+  - MMSE
+  - ETIV
+  - ASF
+  - NWBV
+  - TR (MS)
+  - TE (MS)
+  - TI (MS)
+  - FLIP
+  - SCAN_COUNT
+  - mri_shape_x
+  - mri_shape_y
+  - mri_shape_z
+  - mri_total_voxels
+  - mri_non_zero_voxels
+  - mri_brain_percentage
+  - mri_mean_intensity
+  - mri_std_intensity
+  - mri_min_intensity
+  - mri_max_intensity
+  - mri_voxel_x
+  - mri_voxel_y
+  - mri_voxel_z
+  - param_voxelRes_x
+  - param_voxelRes_y
+  - param_voxelRes_z
+  - param_fov_x
+  - param_fov_y
