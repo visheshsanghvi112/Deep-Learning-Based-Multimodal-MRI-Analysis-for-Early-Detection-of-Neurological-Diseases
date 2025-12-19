@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useMemo } from "react"
+import React, { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Line } from "@react-three/drei"
 import * as THREE from "three"
@@ -13,16 +13,16 @@ interface NeuronNode {
 function NeuralNetwork({ nodes }: { nodes: NeuronNode[] }) {
   const groupRef = useRef<THREE.Group>(null)
   const timeRef = useRef(0)
-  
+
   useFrame((state) => {
     timeRef.current = state.clock.elapsedTime
     if (groupRef.current) {
       groupRef.current.rotation.z = Math.sin(timeRef.current * 0.2) * 0.1
     }
   })
-  
+
   const lines = useMemo(() => {
-    const lineElements: JSX.Element[] = []
+    const lineElements: React.JSX.Element[] = []
     nodes.forEach((node, i) => {
       node.connections.forEach((targetIdx) => {
         const target = nodes[targetIdx]
@@ -33,7 +33,7 @@ function NeuralNetwork({ nodes }: { nodes: NeuronNode[] }) {
             Math.pow(node.position[2] - target.position[2], 2)
           )
           const opacity = Math.max(0.1, 1 - distance / 3)
-          
+
           lineElements.push(
             <Line
               key={`${i}-${targetIdx}`}
@@ -49,14 +49,14 @@ function NeuralNetwork({ nodes }: { nodes: NeuronNode[] }) {
     })
     return lineElements
   }, [nodes])
-  
+
   return (
     <group ref={groupRef}>
       {lines}
       {nodes.map((node, i) => (
         <mesh key={i} position={node.position}>
           <sphereGeometry args={[0.03, 16, 16]} />
-          <meshBasicMaterial color="#00ff88" emissive="#00ff88" emissiveIntensity={0.5} />
+          <meshStandardMaterial color="#00ff88" emissive="#00ff88" emissiveIntensity={0.5} />
         </mesh>
       ))}
     </group>
@@ -65,18 +65,18 @@ function NeuralNetwork({ nodes }: { nodes: NeuronNode[] }) {
 
 function createNeuralNetworkNodes(count: number = 50): NeuronNode[] {
   const nodes: NeuronNode[] = []
-  
+
   // Create layered structure like a neural network
   const layers = 4
   const nodesPerLayer = Math.floor(count / layers)
-  
+
   for (let layer = 0; layer < layers; layer++) {
     const layerNodes = layer === layers - 1 ? count - (layers - 1) * nodesPerLayer : nodesPerLayer
     for (let i = 0; i < layerNodes; i++) {
       const x = (layer - layers / 2) * 2
       const y = (i - layerNodes / 2) * 0.5
       const z = (Math.random() - 0.5) * 0.5
-      
+
       const connections: number[] = []
       if (layer < layers - 1) {
         // Connect to next layer
@@ -87,20 +87,20 @@ function createNeuralNetworkNodes(count: number = 50): NeuronNode[] {
           if (targetIdx < count) connections.push(targetIdx)
         }
       }
-      
+
       nodes.push({
         position: [x, y, z],
         connections
       })
     }
   }
-  
+
   return nodes
 }
 
 export function NeuralNetworkBackground() {
   const nodes = useMemo(() => createNeuralNetworkNodes(60), [])
-  
+
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden opacity-20 dark:opacity-10">
       <Canvas

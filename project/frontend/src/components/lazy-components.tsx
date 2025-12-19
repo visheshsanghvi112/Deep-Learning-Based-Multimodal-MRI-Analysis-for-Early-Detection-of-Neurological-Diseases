@@ -3,9 +3,14 @@
 import { lazy, Suspense } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 
-// Lazy load heavy components for better performance
-export const LazyResultsDiagram = lazy(() => import("@/components/results-diagram-lazy"))
-export const LazyHero3D = lazy(() => import("@/components/hero-3d-lazy"))
+// Lazy load heavy components provided via named exports
+export const LazyResultsDiagram = lazy(() =>
+  import("@/components/results-diagram").then((module) => ({ default: module.ResultsDiagram }))
+)
+
+export const LazyHero3D = lazy(() =>
+  import("@/components/hero-3d").then((module) => ({ default: module.Hero3D }))
+)
 
 // Loading fallback
 export function ComponentSkeleton() {
@@ -18,4 +23,3 @@ export function ComponentSkeleton() {
     </Card>
   )
 }
-

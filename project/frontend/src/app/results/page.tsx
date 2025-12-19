@@ -1,4 +1,4 @@
- "use client"
+"use client"
 
 import { useState } from "react"
 import { Alert } from "@/components/ui/alert"
@@ -37,31 +37,18 @@ export default function ResultsPage() {
 
       <Tabs value={tab} onValueChange={(v) => setTab(v as any)}>
         <TabsList>
-          <TabsTrigger
-            isActive={tab === "mri"}
-            className="min-w-[120px]"
-            onClick={() => setTab("mri")}
-          >
+          <TabsTrigger value="mri" className="min-w-[120px]">
             MRI Only
           </TabsTrigger>
-          <TabsTrigger
-            isActive={tab === "clinical"}
-            className="min-w-[120px]"
-            onClick={() => setTab("clinical")}
-          >
+          <TabsTrigger value="clinical" className="min-w-[120px]">
             Clinical
           </TabsTrigger>
-          <TabsTrigger
-            isActive={tab === "combined"}
-            className="min-w-[120px]"
-            onClick={() => setTab("combined")}
-          >
+          <TabsTrigger value="combined" className="min-w-[120px]">
             Combined
           </TabsTrigger>
         </TabsList>
 
-        {tab === "mri" && (
-          <TabsContent>
+        <TabsContent value="mri">
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
               <CardHeader>
@@ -97,17 +84,15 @@ export default function ResultsPage() {
                 <CardDescription>Scientific interpretation</CardDescription>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                MRI provides meaningful signal beyond brain volume alone 
-                (AUC 0.78 vs nWBV baseline of 0.75). ResNet18 captures 
+                MRI provides meaningful signal beyond brain volume alone
+                (AUC 0.78 vs nWBV baseline of 0.75). ResNet18 captures
                 dementia-related structural patterns.
               </CardContent>
             </Card>
           </div>
-          </TabsContent>
-        )}
+        </TabsContent>
 
-        {tab === "clinical" && (
-          <TabsContent>
+        <TabsContent value="clinical">
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
               <CardHeader>
@@ -143,17 +128,15 @@ export default function ResultsPage() {
                 <CardDescription>Data leakage concern</CardDescription>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                MMSE alone achieves AUC 0.85, indicating high correlation 
-                with CDR. For realistic early detection, exclude MMSE and 
+                MMSE alone achieves AUC 0.85, indicating high correlation
+                with CDR. For realistic early detection, exclude MMSE and
                 rely on imaging biomarkers.
               </CardContent>
             </Card>
           </div>
-          </TabsContent>
-        )}
+        </TabsContent>
 
-        {tab === "combined" && (
-          <TabsContent>
+        <TabsContent value="combined">
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
               <CardHeader>
@@ -190,18 +173,17 @@ export default function ResultsPage() {
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
                 Multimodal approach validates that MRI and clinical features
-                provide complementary information. Best for research; 
+                provide complementary information. Best for research;
                 MRI-only preferred for early detection applications.
               </CardContent>
             </Card>
           </div>
-          </TabsContent>
-        )}
+        </TabsContent>
       </Tabs>
 
       <Alert className="text-xs">
-        All results computed using 5-fold stratified cross-validation on 
-        205 labeled subjects (135 CDR=0, 70 CDR=0.5). CNN features extracted 
+        All results computed using 5-fold stratified cross-validation on
+        205 labeled subjects (135 CDR=0, 70 CDR=0.5). CNN features extracted
         for all 436 OASIS-1 subjects.
       </Alert>
     </div>

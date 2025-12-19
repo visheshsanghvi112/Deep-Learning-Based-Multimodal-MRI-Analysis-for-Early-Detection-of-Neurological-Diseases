@@ -14,8 +14,8 @@ interface QuickStat {
 
 const stats: QuickStat[] = [
   {
-    label: "Subjects",
-    value: "205",
+    label: "Total Subjects",
+    value: "639",
     icon: <Users className="h-4 w-4" />,
     color: "text-blue-500"
   },
@@ -39,11 +39,11 @@ const stats: QuickStat[] = [
   }
 ]
 
-const QuickStatCard = memo(function QuickStatCard({ 
-  stat, index 
-}: { 
+const QuickStatCard = memo(function QuickStatCard({
+  stat, index
+}: {
   stat: QuickStat
-  index: number 
+  index: number
 }) {
   return (
     <motion.div
