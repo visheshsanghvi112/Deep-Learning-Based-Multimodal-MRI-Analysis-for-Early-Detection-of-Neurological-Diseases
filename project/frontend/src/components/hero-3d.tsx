@@ -1,9 +1,7 @@
 "use client"
 
-import { Canvas } from "@react-three/fiber"
-import { Float } from "@react-three/drei"
 import { motion } from "framer-motion"
-import { BrainVisualization } from "./brain-visualization"
+import { BrainVisualizationEnhanced } from "./brain-visualization-enhanced"
 
 export function Hero3D() {
   return (
@@ -48,7 +46,7 @@ export function Hero3D() {
 
         <div className="relative h-56 md:h-72 lg:h-80">
           <div className="relative h-full w-full rounded-2xl overflow-hidden border border-border/50 bg-muted/30">
-            <BrainVisualization />
+            <BrainVisualizationEnhanced />
           </div>
         </div>
       </div>
