@@ -1,39 +1,67 @@
-# Python / venv
-.venv/
-__pycache__/
-*.pyc
-
-# Node / Next.js
-project/frontend/node_modules/
-project/frontend/.next/
-project/frontend/.turbo/
-
-# Raw imaging data (very large – usually DO NOT push)
-disc1/
-disc2/
-disc3/
-disc4/
-disc5/
-disc6/
-disc7/
-disc8/
-disc9/
-disc10/
-disc11/
-disc12/
-ADNI/
-
-# Large experiment artifacts
-project/results/models/
-project/results/evaluation/predictions.npz
-project/results/training_history_*.json
-
-# Optional: intermediate numpy / torch blobs (keep extracted_features/)
-# *.npz
-# *.pt
-
-# Editor / OS
+# System & OS
 .DS_Store
+Thumbs.db
 *.log
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+.pytest_cache/
 
+# Node.js (Frontend)
+node_modules/
+dist/
+build/
+.next/
+
+# Raw Data Directories
+ADNI/
+disc*/
+extracted_features/
+
+# Project Data (Large Files)
+# Ignore all data content, but keep directory structure if needed via .gitkeep strategies (not applied here, checking simplistic approach)
+project/data/
+project_adni/data/
+*.csv
+*.xlsx
+*.npz
+*.nii
+*.nii.gz
+*.dcm
+
+# Results & Models
+project/results/
+project_adni/results/
+*.pth
+*.pt
+*.json
+*.txt
+!requirements.txt
+!plan.txt
+!ADNI_REORGANIZATION_PLAN.txt
+!ADNIMERGE_report.txt
+!package.json
+!package-lock.json
+!tsconfig.json
+!**/public/manifest.json
+!**/public/oasis-data.json
+!**/public/adni-data.json
+!**/public/robots.txt
+!vercel.json
+!**/components.json
+
+# Documentation Updates (Ensure we don't ignore Markdown docs if they are in result folders by mistake, but result folders are ignored)
+# We usually want to Version Control our code and docs.
+# If reports are in 'results/reports/', they are ignored above. 
+# Exception for key documentation files if they were placed there:
+!project_adni/results/reports/robustness_experiment.md
+!project_adni/results/reports/final_audit_report.txt
+
+# Temporary Scripts (if any remain)
+temp/
+tmp/
