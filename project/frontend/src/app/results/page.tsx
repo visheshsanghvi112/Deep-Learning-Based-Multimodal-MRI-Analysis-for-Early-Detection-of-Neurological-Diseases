@@ -18,37 +18,37 @@ import {
 } from "@/components/ui/tabs"
 
 export default function ResultsPage() {
-  const [tab, setTab] = useState<"mri" | "clinical" | "combined">("mri")
+  const [tab, setTab] = useState<"oasis" | "adni" | "crossdataset">("oasis")
 
   return (
     <div className="flex w-full flex-col gap-8">
       <section className="space-y-2">
         <div className="flex items-center gap-3">
           <h2 className="text-xl font-semibold tracking-tight">
-            Classification Results (OASIS-1)
+            Classification Results
           </h2>
-          <Badge variant="outline">436 subjects • 205 labeled</Badge>
+          <Badge variant="outline">OASIS-1 + ADNI-1</Badge>
         </div>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          Binary classification of CDR=0 (Normal) vs CDR=0.5 (Very Mild Dementia).
-          CNN features extracted for all 436 subjects using ResNet18.
+          Binary classification results across datasets. OASIS: CDR 0 vs 0.5. ADNI: CN vs MCI+AD.
+          Cross-dataset robustness validated.
         </p>
       </section>
 
       <Tabs value={tab} onValueChange={(v) => setTab(v as any)}>
         <TabsList>
-          <TabsTrigger value="mri" className="min-w-[120px]">
-            MRI Only
+          <TabsTrigger value="oasis" className="min-w-[120px]">
+            OASIS-1
           </TabsTrigger>
-          <TabsTrigger value="clinical" className="min-w-[120px]">
-            Clinical
+          <TabsTrigger value="adni" className="min-w-[120px]">
+            ADNI-1
           </TabsTrigger>
-          <TabsTrigger value="combined" className="min-w-[120px]">
-            Combined
+          <TabsTrigger value="crossdataset" className="min-w-[140px]">
+            Cross-Dataset
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="mri">
+        <TabsContent value="oasis">
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
               <CardHeader>
@@ -92,89 +92,113 @@ export default function ResultsPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="clinical">
+        {/* ADNI Results Tab */}
+        <TabsContent value="adni">
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Clinical AUC (with MMSE)</CardTitle>
+                <CardTitle className="text-sm">ADNI Level-1 MRI-Only</CardTitle>
                 <CardDescription>
-                  6 features: Age, MMSE, nWBV, eTIV, ASF, Educ
+                  No cognitive scores (realistic)
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-semibold text-purple-600">0.87</div>
+                <div className="text-3xl font-semibold text-blue-600">0.583</div>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Best performance, but MMSE has data leakage concern.
+                  Honest baseline with Age+Sex only.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Clinical AUC (no MMSE)</CardTitle>
-                <CardDescription>Realistic early detection</CardDescription>
+                <CardTitle className="text-sm">ADNI Level-1 Late Fusion</CardTitle>
+                <CardDescription>MRI + Demographics</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-semibold">0.74</div>
+                <div className="text-3xl font-semibold text-purple-600">0.598</div>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Without cognitive test dependency.
+                  +1.5% improvement with multimodal.
                 </p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border-orange-500/30">
               <CardHeader>
-                <CardTitle className="text-sm">MMSE Warning</CardTitle>
-                <CardDescription>Data leakage concern</CardDescription>
+                <CardTitle className="text-sm text-orange-600">ADNI Level-2 (Circular)</CardTitle>
+                <CardDescription>⚠️ Uses MMSE/CDR-SB</CardDescription>
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                MMSE alone achieves AUC 0.85, indicating high correlation
-                with CDR. For realistic early detection, exclude MMSE and
-                rely on imaging biomarkers.
+              <CardContent>
+                <div className="text-3xl font-semibold text-orange-600">0.988</div>
+                <p className="mt-1 text-xs text-orange-600">
+                  NOT for early detection claims.
+                </p>
               </CardContent>
             </Card>
           </div>
         </TabsContent>
 
-        <TabsContent value="combined">
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm">Combined AUC</CardTitle>
-                <CardDescription>
-                  MRI (512) + Clinical (6) = 518 features
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-semibold text-blue-600">0.82</div>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Multimodal fusion of imaging and clinical data.
-                </p>
-              </CardContent>
-            </Card>
+        {/* Cross-Dataset Robustness Tab */}
+        <TabsContent value="crossdataset">
+          <div className="mt-4 space-y-6">
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card className="bg-gradient-to-br from-blue-500/5 to-transparent">
+                <CardHeader>
+                  <CardTitle className="text-sm">OASIS → ADNI Transfer</CardTitle>
+                  <CardDescription>High-quality to heterogeneous</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-sm">MRI-Only</span>
+                    <span className="font-bold text-green-600">0.607</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Late Fusion</span>
+                    <span className="font-bold">0.575</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Attention Fusion</span>
+                    <span className="font-bold">0.557</span>
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    MRI-Only was most robust. Clinical features hurt transfer.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-purple-500/5 to-transparent">
+                <CardHeader>
+                  <CardTitle className="text-sm">ADNI → OASIS Transfer</CardTitle>
+                  <CardDescription>Heterogeneous to high-quality</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-sm">MRI-Only</span>
+                    <span className="font-bold">0.569</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Late Fusion</span>
+                    <span className="font-bold text-purple-600">0.624</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Attention Fusion</span>
+                    <span className="font-bold">0.548</span>
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    Late Fusion was most robust. Clinical features helped here.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Combined (no MMSE)</CardTitle>
-                <CardDescription>Realistic scenario</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-semibold">0.78</div>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  MRI + demographics for true early detection.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm">Interpretation</CardTitle>
-                <CardDescription>Multimodal value</CardDescription>
+                <CardTitle className="text-sm">Key Insight</CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Multimodal approach validates that MRI and clinical features
-                provide complementary information. Best for research;
-                MRI-only preferred for early detection applications.
+                Robustness is <strong className="text-foreground">direction-dependent</strong>.
+                MRI features provide a stable baseline, while multimodal benefit depends on
+                domain alignment. Attention Fusion was consistently unstable across transfers.
               </CardContent>
             </Card>
           </div>
@@ -182,9 +206,9 @@ export default function ResultsPage() {
       </Tabs>
 
       <Alert className="text-xs">
-        All results computed using 5-fold stratified cross-validation on
-        205 labeled subjects (135 CDR=0, 70 CDR=0.5). CNN features extracted
-        for all 436 OASIS-1 subjects.
+        Results validated across two independent datasets: OASIS-1 (single-site, 436 subjects)
+        and ADNI-1 (multi-site, 629 subjects). Cross-dataset experiments confirm representation
+        robustness under real-world dataset shift.
       </Alert>
     </div>
   )

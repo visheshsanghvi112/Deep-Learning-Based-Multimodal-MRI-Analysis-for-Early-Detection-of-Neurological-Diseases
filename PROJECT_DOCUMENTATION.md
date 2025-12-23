@@ -106,14 +106,18 @@ CDR = NaN  (Young Controls):   201 subjects (no dementia screening needed)
 Usable for Classification:     205 subjects (CDR 0 vs 0.5)
 ```
 
-### ADNI Dataset (For Future Work)
+### ADNI Dataset (Integration In-Progress)
 | Attribute | Value |
 |-----------|-------|
-| **Subjects** | 203 unique |
-| **Scans** | 230 NIfTI files |
-| **Size** | 7.84 GB |
-| **Status** | Analyzed, needs processing |
-| **Location** | `D:/discs/ADNI/` |
+| **Total Unique Subjects** | **625** (Combined from all folders) |
+| **From Project Folder** | 404 subjects (`D:/discs/ADNI`) |
+| **From Downloads** | 605 subjects (`Downloads` folder) |
+| **Labels** | ✅ Found (CN, MCI, AD) in `ADNI1_Complete_1Yr_1.5T_12_19_2025.csv` |
+| **Status** | 🔄 Feature Extraction Running |
+| **Output** | `extracted_features/adni_features.csv` (MRI Feature + Group Label) |
+
+**Integration Strategy:**
+Data is physically split between the workspace and the user's Downloads folder. A custom inventory script (`adni_inventory_check.py`) maps these files, and a batch extractor (`adni_batch_feature_extraction.py`) consolidates them into a single labeled dataset.
 
 ---
 

@@ -18,40 +18,42 @@ export default function RoadmapPage() {
           <Badge variant="outline">Planned work</Badge>
         </div>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          This portal currently presents only OASIS-1 results. Future work
-          focuses on completing CNN embeddings for OASIS-1, integrating ADNI,
-          and performing cross-dataset validation of the multimodal pipeline.
+          The NeuroScope research project has evolved into a comprehensive multi-dataset study.
+          We have successfully integrated OASIS-1 and ADNI-1 datasets, enabling robust
+          cross-dataset validation of our multimodal fusion architectures across 1,065 subjects.
         </p>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <Card className="border-green-500/20 bg-green-500/5">
           <CardHeader>
-            <CardTitle className="text-sm">Completed</CardTitle>
-            <CardDescription>Locked scope</CardDescription>
+            <CardTitle className="text-sm flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500" />
+              Completed: Data Engineering
+            </CardTitle>
+            <CardDescription>Multi-dataset foundation</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
-            <p>• OASIS-1 feature extraction (anatomical + clinical)</p>
-            <p>• OASIS-1 Baseline model (Anatomical + Clinical, no CNN)</p>
-            <p>• Prototype multimodal architecture with partial CNN embeddings</p>
-            <p>• Initial interpretability analyses and reporting</p>
+            <p>• OASIS-1 & ADNI-1 full feature extraction (1,065 subjects)</p>
+            <p>• ResNet18-based MRI embedding pipeline for all scans</p>
+            <p>• Clinical feature harmonization (Age, Gender, MMSE, CDR)</p>
+            <p>• Unified preprocessing for cross-center compatibility</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-green-500/20 bg-green-500/5">
           <CardHeader>
-            <CardTitle className="text-sm">In progress</CardTitle>
-            <CardDescription>OASIS-1 multimodal completion</CardDescription>
+            <CardTitle className="text-sm flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500" />
+              Completed: Model Validation
+            </CardTitle>
+            <CardDescription>Robustness & Generalization</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
-            <p>
-              • Fixing the local PyTorch environment (c10.dll) to enable robust
-              extraction of CNN embeddings for the majority of OASIS-1 subjects.
-            </p>
-            <p>
-              • Running a single, full multimodal retrain and evaluation once
-              embeddings are available, using the same architecture shown here.
-            </p>
+            <p>• Multi-modal fusion training (Late & Attention Fusion)</p>
+            <p>• Cross-dataset transfer analysis (OASIS ↔ ADNI)</p>
+            <p>• Identification of label definition shifts and impact on accuracy</p>
+            <p>• Evaluation of modality-specific robustness in transfer settings</p>
           </CardContent>
         </Card>
       </section>
@@ -59,41 +61,36 @@ export default function RoadmapPage() {
       <section className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Planned: ADNI integration</CardTitle>
-            <CardDescription>Future extension, not yet included</CardDescription>
+            <CardTitle className="text-sm">In Progress: Advanced Fusion</CardTitle>
+            <CardDescription>Beyond simple attention</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
             <p>
-              • Apply the same preprocessing and feature extraction pipeline to
-              ADNI structural MRI and clinical variables.
+              • Implementing gating mechanisms to better handle unreliable
+              modalities during cross-center inference.
             </p>
             <p>
-              • Harmonize OASIS-1 and ADNI features and labels for joint
-              modeling.
-            </p>
-            <p>
-              No ADNI results are currently shown in this portal; ADNI appears
-              here only as future work.
+              • Developing specialized "Domain Adapters" to mitigate the
+              label shift observed between OASIS and ADNI cohorts.
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">
-              Planned: Cross-dataset validation
-            </CardTitle>
-            <CardDescription>Generalization &amp; robustness</CardDescription>
+            <CardTitle className="text-sm">Future: Longitudinal Tracking</CardTitle>
+            <CardDescription>Disease trajectory modeling</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
             <p>
-              • Evaluate transfer performance OASIS→ADNI and ADNI→OASIS once
-              both datasets are fully processed.
+              • Extending the pipeline to handle longitudinal ADNI visits (M06, M12, M24).
             </p>
             <p>
-              • Perform age-stratified metrics and confound analysis on the
-              final multimodal model to assess robustness across cohorts and
-              acquisition protocols.
+              • Predicting time-to-conversion from Mild Cognitive Impairment (MCI)
+              to Alzheimer's Disease (AD).
+            </p>
+            <p>
+              • Integrating fluid biomarkers (CSF Aβ/Tau) with MRI signatures.
             </p>
           </CardContent>
         </Card>

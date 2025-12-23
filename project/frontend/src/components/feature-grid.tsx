@@ -1,138 +1,142 @@
 "use client"
 
 import { memo } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { 
-  Database, 
-  Workflow, 
-  BarChart3, 
-  Brain, 
-  FileText, 
-  Route 
+import { SpotlightCard } from "@/components/ui/spotlight-card"
+import {
+  Database,
+  Workflow,
+  BarChart3,
+  Brain,
+  ArrowRightLeft,
+  ArrowUpRight
 } from "lucide-react"
 
 interface Feature {
   icon: React.ReactNode
   title: string
   description: string
+  href: string
   items: string[]
+  className?: string
+  spotlight?: string
 }
 
 const features: Feature[] = [
   {
-    icon: <Database className="h-5 w-5" />,
-    title: "Dataset Characteristics",
-    description: "OASIS-1 MRI + clinical anchors",
-    items: [
-      "436 cross-sectional structural MRI scans",
-      "Clinical anchors (CDR, MMSE, demographics)",
-      "214+ anatomical features extracted",
-      "CNN embeddings for multimodal analysis"
-    ]
+    icon: <Database className="h-6 w-6 text-blue-500" />,
+    title: "OASIS-1 Analysis",
+    description: "Single-site MRI + clinical anchors. The gold standard baseline.",
+    href: "/dataset",
+    items: ["436 Subjects", "CDR 0 vs 0.5", "512-dim ResNet18"],
+    className: "md:col-span-2 md:row-span-2",
+    spotlight: "rgba(59, 130, 246, 0.2)" // blue
+  },
+  {
+    icon: <Database className="h-6 w-6 text-teal-500" />,
+    title: "ADNI-1 Validation",
+    description: "Multi-site robustness testing against real-world variance.",
+    href: "/adni",
+    items: ["629 Subjects", "MCI/AD Spectrum", "Universal Pipeline"],
+    className: "md:col-span-1 md:row-span-2",
+    spotlight: "rgba(20, 184, 166, 0.2)" // teal
   },
   {
     icon: <Workflow className="h-5 w-5" />,
-    title: "Processing Pipeline",
-    description: "End-to-end research workflow",
-    items: [
-      "Preprocessing & normalization",
-      "Feature extraction & engineering",
-      "Multimodal fusion architecture",
-      "Multi-task learning framework"
-    ]
+    title: "Pipeline",
+    description: "End-to-end processing",
+    href: "/pipeline",
+    items: ["ResNet18 Feature Extraction", "Multimodal Fusion"],
+    className: "md:col-span-1",
+    spotlight: "rgba(120, 120, 120, 0.15)"
   },
   {
-    icon: <BarChart3 className="h-5 w-5" />,
-    title: "Research Results",
-    description: "Baseline and exploratory metrics",
-    items: [
-      "OASIS-1 baseline (publication-safe)",
-      "Prototype multimodal results",
-      "CDR prediction performance",
-      "Binary classification metrics"
-    ]
+    icon: <ArrowRightLeft className="h-5 w-5 text-purple-500" />,
+    title: "Cross-Dataset",
+    description: "Zero-shot transfer",
+    href: "/results",
+    items: ["OASIS→ADNI", "Label Shift"],
+    className: "md:col-span-1",
+    spotlight: "rgba(168, 85, 247, 0.2)" // purple
   },
   {
     icon: <Brain className="h-5 w-5" />,
     title: "Interpretability",
-    description: "Model transparency and analysis",
-    items: [
-      "Attention weight visualizations",
-      "Feature importance analysis",
-      "Embedding space exploration",
-      "Regional contribution mapping"
-    ]
-  },
-  {
-    icon: <FileText className="h-5 w-5" />,
-    title: "Documentation",
-    description: "Comprehensive research documentation",
-    items: [
-      "Methodology and architecture",
-      "Training procedures",
-      "Evaluation protocols",
-      "Research limitations"
-    ]
-  },
-  {
-    icon: <Route className="h-5 w-5" />,
-    title: "Roadmap",
-    description: "Future research directions",
-    items: [
-      "ADNI dataset integration",
-      "Cross-dataset validation",
-      "Enhanced feature extraction",
-      "Clinical validation studies"
-    ]
+    description: "Latent space viz",
+    href: "/interpretability",
+    items: ["Attention Maps", "t-SNE Clusters"],
+    className: "md:col-span-1",
+    spotlight: "rgba(120, 120, 120, 0.15)"
   }
 ]
 
-const FeatureCard = memo(function FeatureCard({ 
-  feature, index 
-}: { 
-  feature: Feature
-  index: number 
-}) {
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
+}
+
+const BentoCard = memo(function BentoCard({ feature }: { feature: Feature }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-    >
-      <Card className="h-full hover:shadow-lg transition-all duration-300 border-border/50">
-        <CardHeader>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 rounded-lg bg-muted">
-              {feature.icon}
+    <motion.div variants={item} className={feature.className}>
+      <Link href={feature.href} className="block h-full cursor-pointer group/card">
+        <SpotlightCard
+          className="h-full border-border/40 bg-card/50 transition-colors hover:bg-card/80"
+          spotlightColor={feature.spotlight}
+        >
+          <div className="flex h-full flex-col justify-between p-6">
+            <div className="mb-4">
+              <div className="mb-4 flex items-center justify-between">
+                <div className="rounded-lg bg-background/80 p-2 shadow-sm backdrop-blur-sm ring-1 ring-border/50">
+                  {feature.icon}
+                </div>
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground opacity-0 transition-all duration-300 group-hover/card:opacity-100 group-hover/card:translate-x-1 group-hover/card:-translate-y-1" />
+              </div>
+              <h3 className="mb-1 text-lg font-semibold tracking-tight">
+                {feature.title}
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {feature.description}
+              </p>
             </div>
-            <CardTitle className="text-base">{feature.title}</CardTitle>
+
+            <div className="space-y-2">
+              {feature.items.map((item, i) => (
+                <div key={i} className="flex items-center text-xs text-muted-foreground/80">
+                  <span className="mr-2 h-1 w-1 rounded-full bg-foreground/30" />
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
-          <CardDescription>{feature.description}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {feature.items.map((item, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-muted-foreground/60 mt-1.5">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+        </SpotlightCard>
+      </Link>
     </motion.div>
   )
 })
 
 export function FeatureGrid() {
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {features.map((feature, index) => (
-        <FeatureCard key={feature.title} feature={feature} index={index} />
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-100px" }}
+      className="grid grid-cols-1 gap-4 md:grid-cols-3 md:auto-rows-[minmax(180px,auto)]"
+    >
+      {features.map((feature) => (
+        <BentoCard key={feature.title} feature={feature} />
       ))}
-    </div>
+    </motion.div>
   )
 }
-

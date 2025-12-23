@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#ff00ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Brain icon -->
+  <circle cx="50" cy="50" r="45" fill="url(#brainGrad)" opacity="0.15"/>
+  <path d="M50 15 
+           C30 15 20 30 20 45 
+           C20 55 25 62 30 67 
+           C25 72 25 80 35 85 
+           C40 88 45 87 50 85 
+           C55 87 60 88 65 85 
+           C75 80 75 72 70 67 
+           C75 62 80 55 80 45 
+           C80 30 70 15 50 15 Z" 
+        fill="none" 
+        stroke="url(#brainGrad)" 
+        stroke-width="3"
+        stroke-linecap="round"/>
+  <!-- Brain fold -->
+  <path d="M50 25 C45 35 35 40 30 50 M50 25 C55 35 65 40 70 50 M40 60 C45 55 55 55 60 60" 
+        fill="none" 
+        stroke="url(#brainGrad)" 
+        stroke-width="2"
+        stroke-linecap="round"/>
+  <!-- Neural nodes -->
+  <circle cx="35" cy="40" r="3" fill="#00d4ff"/>
+  <circle cx="65" cy="40" r="3" fill="#ff00ff"/>
+  <circle cx="50" cy="70" r="3" fill="#8b5cf6"/>
+  <!-- Connections -->
+  <line x1="35" y1="40" x2="50" y2="70" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+  <line x1="65" y1="40" x2="50" y2="70" stroke="#ff00ff" stroke-width="1" opacity="0.5"/>
+  <line x1="35" y1="40" x2="65" y2="40" stroke="#8b5cf6" stroke-width="1" opacity="0.5"/>
+</svg>

@@ -33,8 +33,12 @@ except ImportError:
     print("WARNING: nibabel/nilearn not available")
 
 # Configuration
-BASE_DIR = Path("D:/discs")
-ADNI_DIR = BASE_DIR / "ADNI"
+BASE_DIR = Path(os.environ.get("DISCS_BASE_DIR", "D:/discs"))
+_adni_dirs_env = os.environ.get("ADNI_DATA_DIRS") or os.environ.get("ADNI_DATA_DIR")
+if _adni_dirs_env:
+    ADNI_DIRS = [Path(p.strip()) for p in _adni_dirs_env.split(";") if p.strip()]
+else:
+    ADNI_DIRS = [BASE_DIR / "ADNI"]
 OUTPUT_DIR = BASE_DIR / "project" / "data" / "processed"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 NORMALIZED_DIR = BASE_DIR / "project" / "data" / "adni" / "normalized"
@@ -49,8 +53,13 @@ TARGET_SHAPE = (176, 208, 176)  # Match OASIS if using Talairach
 class ADNIProcessor:
     """Process ADNI dataset for feature extraction"""
     
-    def __init__(self, adni_dir: Path = ADNI_DIR):
-        self.adni_dir = adni_dir
+    def __init__(self, adni_dir: Optional[Path] = None, adni_dirs: Optional[List[Path]] = None):
+        if adni_dirs is not None:
+            self.adni_dirs = adni_dirs
+        elif adni_dir is not None:
+            self.adni_dirs = [adni_dir]
+        else:
+            self.adni_dirs = ADNI_DIRS
         self.nifti_files = []
         self.subject_ids = []
         self.clinical_data = None
@@ -63,8 +72,12 @@ class ADNIProcessor:
         print("=" * 80)
         
         nifti_files = []
-        for nii_file in self.adni_dir.rglob("*.nii"):
-            nifti_files.append(nii_file)
+        for adni_root in self.adni_dirs:
+            if not adni_root.exists():
+                print(f"WARNING: ADNI directory not found: {adni_root}")
+                continue
+            for nii_file in adni_root.rglob("*.nii"):
+                nifti_files.append(nii_file)
         
         self.nifti_files = sorted(nifti_files)
         print(f"\nFound {len(self.nifti_files)} NIfTI files")

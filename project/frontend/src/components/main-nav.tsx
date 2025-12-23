@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
 const links = [
-  { href: "/dataset", label: "Dataset" },
+  { href: "/dataset", label: "OASIS" },
+  { href: "/adni", label: "ADNI" },
   { href: "/pipeline", label: "Pipeline" },
   { href: "/results", label: "Results" },
   { href: "/interpretability", label: "Interpretability" },

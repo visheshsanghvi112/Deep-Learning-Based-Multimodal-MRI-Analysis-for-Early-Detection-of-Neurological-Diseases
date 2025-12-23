@@ -13,11 +13,11 @@ import {
 import { Alert } from "@/components/ui/alert"
 import { API_CONFIG } from "@/lib/api"
 
-function InterpretabilityImage({ 
-  src, 
-  alt, 
-  description 
-}: { 
+function InterpretabilityImage({
+  src,
+  alt,
+  description
+}: {
   src: string
   alt: string
   description: string
@@ -62,22 +62,23 @@ function InterpretabilityImage({
 }
 
 export default function InterpretabilityPage() {
-  const attentionUrl = `${API_CONFIG.baseUrl}/static/attention_weights.png`
-  const tsneUrl = `${API_CONFIG.baseUrl}/static/embeddings_tsne.png`
+  const attentionUrl = "/static/attention_weights.png"
+  const tsneUrl = "/static/embeddings_tsne.png"
 
   return (
     <div className="flex w-full flex-col gap-8">
       <section className="space-y-2">
         <div className="flex items-center gap-3">
           <h2 className="text-xl font-semibold tracking-tight">
-            Interpretability: What the model looks at
+            Interpretability: Corroborated Insights
           </h2>
-          <Badge variant="outline">Research analysis</Badge>
+          <Badge variant="outline">Multi-Dataset analysis</Badge>
         </div>
         <p className="max-w-2xl text-sm text-muted-foreground">
           Interpretability analyses summarize how anatomical, clinical, and
-          (prototype) MRI features contribute to predictions and how subjects
-          are organized in latent space. All examples are based on OASIS-1.
+          ResNet18 MRI features contribute to predictions. Findings are
+          corroborated across OASIS-1 and ADNI-1 datasets to identify
+          universal signatures of early neurodegeneration.
         </p>
       </section>
 

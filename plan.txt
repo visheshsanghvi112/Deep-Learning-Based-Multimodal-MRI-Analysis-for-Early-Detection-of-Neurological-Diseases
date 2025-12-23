@@ -1,0 +1,111 @@
+ADNI INTEGRATION PLAN (CSV-DRIVEN)
+===================================
+Generated: 2025-12-23
+Status: 🚧 PENDING IMPLEMENTATION
+
+================================================================================
+1. DATASET UNDERSTANDING
+================================================================================
+
+CSV Source of Truth: D:\discs\ADNI\ADNI1_Complete_1Yr_1.5T_12_19_2025.csv
+
+Key Fields:
+- Image Data ID: Unique scan identifier (e.g., I63874) - links to .nii filename
+- Subject:        Patient ID (e.g., 941_S_1202) - the RID/PTID
+- Group:          Diagnosis label (CN = Cognitively Normal, MCI, AD)
+- Visit:          Visit code (sc = screening/baseline, m06 = 6 months, m12 = 12 months, uns1 = unscheduled)
+- Acq Date:       Acquisition date for each scan
+- Age, Sex:       Demographics
+
+Dataset Statistics:
+- Total Scans in CSV:      1,665
+- NIfTI Files on Disk:     2,294 (some duplicates/processed versions)
+- Unique Subjects:         629
+- Scans per Subject:       Mean = 2.6, Max = 6 (LONGITUDINAL)
+
+Class Distribution (ALL scans):
+- CN (Normal):       526
+- MCI (Mild Cog):    796
+- AD (Alzheimer's):  343
+
+================================================================================
+2. THE PROBLEM (Why Previous Approach Was WRONG)
+================================================================================
+
+❌ WRONG: Count all .nii files and extract features for all 2,294 scans
+   - Treats multiple visits of same person as independent samples
+   - Data leakage: Same subject appears in train AND test splits
+   - Inflated performance metrics
+
+✅ CORRECT: Use CSV to select ONE scan per subject (639 total samples)
+   - Subject-wise splitting ensures no person appears in both train & test
+   - Baseline visit preferred for consistency
+   - True generalization capability
+
+================================================================================
+3. IMPLEMENTATION PLAN
+================================================================================
+
+STEP 1: BUILD SUBJECT-SCAN MAPPING (adni_csv_mapping.py)
+--------------------------------------------------------
+For each of the 629 subjects, select exactly ONE scan:
+  - Priority 1: Visit = 'sc' (screening/baseline)
+  - Priority 2: Earliest 'Acq Date' if no 'sc' available
+  - Extract: Subject, Group, Age, Sex, Image Data ID
+
+Output: adni_baseline_selection.csv (~639 rows, one per subject)
+
+STEP 2: MATCH CSV TO DISK FILES
+-------------------------------
+For each selected scan (Image Data ID like "I63874"):
+  - Search in: C:\Users\gener\Downloads\ADNI1_Complete 1Yr 1.5T
+  - Match pattern: *_I[ImageID].nii or similar
+  - Record: Subject -> NIfTI file path
+
+Output: adni_matched_files.csv (Subject, Group, Age, Sex, NIfTI_Path)
+
+STEP 3: VALIDATE COVERAGE
+-------------------------
+Check:
+  - How many of 629 subjects have matching .nii files?
+  - Any missing files?
+  - Log gaps
+
+STEP 4: EXTRACT FEATURES (SUBJECT-WISE)
+---------------------------------------
+Only AFTER steps 1-3 are validated:
+  - Use ResNet18 to extract 512-dim features from matched files
+  - One feature vector per subject (not per scan!)
+  - Save: Subject, Group, Age, Sex, f0-f511
+
+Output: adni_subject_features.csv
+
+STEP 5: SUBJECT-WISE TRAIN/TEST SPLIT
+-------------------------------------
+Split by Subject ID, NOT by scan:
+  - ~70% train, ~30% test (or 5-fold CV by subject)
+  - Stratify by Group (CN/MCI/AD)
+
+================================================================================
+4. FINAL DATASET STRUCTURE
+================================================================================
+
+After processing:
+  - 629 unique subjects (one scan each)
+  - Labels: CN (210 estimated) / MCI (300 estimated) / AD (119 estimated)
+  - Features: 512-dim CNN + Age + Sex
+  - Ready for classification: CN vs MCI vs AD (or binary CN vs non-CN)
+
+================================================================================
+5. NEXT ACTIONS
+================================================================================
+
+[ ] STEP 1: Create adni_csv_mapping.py - Select baseline scans
+[ ] STEP 2: Create adni_file_matcher.py - Link CSV to disk files
+[ ] STEP 3: Run validation check
+[ ] STEP 4: Feature extraction (only after validation)
+[ ] STEP 5: Subject-wise model training
+
+DO NOT run feature extraction until Steps 1-3 are complete and validated.
+
+================================================================================

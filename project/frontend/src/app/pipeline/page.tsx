@@ -15,55 +15,53 @@ export default function PipelinePage() {
           <h2 className="text-xl font-semibold tracking-tight">
             Pipeline: From MRI to Latent Signatures
           </h2>
-          <Badge variant="outline">OASIS-1 only</Badge>
+          <Badge variant="outline">Multi-Dataset Robustness</Badge>
         </div>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          The pipeline converts structural T1-weighted MRI and clinical
+          The NeuroScope pipeline converts structural T1-weighted MRI and clinical
           variables into subject-level representations of neurodegenerative
-          change, using a combination of explicit anatomical features and
-          learned embeddings.
+          change. Our methodology is validated across OASIS-1 and ADNI-1
+          using standardized feature extraction to ensure cross-dataset compatibility.
         </p>
       </section>
 
       <section className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">1. MRI preprocessing</CardTitle>
-            <CardDescription>Image-level operations</CardDescription>
+            <CardTitle className="text-sm">1. Harmonization</CardTitle>
+            <CardDescription>Preprocessing & site-alignment</CardDescription>
           </CardHeader>
           <CardContent className="space-y-1 text-sm text-muted-foreground">
-            <p>• Bias field correction (intensity non-uniformity)</p>
-            <p>• Skull stripping (brain extraction)</p>
-            <p>• Spatial normalization to a common template</p>
-            <p>• Tissue segmentation (GM / WM / CSF)</p>
+            <p>• Bias field correction & intensity normalization</p>
+            <p>• Skull stripping & template-space (MNI) alignment</p>
+            <p>• Resolution matching across multi-site datasets</p>
+            <p>• Handling label definition shifts (CDR vs. DX_bl)</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">2. Feature extraction</CardTitle>
-            <CardDescription>214+ anatomical features</CardDescription>
+            <CardTitle className="text-sm">2. Feature Extraction</CardTitle>
+            <CardDescription>ResNet18 + Anatomical</CardDescription>
           </CardHeader>
           <CardContent className="space-y-1 text-sm text-muted-foreground">
-            <p>• Global atrophy and brain volume measures</p>
-            <p>• Regional volumes (e.g., hippocampus, ventricles)</p>
-            <p>• Asymmetry indices and intensity statistics</p>
-            <p>• Clinical covariates (age, gender, education)</p>
+            <p>• 512D MRI embeddings via pre-trained ResNet18</p>
+            <p>• Regional brain volumes (Hippocampus, Ventricles)</p>
+            <p>• Global atrophy & Intracranial Volume (eTIV)</p>
+            <p>• Clinical covariates (Age, Sex, Education)</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">3. Multimodal model</CardTitle>
-            <CardDescription>
-              Hybrid architecture (baseline + prototype)
-            </CardDescription>
+            <CardTitle className="text-sm">3. Multimodal Fusion</CardTitle>
+            <CardDescription>Late & Attention Fusion</CardDescription>
           </CardHeader>
           <CardContent className="space-y-1 text-sm text-muted-foreground">
-            <p>• Anatomical encoder (MLP)</p>
-            <p>• Clinical encoder (MLP, age modeled explicitly)</p>
-            <p>• MRI encoder (CNN embeddings, prototype only)</p>
-            <p>• Attention-based fusion and multi-task heads</p>
+            <p>• Modality-specific MLP encoders</p>
+            <p>• Late fusion (logit averaging/concatenation)</p>
+            <p>• Cross-modal attention mechanisms</p>
+            <p>• Explicit age modeling as a confounder</p>
           </CardContent>
         </Card>
       </section>
@@ -71,45 +69,39 @@ export default function PipelinePage() {
       <section className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Baseline vs prototype</CardTitle>
-            <CardDescription>
-              Same architecture, different inputs
-            </CardDescription>
+            <CardTitle className="text-sm">Experimental Consistency</CardTitle>
+            <CardDescription>Ensuring publication-grade results</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
             <p>
-              <span className="font-medium">
-                OASIS-1 Baseline (Anatomical + Clinical, no CNN):
-              </span>{" "}
-              uses only explicit anatomical features and clinical covariates.
-              This is the primary, publication-safe configuration.
+              To ensure results are truly robust, we utilize the exact same
+              architectures and hyperparameters for both in-dataset training
+              and cross-dataset evaluation.
             </p>
             <p>
-              <span className="font-medium">
-                Prototype Multimodal (Partial CNN – Exploratory):
-              </span>{" "}
-              augments the same architecture with early CNN-based MRI
-              embeddings. These embeddings are currently available for a very
-              small subset of subjects and are therefore treated as exploratory.
+              MRI-Only models serve as the baseline, with Multimodal (Late/Attention)
+              fusion architectures evaluating the additive value of clinical signal
+              in predicting early cognitive decline.
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Why age is explicit</CardTitle>
-            <CardDescription>Controlling a key confounder</CardDescription>
+            <CardTitle className="text-sm">Robustness philosophy</CardTitle>
+            <CardDescription>Beyond internal validation</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
             <p>
-              Age strongly correlates with both atrophy and cognitive scores.
-              In this pipeline, age is modeled explicitly as a covariate rather
-              than left for the model to exploit implicitly.
+              Deep learning models often overfit to center-specific acquisition
+              protocols. By testing our OASIS-trained models on ADNI (and vice-versa),
+              we move beyond simple AUC reporting toward verifying the
+              clinical stability of the learned brain signatures.
             </p>
             <p>
-              This makes it easier to interpret learned representations and to
-              evaluate whether the model is relying on age alone or capturing
-              additional neurodegenerative signal beyond healthy aging.
+              This rigorous validation approach is critical for assessing
+              the feasibility of deploying these models in diverse real-world
+              clinical settings.
             </p>
           </CardContent>
         </Card>

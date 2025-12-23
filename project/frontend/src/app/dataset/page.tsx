@@ -141,7 +141,7 @@ export default function DatasetPage() {
 
       {/* Main Tabs */}
       <Tabs value={selectedView} onValueChange={setSelectedView} className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="flex w-full overflow-x-auto md:grid md:grid-cols-5 scrollbar-hide">
           <TabsTrigger value="explorer" className="flex items-center gap-2">
             <Sparkles className="h-4 w-4" />
             <span className="hidden sm:inline">Explorer</span>
@@ -181,11 +181,11 @@ export default function DatasetPage() {
               </CardHeader>
               <CardContent className="space-y-4 text-sm text-muted-foreground">
                 <p>
-                  The <strong className="text-foreground">Open Access Series of Imaging Studies (OASIS)</strong> is a 
+                  The <strong className="text-foreground">Open Access Series of Imaging Studies (OASIS)</strong> is a
                   project aimed at making neuroimaging datasets freely available to the scientific community.
                 </p>
                 <p>
-                  OASIS-1 is a cross-sectional collection of <strong className="text-foreground">436 subjects</strong> aged 
+                  OASIS-1 is a cross-sectional collection of <strong className="text-foreground">436 subjects</strong> aged
                   18 to 96, including individuals with and without dementia.
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-4">
@@ -362,8 +362,8 @@ export default function DatasetPage() {
                 </div>
 
                 <Alert className="mt-6 text-xs">
-                  <strong>Note:</strong> Visual differences between groups may not be apparent to untrained observers. 
-                  Deep learning models detect subtle patterns in tissue density, ventricle size, and cortical thickness 
+                  <strong>Note:</strong> Visual differences between groups may not be apparent to untrained observers.
+                  Deep learning models detect subtle patterns in tissue density, ventricle size, and cortical thickness
                   that correlate with cognitive decline.
                 </Alert>
               </CardContent>
@@ -430,9 +430,9 @@ export default function DatasetPage() {
                       <TableCell>
                         <Badge variant="outline" className={
                           f.type === "Label" ? "border-red-500 text-red-600" :
-                          f.type === "Clinical" ? "border-blue-500 text-blue-600" :
-                          f.type === "Anatomical" ? "border-green-500 text-green-600" :
-                          "border-orange-500 text-orange-600"
+                            f.type === "Clinical" ? "border-blue-500 text-blue-600" :
+                              f.type === "Anatomical" ? "border-green-500 text-green-600" :
+                                "border-orange-500 text-orange-600"
                         }>
                           {f.type}
                         </Badge>
@@ -446,8 +446,8 @@ export default function DatasetPage() {
               <div className="mt-6 p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border">
                 <h4 className="font-semibold mb-2">🧠 CNN Features (ResNet18)</h4>
                 <p className="text-sm text-muted-foreground">
-                  In addition to tabular features, we extract <strong className="text-foreground">512-dimensional 
-                  deep features</strong> from each MRI scan using a pretrained ResNet18 CNN. These capture complex 
+                  In addition to tabular features, we extract <strong className="text-foreground">512-dimensional
+                    deep features</strong> from each MRI scan using a pretrained ResNet18 CNN. These capture complex
                   spatial patterns not visible in handcrafted features.
                 </p>
               </div>
@@ -522,8 +522,8 @@ export default function DatasetPage() {
       </Tabs>
 
       <Alert className="text-xs">
-        This portal summarizes the OASIS-1 research dataset. All images and data are from the publicly 
-        available OASIS project. Results are provided for transparency and methodological evaluation 
+        This portal summarizes the OASIS-1 research dataset. All images and data are from the publicly
+        available OASIS project. Results are provided for transparency and methodological evaluation
         only and are not intended for clinical use.
       </Alert>
     </div>

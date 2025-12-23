@@ -1,0 +1,33 @@
+{
+    "name": "NeuroScope",
+    "short_name": "NeuroScope",
+    "description": "Multi-Dataset Dementia Detection Research Portal",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#030308",
+    "theme_color": "#00d4ff",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "medical",
+        "research",
+        "education"
+    ],
+    "lang": "en-US"
+}
