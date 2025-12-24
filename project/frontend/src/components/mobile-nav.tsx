@@ -13,7 +13,8 @@ import {
     Workflow,
     BarChart3,
     Brain,
-    Map
+    Map,
+    FileText
 } from "lucide-react"
 import { createPortal } from "react-dom"
 
@@ -26,6 +27,7 @@ const links = [
     { href: "/adni", label: "ADNI Validation", icon: Layers },
     { href: "/pipeline", label: "Pipeline", icon: Workflow },
     { href: "/results", label: "Results", icon: BarChart3 },
+    { href: "/documentation", label: "Documentation", icon: FileText },
     { href: "/interpretability", label: "Interpretability", icon: Brain },
     { href: "/roadmap", label: "Roadmap", icon: Map },
 ]

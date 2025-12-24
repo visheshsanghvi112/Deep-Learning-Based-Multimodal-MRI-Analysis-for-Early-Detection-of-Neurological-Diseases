@@ -9,6 +9,7 @@ const links = [
   { href: "/adni", label: "ADNI" },
   { href: "/pipeline", label: "Pipeline" },
   { href: "/results", label: "Results" },
+  { href: "/documentation", label: "Documentation" },
   { href: "/interpretability", label: "Interpretability" },
   { href: "/roadmap", label: "Roadmap" },
 ]
