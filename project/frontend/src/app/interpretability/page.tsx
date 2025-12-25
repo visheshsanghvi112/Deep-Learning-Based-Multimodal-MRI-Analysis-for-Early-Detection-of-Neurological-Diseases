@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Alert } from "@/components/ui/alert"
-import { API_CONFIG } from "@/lib/api"
 
 function InterpretabilityImage({
   src,
@@ -32,9 +31,6 @@ function InterpretabilityImage({
           <p className="text-sm text-muted-foreground">Image not available</p>
           <p className="text-xs text-muted-foreground/70">
             {description}
-          </p>
-          <p className="text-xs text-muted-foreground/50">
-            Ensure the backend API is running to view this visualization.
           </p>
         </div>
       </div>
@@ -176,9 +172,9 @@ export default function InterpretabilityPage() {
       </section>
 
       <Alert className="text-xs">
-        Interpretability visualizations are served from the backend API. If images
-        are not loading, ensure the backend server is running at {API_CONFIG.baseUrl}.
-        These visualizations are for research purposes only.
+        Interpretability visualizations show attention weights and learned embeddings
+        from the fusion models. These visualizations are for research purposes only and
+        demonstrate model behavior on OASIS-1 and ADNI-1 datasets.
       </Alert>
     </div>
   )
