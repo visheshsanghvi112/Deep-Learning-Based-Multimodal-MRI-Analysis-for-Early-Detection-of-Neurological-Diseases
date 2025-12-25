@@ -7,6 +7,7 @@ import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { OptimizedBackground } from "@/components/optimized-background"
 import { MobileNav } from "@/components/mobile-nav"
+import "@/lib/suppress-rsc-errors"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
