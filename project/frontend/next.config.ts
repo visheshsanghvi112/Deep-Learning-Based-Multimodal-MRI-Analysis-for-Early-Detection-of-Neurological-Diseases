@@ -27,6 +27,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 
+  // Turbopack config (silences warning in Next.js 16)
+  turbopack: {},
+
   // Suppress harmless RSC-related 404 warnings in development
   webpack: (config, { dev, isServer }) => {
     if (dev && !isServer) {

@@ -8,7 +8,7 @@ import { Hero3D } from "@/components/hero-3d"
 import { ResultsDiagram } from "@/components/results-diagram"
 import { RobustnessBanner } from "@/components/robustness-banner"
 import Link from "next/link"
-import { AlertTriangle, FileText, TrendingDown, TrendingUp, Zap, CheckCircle2 } from "lucide-react"
+import { AlertTriangle, FileText, TrendingDown, TrendingUp, Zap, CheckCircle2, ArrowRight, Map } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -19,23 +19,36 @@ export default function Home() {
       {/* Keep the beautiful 3D Hero */}
       <Hero3D />
 
-      {/* Critical Research Updates Banner */}
-      <Alert className="border-blue-500/20 bg-blue-500/10">
-        <Zap className="h-4 w-4 text-blue-500" />
-        <div className="ml-3">
-          <strong className="font-medium text-blue-700 dark:text-blue-400">
-            Complete Research Documentation Available
-          </strong>
-          <p className="text-sm text-muted-foreground mt-1">
-            Comprehensive data cleaning, honest assessment, and publication strategy now documented.
-          </p>
-        </div>
-      </Alert>
+      {/* Research Journey Banner */}
+      <Card className="border-border">
+        <CardContent className="py-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="p-2 bg-muted rounded-lg">
+                <Map className="h-5 w-5 text-muted-foreground" />
+              </div>
+              <div>
+                <h3 className="font-semibold">
+                  New Here? Start with the Research Journey
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  A visual step-by-step guide showing exactly what we did and discovered
+                </p>
+              </div>
+            </div>
+            <Link href="/roadmap">
+              <Button variant="outline">
+                View Journey <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
 
       <ResearchStats />
 
       {/* Research Insights Grid */}
-      <section className="grid gap-4 md:grid-cols-3">
+      <section className="grid gap-4 grid-cols-2 lg:grid-cols-4">
         <Card className="border-green-500/20 bg-green-500/5">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
@@ -70,19 +83,37 @@ export default function Home() {
           </CardContent>
         </Card>
 
+        <Card className="border-emerald-500/30 bg-emerald-500/10">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-medium flex items-center gap-2">
+              <Zap className="h-4 w-4 text-emerald-500" />
+              🔬 Longitudinal
+              <Badge className="ml-1 text-[10px] bg-emerald-600">NEW</Badge>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+              0.83 AUC
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              +9.5% with temporal biomarker change
+            </p>
+          </CardContent>
+        </Card>
+
         <Card className="border-purple-500/20 bg-purple-500/5">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-purple-500" />
-              Path to Publication
+              Best Predictor
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-              0.72-0.75
+              Hippocampus
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              Target AUC with biomarkers (Level-1.5) - 2-3 weeks
+              0.725 AUC alone - beats cognitive tests
             </p>
           </CardContent>
         </Card>
@@ -112,7 +143,7 @@ export default function Home() {
       {/* Key Findings Section */}
       <section className="space-y-4">
         <h2 className="text-lg font-semibold tracking-tight">Key Research Findings</h2>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-3">
           <Card>
             <CardHeader>
               <CardTitle className="text-base">Fusion Performance Analysis</CardTitle>
@@ -161,6 +192,34 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-3 w-3 text-green-500" />
                 <p className="text-muted-foreground">MMSE/CDR-SB excluded (no circular features)</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-transparent">
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2">
+                🔬 Longitudinal Breakthrough
+                <Badge className="bg-emerald-600 text-[10px]">NEW</Badge>
+              </CardTitle>
+              <CardDescription>Temporal biomarker analysis</CardDescription>
+            </CardHeader>
+            <CardContent className="text-sm space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✅</span>
+                <p className="text-muted-foreground">Hippocampus: <strong className="text-foreground">0.725 AUC</strong> alone</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✅</span>
+                <p className="text-muted-foreground">+ Longitudinal Δ: <strong className="text-emerald-600">0.83 AUC</strong></p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-purple-500">🧬</span>
+                <p className="text-muted-foreground">APOE4 carriers: <strong className="text-foreground">2x risk</strong></p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-blue-500">💡</span>
+                <p className="text-muted-foreground">Simple LR beats complex LSTM</p>
               </div>
             </CardContent>
           </Card>

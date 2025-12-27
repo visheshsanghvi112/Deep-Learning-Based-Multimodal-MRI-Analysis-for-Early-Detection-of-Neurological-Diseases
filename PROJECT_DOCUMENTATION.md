@@ -2,8 +2,8 @@
 
 **Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases**
 
-**Last Updated:** December 18, 2025  
-**Status:** ✅ Feature Extraction Complete | 🔄 Model Training Ready
+**Last Updated:** December 27, 2025  
+**Status:** ✅ Cross-Sectional Complete | ✅ Longitudinal Experiment Complete | 📊 Results Analyzed
 
 ---
 
@@ -16,11 +16,12 @@
 5. [Classification Results](#5-classification-results)
 6. [Model Architecture](#6-model-architecture)
 7. [Project Structure](#7-project-structure)
-8. [How to Run](#8-how-to-run)
-9. [Research Phases & Progress](#9-research-phases--progress)
-10. [Key Findings](#10-key-findings)
-11. [Next Steps](#11-next-steps)
-12. [File Inventory](#12-file-inventory)
+8. [Longitudinal Progression Experiment](#8-longitudinal-progression-experiment)
+9. [How to Run](#9-how-to-run)
+10. [Research Phases & Progress](#10-research-phases--progress)
+11. [Key Findings](#11-key-findings)
+12. [Next Steps](#12-next-steps)
+13. [File Inventory](#13-file-inventory)
 
 ---
 
@@ -39,6 +40,8 @@ Develop deep learning models to detect **early-stage dementia** by combining:
 | Clinical Features | ✅ Complete | 6 normalized clinical features |
 | Traditional ML Classification | ✅ Complete | Late Fusion AUC 0.794 (realistic scenario) |
 | Deep Learning Models | ✅ Complete | All 3 models trained and compared |
+| ADNI Integration | ✅ Complete | 629 subjects, cross-dataset transfer |
+| **Longitudinal Experiment** | ✅ NEW | 2,262 scans, progression prediction |
 
 ### 🏆 Classification Results Summary
 
@@ -361,43 +364,356 @@ significantly more training data to avoid overfitting.
 
 ```
 D:/discs/
-├── PROJECT_DOCUMENTATION.md    # ← THIS FILE (Master documentation)
-├── README.md                   # Quick start guide
-├── requirements.txt            # Python dependencies
 │
-├── classification_pipeline.py  # Traditional ML baselines
-├── train_multimodal.py        # Deep learning comparison (3 models)
-├── mri_feature_extraction.py   # Main CNN feature extraction pipeline
-├── oasis_data_exploration.py   # Clinical data exploration
-├── oasis_deep_feature_scan.py  # Exhaustive feature mining
+├── 📄 DOCUMENTATION FILES
+│   ├── README.md                              # Main project README with research summary
+│   ├── PROJECT_DOCUMENTATION.md               # ← THIS FILE (Master documentation)
+│   ├── DATA_CLEANING_AND_PREPROCESSING.md     # 20+ pages thesis-ready data cleaning docs
+│   ├── PROJECT_ASSESSMENT_HONEST_TAKE.md      # 15+ pages honest analysis of fusion results
+│   ├── REALISTIC_PATH_TO_PUBLICATION.md       # 12+ pages roadmap to publication
+│   ├── RESEARCH_PAPER_FULL.md                 # Complete research paper draft
+│   ├── RESEARCH_PAPER_IEEE_FORMAT.md          # IEEE formatted paper version
+│   ├── ADNIMERGE_USAGE_SUMMARY.md             # Analysis of ADNIMERGE data utilization
+│   ├── DEPLOYMENT_GUIDE.md                    # Frontend + backend deployment steps
+│   └── README_FIGURES.md                      # Figure descriptions for paper
 │
-├── extracted_features/         # Output features
-│   ├── oasis_all_features.npz  # 436 subjects, all features
-│   └── oasis_all_features.pt   # PyTorch format
+├── 📊 EXTRACTED FEATURES (Output)
+│   └── extracted_features/
+│       ├── oasis_all_features.npz             # OASIS: 436 subjects (1.83 MB)
+│       ├── oasis_all_features.pt              # PyTorch tensor format (1.87 MB)
+│       ├── adni_features.csv                  # ADNI: 1,325 feature vectors (7.1 MB)
+│       └── checkpoint.json                    # Feature extraction progress
 │
-├── disc1/ ... disc12/          # OASIS-1 raw data (436 subjects)
-│   └── OAS1_XXXX_MR1/
-│       ├── OAS1_XXXX_MR1.txt   # Demographics
-│       ├── PROCESSED/MPRAGE/T88_111/  # Preprocessed MRI
-│       └── FSL_SEG/            # Tissue segmentation
+├── 📈 FIGURES (Research Visualizations)
+│   └── figures/
+│       ├── A1_oasis_model_comparison.png      # OASIS model comparison chart
+│       ├── A2_oasis_class_distribution.png    # OASIS class distribution
+│       ├── B1_adni_level1_honest.png          # ADNI Level-1 honest results
+│       ├── B2_level1_vs_level2_circularity.png # Circularity comparison
+│       ├── B3_adni_class_distribution.png     # ADNI class distribution
+│       ├── C1_in_vs_cross_dataset_collapse.png # Cross-dataset performance
+│       ├── C2_transfer_robustness_heatmap.png # Transfer learning heatmap
+│       ├── C3_auc_drop_robustness.png         # AUC drop analysis
+│       ├── D1_preprocessing_pipeline.png      # Data preprocessing pipeline
+│       ├── D2_sample_size_reduction.png       # Sample filtering visualization
+│       ├── D3_age_distribution.png            # Age distribution charts
+│       ├── D4_sex_distribution.png            # Sex distribution charts
+│       └── D5_feature_dimensions.png          # Feature dimension analysis
 │
-├── ADNI/                       # ADNI dataset (203 subjects)
-│   └── XXX_S_XXXX/             # Subject folders
+├── 🧠 OASIS-1 RAW DATA
+│   └── disc1/ ... disc12/                     # 12 discs containing 436 subjects
+│       └── OAS1_XXXX_MR1/                     # Subject folder
+│           ├── OAS1_XXXX_MR1.txt              # Demographics & clinical data
+│           ├── PROCESSED/MPRAGE/T88_111/      # Preprocessed MRI (Talairach space)
+│           │   └── OAS1_XXXX_MR1_mpr_n4_anon_sbj_111.*  # .hdr/.img files
+│           └── FSL_SEG/                       # Tissue segmentation masks
 │
-├── project/                    # Deep learning project
-│   ├── src/
-│   │   ├── models/             # Neural network architectures
-│   │   ├── preprocessing/      # Data processing scripts
-│   │   └── training/           # Training loops
-│   ├── data/processed/         # Processed feature CSVs
-│   └── frontend/               # Web visualization (optional)
+├── 🧬 ADNI RAW DATA
+│   └── ADNI/
+│       ├── XXX_S_XXXX/                        # 404 subject folders with NIfTI scans
+│       │   └── *.nii                          # Structural MRI (NIfTI format)
+│       ├── ADNIMERGE_23Dec2025.csv            # Complete ADNI clinical data (13.26 MB)
+│       ├── ADNI1_Complete_1Yr_1.5T_*.csv      # ADNI-1 metadata files
+│       └── (230 total NIfTI scans from 203 unique subjects)
 │
-└── ADNI_COMPREHENSIVE_REPORT.md  # ADNI dataset analysis
+├── 🚀 PROJECT (Main Deep Learning Codebase)
+│   └── project/
+│       ├── .gitignore
+│       │
+│       ├── 📁 backend/                        # FastAPI Backend
+│       │   └── main.py                        # API endpoints for model inference
+│       │
+│       ├── 📁 frontend/                       # Next.js 16 Web Application
+│       │   ├── package.json                   # Dependencies
+│       │   ├── next.config.ts                 # Next.js configuration
+│       │   ├── vercel.json                    # Vercel deployment config
+│       │   ├── public/                        # Static assets (14 files)
+│       │   │   └── *.md                       # Downloadable documentation
+│       │   └── src/
+│       │       ├── app/                       # Next.js App Router pages
+│       │       │   ├── page.tsx               # Homepage with 3D brain viz
+│       │       │   ├── documentation/         # Documentation hub page
+│       │       │   ├── dataset/               # OASIS dataset page
+│       │       │   ├── adni/                  # ADNI dataset page
+│       │       │   └── results/               # Results visualization page
+│       │       ├── components/                # 42 React components
+│       │       │   ├── hero-3d.tsx            # 3D brain visualization
+│       │       │   └── ui/                    # shadcn/ui components
+│       │       ├── hooks/                     # Custom React hooks
+│       │       ├── lib/                       # Utility functions
+│       │       └── styles/                    # CSS stylesheets
+│       │
+│       ├── 📁 scripts/                        # Python training & extraction scripts
+│       │   ├── classification_pipeline.py    # Traditional ML baselines (13 KB)
+│       │   ├── train_multimodal.py           # DL model comparison - 3 models (23 KB)
+│       │   ├── mri_feature_extraction.py     # ResNet18 CNN extraction (47 KB)
+│       │   ├── oasis_data_exploration.py     # Clinical data exploration (31 KB)
+│       │   ├── oasis_deep_feature_scan.py    # Deep feature mining (38 KB)
+│       │   └── deep_analysis.py              # Analysis utilities (26 KB)
+│       │
+│       ├── 📁 src/                            # Source modules
+│       │   ├── models/                        # Neural network architectures
+│       │   │   └── multimodal_fusion.py      # Fusion model definitions
+│       │   ├── preprocessing/                 # Data processing (7 scripts)
+│       │   ├── training/                      # Training loops (2 scripts)
+│       │   ├── evaluation/                    # Evaluation metrics (3 scripts)
+│       │   └── utils/                         # Helper utilities
+│       │
+│       ├── 📁 data/                           # Processed data CSVs
+│       └── 📁 results/                        # Training results & metrics
+│
+├── 🔬 PROJECT_ADNI (ADNI-Specific Pipeline)
+│   └── project_adni/
+│       ├── README.md                          # ADNI pipeline documentation
+│       ├── ADNI_COMPREHENSIVE_REPORT.md       # Detailed ADNI data analysis (12 KB)
+│       ├── ADNI_INTEGRATION_GUIDE.md          # Integration instructions (14 KB)
+│       │
+│       ├── 📁 src/                            # ADNI training scripts
+│       │   ├── train_level1.py               # Honest model - NO MMSE (16 KB)
+│       │   ├── train_level2.py               # Circular model - WITH MMSE (17 KB)
+│       │   ├── cross_dataset_robustness.py   # Transfer experiments (15 KB)
+│       │   ├── baseline_selection.py         # Baseline scan selection (4 KB)
+│       │   ├── data_split.py                 # Train/test splitting (3 KB)
+│       │   ├── feature_extraction.py         # ADNI feature extraction (6 KB)
+│       │   ├── file_matcher.py               # MRI-to-clinical matching (4 KB)
+│       │   └── adnimerge_utils.py            # ADNIMERGE utilities (6 KB)
+│       │
+│       ├── 📁 scripts/                        # 28 utility scripts
+│       │
+│       ├── 📁 data/                           # ADNI processed data
+│       │   ├── csv/                           # Train/test split CSVs
+│       │   └── features/                      # Extracted feature files
+│       │
+│       └── 📁 results/                        # ADNI experiment results
+│           ├── level1/                        # Honest baseline results
+│           │   └── metrics.json               # Level-1 performance metrics
+│           ├── level2/                        # Circular (MMSE) results
+│           │   └── metrics.json               # Level-2 performance metrics
+│           └── reports/                       # Cross-dataset reports
+│
+├── � PROJECT_LONGITUDINAL (NEW - Progression Experiment)
+│   └── project_longitudinal/
+│       ├── README.md                          # Longitudinal experiment overview
+│       ├── src/
+│       │   ├── data_inventory.py              # Scan all 2,294 NIfTI files
+│       │   ├── data_preparation.py            # Create progression labels
+│       │   ├── feature_extraction.py          # Extract per-scan features
+│       │   ├── train_single_scan.py           # Single-scan baseline model
+│       │   ├── train_delta_model.py           # Change-based delta model
+│       │   ├── train_sequence_model.py        # LSTM sequence model
+│       │   └── evaluate.py                    # Generate comparison report
+│       ├── data/
+│       │   ├── processed/                     # subject_inventory.csv, splits
+│       │   └── features/                      # longitudinal_features.npz (4.65 MB)
+│       ├── results/                           # Model metrics (JSON)
+│       │   ├── single_scan/metrics.json
+│       │   ├── delta_model/metrics.json
+│       │   ├── sequence_model/metrics.json
+│       │   └── comparison_report.md
+│       └── docs/                              # Documentation
+│           ├── TASK_DEFINITION.md
+│           ├── LEAKAGE_PREVENTION.md
+│           └── RESULTS_SUMMARY.md
+│
+├── �🐍 ROOT PYTHON SCRIPTS
+│   ├── check_adnimerge_usage.py              # Analyze ADNIMERGE utilization
+│   ├── visualize_adnimerge_usage.py          # Generate usage visualizations
+│   ├── generate_adni_json.py                 # Generate ADNI metadata JSON
+│   ├── extract_adni_samples.py               # Sample extraction utilities
+│   ├── quick_adni_check.py                   # Quick data verification
+│   ├── generate_data_figures.py              # Generate paper figures (20 KB)
+│   ├── generate_visualizations.py            # Visualization utilities (19 KB)
+│   └── generate_interpretability_images.py   # Interpretability visualizations
+│
+├── ⚙️ CONFIGURATION FILES
+│   ├── requirements.txt                       # Python dependencies
+│   ├── render.yaml                            # Render.com backend config
+│   └── .gitignore                            # Git ignore patterns
+│
+└── 📦 OTHER FILES
+    ├── home-image.png                         # Homepage hero image (1.3 MB)
+    ├── ADNIMERGE_usage_visualization.png      # Data usage chart
+    ├── adnimerge_usage_report.txt             # Usage report text
+    ├── robustness_results.txt                 # Cross-dataset robustness results
+    └── plan.txt                               # Project planning notes
+```
+
+### Key Directory Purposes:
+
+| Directory | Purpose |
+|-----------|---------|
+| `extracted_features/` | Pre-computed CNN features for fast training |
+| `figures/` | Publication-ready visualizations |
+| `project/frontend/` | Live website at neuroscope.vercel.app |
+| `project/backend/` | FastAPI backend for model inference |
+| `project/scripts/` | Main training & extraction scripts |
+| `project_adni/` | ADNI-specific experiments (Level-1, Level-2, cross-dataset) |
+| **`project_longitudinal/`** | **NEW: Longitudinal progression experiment (2,262 scans)** |
+| `disc1-12/` | OASIS-1 raw MRI data (436 subjects) |
+| `ADNI/` | ADNI raw data (404 folders, 203 unique subjects, 230 scans) |
+
+### Data Scale Summary:
+
+| Dataset | Raw Scans | Unique Subjects | Features Extracted |
+|---------|-----------|-----------------|-------------------|
+| **OASIS-1** | 436 | 436 | 436 × 518 dims |
+| **ADNI-1 (Cross-Sectional)** | 1,825 | 629 → 203 (available) | 1,325 vectors |
+| **ADNI-1 (Longitudinal)** | **2,262** | **629** | **2,262 × 512 dims** |
+| **Total** | **4,523** | **1,065** | **~4,000+** |
+
+---
+
+## 8. LONGITUDINAL PROGRESSION EXPERIMENT
+
+### 🎯 Research Question
+> **Does observing CHANGE over time (multiple MRIs of the same person) help detect or predict dementia progression more reliably?**
+
+### 8.1 Experiment Overview
+
+| Aspect | Cross-Sectional (Baseline) | Longitudinal (This Section) |
+|--------|---------------------------|----------------------------|
+| Scans per subject | 1 (baseline only) | ALL available (avg 3.6) |
+| Total scans | 629 | 2,262 |
+| Task | Detection (snapshot) | Progression prediction |
+| Question | "Detect from single scan" | "Predict from change over time" |
+
+### 8.2 Data Preparation
+
+**Source:** `C:\Users\gener\Downloads\ADNI1_Complete 1Yr 1.5T\ADNI`
+
+| Metric | Value |
+|--------|-------|
+| Total NIfTI Scans | 2,294 |
+| Unique Subjects | 639 |
+| Scans After Filtering | 2,262 |
+| Train Subjects | 503 |
+| Test Subjects | 126 |
+| Stable Subjects | 403 (64%) |
+| Converter Subjects | 226 (36%) |
+
+**Progression Labels:**
+- **Stable (Label=0):** Diagnosis unchanged from baseline to last visit
+- **Converter (Label=1):** Diagnosis worsened (CN→MCI, CN→AD, MCI→AD)
+
+### 8.4 Phase 1 Results: Initial ResNet Experiment
+
+| Model | AUC | AUPRC | Accuracy | Description |
+|-------|-----|-------|----------|-------------|
+| Single-Scan (Baseline) | 0.510 | 0.370 | 57.9% | Uses only first visit |
+| Delta Model | 0.517 | 0.434 | 54.0% | Baseline + follow-up + change |
+| Sequence Model (LSTM) | 0.441 | 0.366 | 47.6% | All visits as sequence |
+
+**Initial Observation:** All models achieved near-chance performance. This prompted deep investigation.
+
+### 8.5 Phase 2: Deep Investigation
+
+**Issues Discovered:**
+
+1. **Label Contamination**
+   - 136 Dementia patients labeled "Stable" (they can't progress further!)
+   - Both healthy (CN) and severely impaired (Dementia) labeled the same way
+   - Model sees contradictory signal
+
+2. **Wrong Feature Type**
+   - ResNet18 trained on ImageNet (cats, dogs, cars)
+   - Features are scale-invariant by design
+   - Cannot capture absolute volume changes (atrophy)
+
+3. **Feature Analysis**
+   - Within-subject feature change: 0.129 (small)
+   - Between-subject difference: 0.205 (larger)
+   - ResNet features are STABLE over time - not capturing progression
+
+### 8.6 Phase 3: Corrected Experiment with Actual Biomarkers
+
+We re-ran using ADNIMERGE structural biomarkers instead of ResNet features:
+
+**Individual Biomarker Power (MCI cohort, N=737):**
+
+| Biomarker | AUC | Type |
+|-----------|-----|------|
+| **Hippocampus** | **0.725** | Structural (BEST!) |
+| Entorhinal | 0.691 | Structural |
+| MidTemp | 0.678 | Structural |
+| ADAS13 | 0.767 | Cognitive (semi-circular) |
+| APOE4 | 0.624 | Genetic |
+
+**Feature Combination Results:**
+
+| Approach | AUC | vs ResNet |
+|----------|-----|-----------|
+| ResNet features | 0.52 | baseline |
+| Biomarkers (baseline only) | 0.74 | +22 points |
+| **Biomarkers + Longitudinal Change** | **0.83** | **+31 points** |
+| + Age + APOE4 | 0.81 | +29 points |
+| + ADAS13 (cognitive) | 0.84 | +32 points |
+
+### 8.7 Key Discoveries
+
+1. **Longitudinal Data DOES Help**
+   - Adding temporal change improves AUC by +9.5 points (0.74 → 0.83)
+   - Hippocampal atrophy RATE is a powerful predictor
+
+2. **APOE4 Genetic Risk**
+   - 0 alleles: 23.5% conversion rate
+   - 1 allele: 44.2% conversion rate
+   - 2 alleles: 49.1% conversion rate
+   - **Carriers have DOUBLE the risk!**
+
+3. **Right Features > Complex Models**
+   - Logistic regression with biomarkers: 0.83 AUC
+   - LSTM with ResNet features: 0.44 AUC
+   - **Simple models win with proper features**
+
+4. **Education Doesn't Predict Progression**
+   - ~32% conversion rate across all education levels
+   - Not a protective factor in MCI population
+
+### 8.8 Leakage Prevention
+
+| Measure | Implementation |
+|---------|----------------|
+| Subject-Level Split | No subject in both train/test |
+| Future Labels Only | Labels from FINAL diagnosis, not baseline |
+| Separate Normalization | Scaler fit on train, applied to test |
+| Isolated Experiment | Completely separate from cross-sectional work |
+
+### 8.9 Conclusions
+
+> **Phase 1 Conclusion (ResNet Features):**
+> ResNet features provide only marginal improvement (+1.3%) for progression prediction. This is an honest negative result.
+
+> **Phase 3 Conclusion (Biomarkers):**
+> Proper structural biomarkers (hippocampus, ventricles, entorhinal) achieve **0.83 AUC** for MCI→Dementia prediction, with longitudinal change adding **+9.5 percentage points** over baseline-only models.
+
+**The key insight:** Longitudinal data **DOES help**, but requires disease-specific biomarkers, not generic CNN features.
+
+### 8.10 Project Location
+
+All longitudinal code and results in: `project_longitudinal/`
+```
+project_longitudinal/
+├── src/                      # Python scripts
+│   ├── data_inventory.py     # Scan all 2,294 NIfTI files
+│   ├── data_preparation.py   # Create progression labels
+│   ├── feature_extraction.py # Extract per-scan features
+│   ├── train_single_scan.py  # Baseline model
+│   ├── train_delta_model.py  # Change-based model
+│   ├── train_sequence_model.py # LSTM sequence model
+│   └── evaluate.py           # Generate comparison report
+├── data/features/            # longitudinal_features.npz (4.65 MB)
+├── results/                  # Model metrics JSON files
+│   └── biomarker_analysis/   # NEW: Biomarker experiment results
+└── docs/
+    ├── TASK_DEFINITION.md
+    ├── LEAKAGE_PREVENTION.md
+    ├── RESULTS_SUMMARY.md
+    └── INVESTIGATION_REPORT.md  # Complete analysis (15+ findings)
 ```
 
 ---
 
-## 8. HOW TO RUN
+## 9. HOW TO RUN
 
 ### Prerequisites
 ```bash

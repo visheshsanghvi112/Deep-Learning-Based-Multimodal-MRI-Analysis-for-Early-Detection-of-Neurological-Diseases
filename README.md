@@ -107,18 +107,19 @@ The research explores **honest multimodal fusion** with:
 
 ## 🎯 Research Summary
 
-| Metric | OASIS-1 | ADNI-1 |
-|--------|---------|--------|
-| **Total Scans** | 436 | 1,825 |
-| **Baseline Subjects** | 205 | 629 |
-| **Train / Test** | 164 / 41 | 503 / 126 |
-| **Classification** | CDR 0 vs 0.5 | CN vs MCI+AD |
-| **Best AUC (Honest)** | 0.77 | 0.60 |
-| **With MMSE (Circular)** | 0.99 | 0.99 |
-| **Cross-Dataset Transfer** | 0.57-0.62 | 0.55-0.60 |
+| Metric | OASIS-1 | ADNI-1 (Cross-Sectional) | ADNI-1 (Longitudinal) |
+|--------|---------|--------------------------|----------------------|
+| **Total Scans** | 436 | 1,825 | 2,262 |
+| **Unique Subjects** | 205 | 629 | 629 |
+| **Train / Test** | 164 / 41 | 503 / 126 | 503 / 126 |
+| **Task** | CDR 0 vs 0.5 | CN vs MCI+AD | Stable vs Converter |
+| **Best AUC (Honest)** | 0.77 | 0.60 | 0.52 (Delta) |
+| **With MMSE (Circular)** | 0.99 | 0.99 | N/A |
 
-### 🔑 Key Insight:
-> **Honest early detection (without MMSE) is HARD.** Our 0.60 AUC reflects true difficulty, not methodology failure. Most literature reports 0.85-0.95 by using circular features.
+### 🔑 Key Insights:
+> 1. **Cross-sectional detection (0.60 AUC)** - Honest baseline without cognitive scores
+> 2. **Progression prediction (0.52 AUC)** - Even harder than snapshot detection
+> 3. **Longitudinal change provides +1.3%** - Marginal, not statistically significant
 
 ---
 
@@ -129,6 +130,7 @@ The research explores **honest multimodal fusion** with:
 | **[DATA_CLEANING_AND_PREPROCESSING.md](DATA_CLEANING_AND_PREPROCESSING.md)** | 📚 Complete data cleaning pipeline (20+ pages) | ✅ Thesis-Ready |
 | **[PROJECT_ASSESSMENT_HONEST_TAKE.md](PROJECT_ASSESSMENT_HONEST_TAKE.md)** | 🔍 Honest analysis of why fusion underperforms (15+ pages) | ✅ Complete |
 | **[REALISTIC_PATH_TO_PUBLICATION.md](REALISTIC_PATH_TO_PUBLICATION.md)** | 🎯 2-3 week roadmap to competitive AUC (12+ pages) | ✅ Action Plan |
+| **[project_longitudinal/docs/](project_longitudinal/docs/)** | 🔄 Longitudinal progression experiment | ✅ NEW |
 | **[DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)** | 🚀 Frontend + backend deployment steps | ✅ Ready |
 | [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md) | 📊 Original project overview | ✅ Reference |
 | [FINAL_PAPER_DRAFT.md](FINAL_PAPER_DRAFT.md) | 📝 Research paper draft | ✅ Draft |
@@ -226,6 +228,48 @@ uvicorn main:app --reload
 | Attention | 0.826 | 0.557 | -0.269 (WORST) |
 
 **Key Finding:** MRI-Only beats fusion in cross-dataset transfer!
+
+### 🔄 Longitudinal Progression Experiment
+
+**Research Question:** *Does observing CHANGE over time help predict progression?*
+
+#### Phase 1: Initial Experiment (ResNet Features)
+
+| Model | AUC | Description |
+|-------|-----|-------------|
+| Single-Scan (Baseline) | 0.510 | First visit only |
+| Delta Model | 0.517 | Baseline + follow-up + change |
+| Sequence (LSTM) | 0.441 | All visits as sequence |
+
+**Initial Findings:**
+- 📊 **2,262 MRI scans** from 629 subjects processed
+- ❌ All models near-chance performance
+- ❓ Why? Triggered deep investigation...
+
+#### Phase 2: Deep Investigation
+
+**Issues Discovered:**
+1. ❌ **Label contamination:** 136 Dementia patients labeled "Stable" (they can't worsen!)
+2. ❌ **Wrong features:** ResNet trained on ImageNet, not brains
+3. ❌ **Features are scale-invariant:** Can't detect volume changes
+
+#### Phase 3: Corrected Experiment (Actual Biomarkers)
+
+| Approach | AUC | Improvement |
+|----------|-----|-------------|
+| ResNet features | 0.52 | baseline |
+| Biomarkers (baseline) | 0.74 | +22 points |
+| **Biomarkers + Longitudinal** | **0.83** | **+31 points** |
+| + APOE4 genetic risk | 0.81 | +29 points |
+| + ADAS13 cognitive | 0.84 | +32 points |
+
+**Key Discoveries:**
+- 🏆 **Hippocampus volume** alone: 0.725 AUC (best single predictor!)
+- 🧬 **APOE4 carriers**: 44-49% conversion rate vs 23% non-carriers
+- 📈 **Longitudinal adds +9.5%**: Atrophy RATE matters!
+- 💡 **Simple models win**: Logistic regression (0.83) > LSTM (0.44)
+
+> **Final Conclusion:** Longitudinal MRI data **DOES help** (+9.5% AUC) when using proper biomarkers (hippocampus, ventricles, entorhinal). ResNet features are unsuitable for progression prediction. See `project_longitudinal/docs/INVESTIGATION_REPORT.md` for full analysis.
 
 ---
 

@@ -22,14 +22,14 @@ import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 
 const links = [
+    { href: "/roadmap", label: "Research Journey", icon: Map },
     { href: "/", label: "Home", icon: Home },
     { href: "/dataset", label: "OASIS Dataset", icon: Database },
     { href: "/adni", label: "ADNI Validation", icon: Layers },
     { href: "/pipeline", label: "Pipeline", icon: Workflow },
     { href: "/results", label: "Results", icon: BarChart3 },
+    { href: "/interpretability", label: "Visualizations", icon: Brain },
     { href: "/documentation", label: "Documentation", icon: FileText },
-    { href: "/interpretability", label: "Interpretability", icon: Brain },
-    { href: "/roadmap", label: "Roadmap", icon: Map },
 ]
 
 export function MobileNav() {
