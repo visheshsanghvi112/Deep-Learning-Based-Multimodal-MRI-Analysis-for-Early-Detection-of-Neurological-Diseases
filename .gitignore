@@ -18,8 +18,8 @@ dist/
 build/
 .next/
 
-# Raw Data Directories
-ADNI/
+# Raw Data Directories (root level only)
+/ADNI/
 disc*/
 extracted_features/
 
