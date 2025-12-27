@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert } from "@/components/ui/alert"
 import Link from "next/link"
-import { ArrowRight, ArrowDown, CheckCircle2, XCircle, AlertTriangle, Lightbulb, Brain, Database, Zap, Target } from "lucide-react"
+import { ArrowRight, CheckCircle2, XCircle, AlertTriangle, Lightbulb, Brain, Database, Zap, Target, LucideIcon } from "lucide-react"
 
 // Timeline step component
 function TimelineStep({
@@ -22,7 +22,7 @@ function TimelineStep({
   description: string
   status: "success" | "warning" | "error" | "info"
   result: string
-  icon: React.ElementType
+  icon: LucideIcon
   color: string
   isLast?: boolean
 }) {
