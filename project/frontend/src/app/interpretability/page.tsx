@@ -144,6 +144,50 @@ const visualizations = {
       insight: "Smooth gradients with respect to age and CDR show meaningful representations."
     },
   ],
+  longitudinal: [
+    {
+      id: "L1",
+      src: "/figures/L1_phase1_resnet_results.png",
+      title: "Phase 1: ResNet Results",
+      description: "Initial experiment with ResNet18 features showing near-chance performance across all models.",
+      insight: "All models (0.51-0.52 AUC) failed — prompted deep investigation."
+    },
+    {
+      id: "L2",
+      src: "/figures/L2_biomarker_power.png",
+      title: "Individual Biomarker Power",
+      description: "Predictive power of each structural biomarker for MCI→Dementia progression.",
+      insight: "Hippocampus is the BEST single predictor at 0.725 AUC."
+    },
+    {
+      id: "L3",
+      src: "/figures/L3_feature_combinations.png",
+      title: "Feature Combinations",
+      description: "Performance comparison of different feature combinations from ResNet to biomarkers.",
+      insight: "Biomarkers + Longitudinal achieves 0.83 AUC (+31 pts vs ResNet)."
+    },
+    {
+      id: "L4",
+      src: "/figures/L4_apoe4_risk.png",
+      title: "APOE4 Genetic Risk",
+      description: "Conversion rates by APOE4 allele count showing genetic risk stratification.",
+      insight: "APOE4 carriers have 2x higher conversion risk (44% vs 23%)."
+    },
+    {
+      id: "L5",
+      src: "/figures/L5_longitudinal_improvement.png",
+      title: "Longitudinal Improvement",
+      description: "Direct comparison showing the benefit of adding temporal change information.",
+      insight: "Adding atrophy rate improves AUC by +9.5% (0.74 → 0.83)."
+    },
+    {
+      id: "L6",
+      src: "/figures/L6_research_journey.png",
+      title: "Complete Research Journey",
+      description: "Visual summary of the three-phase journey from failure to breakthrough.",
+      insight: "Right features (biomarkers) matter more than complex models (LSTM)."
+    },
+  ],
 }
 
 function VisualizationCard({
@@ -242,7 +286,7 @@ export default function InterpretabilityPage() {
           <h2 className="text-lg sm:text-xl font-semibold tracking-tight">
             Research Visualizations
           </h2>
-          <Badge variant="outline" className="text-xs">13 Figures</Badge>
+          <Badge variant="outline" className="text-xs">19 Figures</Badge>
           <Badge className="bg-emerald-600 text-xs">Interactive</Badge>
         </div>
         <p className="text-sm text-muted-foreground">
@@ -268,6 +312,9 @@ export default function InterpretabilityPage() {
           </TabsTrigger>
           <TabsTrigger value="embeddings" className="text-xs sm:text-sm data-[state=active]:bg-background">
             Embeddings ({visualizations.embeddings.length})
+          </TabsTrigger>
+          <TabsTrigger value="longitudinal" className="text-xs sm:text-sm data-[state=active]:bg-background">
+            Longitudinal ({visualizations.longitudinal.length})
           </TabsTrigger>
         </TabsList>
 
@@ -315,6 +362,15 @@ export default function InterpretabilityPage() {
             ))}
           </div>
         </TabsContent>
+
+        {/* Longitudinal Tab */}
+        <TabsContent value="longitudinal" className="mt-4">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {visualizations.longitudinal.map((viz) => (
+              <VisualizationCard key={viz.id} viz={viz} />
+            ))}
+          </div>
+        </TabsContent>
       </Tabs>
 
       {/* Summary Cards */}
@@ -324,7 +380,7 @@ export default function InterpretabilityPage() {
             <CardTitle className="text-sm">📊 Total Figures</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">13</div>
+            <div className="text-2xl font-bold">19</div>
             <p className="text-xs text-muted-foreground">Publication-ready</p>
           </CardContent>
         </Card>
