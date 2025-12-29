@@ -144,13 +144,15 @@ The research explores **honest multimodal fusion** with:
 The **[NeuroScope Research Portal](https://neuroscope.vercel.app)** includes:
 
 ### 📊 Interactive Pages:
-- **Homepage:** Research overview with 3D brain visualization
-- **Data Cleaning:** Complete preprocessing documentation
-- **Infrastructure Constraints:** Honest storage limitations (200GB+ pipeline)
-- **Honest Assessment:** Why fusion fails (dimension imbalance, weak features)
-- **Publication Strategy:** Biomarker extraction roadmap
-- **Cross-Dataset Results:** OASIS ↔ ADNI transfer experiments
-- **Downloadable Docs:** All 3 markdown files (thesis-ready)
+- **Homepage (`/`):** Research overview with 3D brain visualization
+- **Documentation (`/documentation`):** Complete research docs with dataset access info
+- **OASIS Dataset (`/dataset`):** OASIS-1 data exploration
+- **ADNI Dataset (`/adni`):** ADNI-1 data exploration
+- **Results (`/results`):** Classification results across all experiments
+- **Visualizations (`/interpretability`):** Interactive research figures with zoom
+- **Research Roadmap (`/roadmap`):** Visual research journey
+- **3D Brain Explorer (`/brain-explorer`):** Interactive brain visualization
+- **Pipeline (`/pipeline`):** ML pipeline overview
 
 ### 🎨 Features:
 - ✅ Mobile responsive
@@ -343,10 +345,14 @@ D:/discs/
 │   │   ├── src/
 │   │   │   ├── app/
 │   │   │   │   ├── page.tsx                 ← Homepage
-│   │   │   │   ├── documentation/page.tsx   ← Doc hub (NEW)
-│   │   │   │   ├── dataset/                 ← OASIS page
-│   │   │   │   ├── adni/                    ← ADNI page
-│   │   │   │   └── results/                 ← Results page
+│   │   │   │   ├── documentation/           ← Research docs hub
+│   │   │   │   ├── dataset/                 ← OASIS-1 explorer
+│   │   │   │   ├── adni/                    ← ADNI-1 explorer
+│   │   │   │   ├── results/                 ← Classification results
+│   │   │   │   ├── interpretability/        ← Research visualizations
+│   │   │   │   ├── roadmap/                 ← Research journey
+│   │   │   │   ├── pipeline/                ← ML pipeline
+│   │   │   │   └── brain-explorer/          ← 3D brain visualization
 │   │   │   └── components/
 │   │   │       ├── hero-3d.tsx              ← 3D brain viz
 │   │   │       └── ui/                      ← shadcn/ui components
@@ -574,6 +580,6 @@ This project is for **academic and research purposes**.
 
 <br/><br/>
 
-<sub>📅 Last Updated: December 24, 2025 | 🚀 Frontend Live | 📚 Complete Documentation Available</sub>
+<sub>📅 Last Updated: December 29, 2025 | 🚀 Frontend Live | 📚 Complete Documentation Available</sub>
 
 </div>

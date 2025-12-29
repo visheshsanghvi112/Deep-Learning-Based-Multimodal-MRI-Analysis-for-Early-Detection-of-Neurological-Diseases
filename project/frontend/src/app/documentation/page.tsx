@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Alert } from "@/components/ui/alert"
@@ -12,7 +13,16 @@ import {
     Zap,
     Database,
     Code,
-    BarChart3
+    BarChart3,
+    Shield,
+    Lock,
+    ExternalLink,
+    Brain,
+    Microscope,
+    Award,
+    Globe,
+    Linkedin,
+    Github
 } from "lucide-react"
 import Link from "next/link"
 
@@ -25,6 +35,176 @@ export default function DocumentationPage() {
                 <p className="text-muted-foreground">
                     Comprehensive documentation of data cleaning, honest assessment, and publication strategy
                 </p>
+            </div>
+
+            {/* Dataset Access Banner - Prestigious & Informative */}
+            <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 overflow-hidden">
+                <CardHeader className="pb-4">
+                    <div className="flex items-start gap-4">
+                        <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20">
+                            <Database className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                        </div>
+                        <div className="flex-1">
+                            <CardTitle className="text-xl flex items-center gap-2">
+                                <span>Research-Grade Neuroimaging Datasets</span>
+                                <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-[10px]">
+                                    Prestigious Access
+                                </Badge>
+                            </CardTitle>
+                            <CardDescription className="mt-1">
+                                This research utilizes two of the world's most respected neuroimaging repositories
+                            </CardDescription>
+                        </div>
+                    </div>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                    {/* Dataset Cards */}
+                    <div className="grid gap-4 md:grid-cols-2">
+                        {/* OASIS Dataset */}
+                        <div className="rounded-xl border border-green-500/30 bg-gradient-to-br from-green-500/10 to-transparent p-4 space-y-3">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                        <Globe className="h-5 w-5 text-green-600" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-green-700 dark:text-green-400">OASIS-1</h3>
+                                        <p className="text-xs text-muted-foreground">Open Access Series of Imaging Studies</p>
+                                    </div>
+                                </div>
+                                <Badge variant="outline" className="text-green-600 border-green-500/50">
+                                    Open Access
+                                </Badge>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-sm">
+                                <div className="rounded-lg bg-green-500/10 p-2">
+                                    <div className="text-xs text-muted-foreground">Subjects</div>
+                                    <div className="font-bold text-green-700 dark:text-green-400">436</div>
+                                </div>
+                                <div className="rounded-lg bg-green-500/10 p-2">
+                                    <div className="text-xs text-muted-foreground">Age Range</div>
+                                    <div className="font-bold text-green-700 dark:text-green-400">18-96 yrs</div>
+                                </div>
+                            </div>
+                            <p className="text-xs text-muted-foreground">
+                                Cross-sectional MRI data from Washington University. Freely available for research,
+                                enabling reproducible science and global collaboration.
+                            </p>
+                            <a
+                                href="https://www.oasis-brains.org/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-green-600 hover:underline"
+                            >
+                                Visit OASIS Project <ExternalLink className="h-3 w-3" />
+                            </a>
+                        </div>
+
+                        {/* ADNI Dataset */}
+                        <div className="rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 to-transparent p-4 space-y-3">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                                        <Lock className="h-5 w-5 text-amber-600" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-amber-700 dark:text-amber-400">ADNI-1</h3>
+                                        <p className="text-xs text-muted-foreground">Alzheimer's Disease Neuroimaging Initiative</p>
+                                    </div>
+                                </div>
+                                <Badge variant="outline" className="text-amber-600 border-amber-500/50">
+                                    Application Required
+                                </Badge>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-sm">
+                                <div className="rounded-lg bg-amber-500/10 p-2">
+                                    <div className="text-xs text-muted-foreground">Subjects</div>
+                                    <div className="font-bold text-amber-700 dark:text-amber-400">629</div>
+                                </div>
+                                <div className="rounded-lg bg-amber-500/10 p-2">
+                                    <div className="text-xs text-muted-foreground">Modalities</div>
+                                    <div className="font-bold text-amber-700 dark:text-amber-400">MRI, PET+</div>
+                                </div>
+                            </div>
+                            <Alert className="border-amber-500/30 bg-amber-500/10 py-2">
+                                <Shield className="h-3 w-3 text-amber-600" />
+                                <div className="ml-2 text-xs">
+                                    <strong className="text-amber-700 dark:text-amber-400">Controlled Access:</strong>
+                                    <span className="text-muted-foreground ml-1">
+                                        Requires formal application and Data Use Agreement approval
+                                    </span>
+                                </div>
+                            </Alert>
+                            <a
+                                href="https://adni.loni.usc.edu/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-amber-600 hover:underline"
+                            >
+                                Apply for ADNI Access <ExternalLink className="h-3 w-3" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Why This Matters */}
+                    <div className="rounded-xl bg-muted/50 p-4 space-y-3">
+                        <div className="flex items-center gap-2">
+                            <Award className="h-5 w-5 text-purple-500" />
+                            <h3 className="font-semibold">Why This Research Matters</h3>
+                        </div>
+                        <div className="grid gap-3 md:grid-cols-3 text-sm">
+                            <div className="flex items-start gap-2">
+                                <Microscope className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                                <div>
+                                    <div className="font-medium">Multi-Site Validation</div>
+                                    <div className="text-xs text-muted-foreground">
+                                        Cross-dataset robustness testing across different scanners and protocols
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-2">
+                                <Brain className="h-4 w-4 text-purple-500 mt-0.5 shrink-0" />
+                                <div>
+                                    <div className="font-medium">1,065 Total Subjects</div>
+                                    <div className="text-xs text-muted-foreground">
+                                        Combined analysis from two independent research cohorts
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-2">
+                                <Shield className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                                <div>
+                                    <div className="font-medium">Ethical Compliance</div>
+                                    <div className="text-xs text-muted-foreground">
+                                        All data obtained through proper institutional agreements
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            {/* Hero Image Section */}
+            <div className="relative rounded-2xl overflow-hidden border border-border/50">
+                <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background z-10" />
+                <div className="relative h-48 md:h-64 w-full">
+                    <Image
+                        src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=80"
+                        alt="Brain MRI scan visualization"
+                        fill
+                        className="object-cover opacity-60"
+                        unoptimized
+                    />
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <div className="text-center space-y-2">
+                        <h2 className="text-2xl md:text-3xl font-bold">Deep Learning for Neuroimaging</h2>
+                        <p className="text-sm text-muted-foreground max-w-md mx-auto">
+                            Advancing early dementia detection through multimodal MRI analysis and cross-dataset validation
+                        </p>
+                    </div>
+                </div>
             </div>
 
             {/* Overview Cards */}
@@ -179,7 +359,7 @@ export default function DocumentationPage() {
                     </CardContent>
                 </Card>
 
-                {/* NEW SECTION: Infrastructure Constraints */}
+                {/* Infrastructure Constraints Section */}
                 <Card className="border-yellow-500/20">
                     <CardHeader>
                         <div className="flex items-start justify-between">
@@ -480,9 +660,52 @@ export default function DocumentationPage() {
                 </CardContent>
             </Card>
 
+            {/* Author Section */}
+            <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-transparent">
+                <CardContent className="py-6">
+                    <div className="flex flex-col sm:flex-row items-center gap-6">
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+                            VS
+                        </div>
+                        <div className="flex-1 text-center sm:text-left">
+                            <h3 className="text-lg font-bold">Vishesh Sanghvi</h3>
+                            <p className="text-sm text-muted-foreground mb-3">
+                                Researcher & Developer · Deep Learning for Healthcare
+                            </p>
+                            <div className="flex items-center justify-center sm:justify-start gap-3">
+                                <a
+                                    href="https://www.visheshsanghvi.me/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                                >
+                                    <Globe className="h-4 w-4" /> Portfolio
+                                </a>
+                                <a
+                                    href="https://linkedin.com/in/vishesh-sanghvi-96b16a237/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-sm text-[#0A66C2] hover:underline"
+                                >
+                                    <Linkedin className="h-4 w-4" /> LinkedIn
+                                </a>
+                                <a
+                                    href="https://github.com/visheshsanghvi112"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-sm hover:underline"
+                                >
+                                    <Github className="h-4 w-4" /> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
             {/* Footer */}
             <div className="text-center text-xs text-muted-foreground">
-                All documentation generated: December 24, 2025 · Research validated on OASIS-1 & ADNI-1
+                All documentation generated: December 29, 2025 · Research validated on OASIS-1 & ADNI-1
             </div>
         </div>
     )
