@@ -180,7 +180,7 @@ function NeuroscienceBackground3D() {
         camera={{ position: [0, 0, 15], fov: 55 }}
         style={{ width: "100%", height: "100%" }}
         gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
-        frameloop="demand"
+        frameloop="always"
       >
         <ambientLight intensity={0.9} />
         <directionalLight position={[5, 5, 5]} intensity={0.6} />
