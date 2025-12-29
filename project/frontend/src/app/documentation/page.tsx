@@ -40,18 +40,18 @@ export default function DocumentationPage() {
             {/* Dataset Access Banner - Prestigious & Informative */}
             <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 overflow-hidden">
                 <CardHeader className="pb-4">
-                    <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20">
+                    <div className="flex flex-col sm:flex-row items-start gap-4">
+                        <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 shrink-0">
                             <Database className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                         </div>
-                        <div className="flex-1">
-                            <CardTitle className="text-xl flex items-center gap-2">
+                        <div className="flex-1 space-y-1">
+                            <CardTitle className="text-lg sm:text-xl flex flex-wrap items-center gap-2">
                                 <span>Research-Grade Neuroimaging Datasets</span>
                                 <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-[10px]">
                                     Prestigious Access
                                 </Badge>
                             </CardTitle>
-                            <CardDescription className="mt-1">
+                            <CardDescription>
                                 This research utilizes two of the world's most respected neuroimaging repositories
                             </CardDescription>
                         </div>
@@ -60,11 +60,10 @@ export default function DocumentationPage() {
                 <CardContent className="space-y-6">
                     {/* Dataset Cards */}
                     <div className="grid gap-4 md:grid-cols-2">
-                        {/* OASIS Dataset */}
                         <div className="rounded-xl border border-green-500/30 bg-gradient-to-br from-green-500/10 to-transparent p-4 space-y-3">
-                            <div className="flex items-center justify-between">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center shrink-0">
                                         <Globe className="h-5 w-5 text-green-600" />
                                     </div>
                                     <div>
@@ -72,7 +71,7 @@ export default function DocumentationPage() {
                                         <p className="text-xs text-muted-foreground">Open Access Series of Imaging Studies</p>
                                     </div>
                                 </div>
-                                <Badge variant="outline" className="text-green-600 border-green-500/50">
+                                <Badge variant="outline" className="text-green-600 border-green-500/50 self-start sm:self-auto">
                                     Open Access
                                 </Badge>
                             </div>
@@ -100,11 +99,10 @@ export default function DocumentationPage() {
                             </a>
                         </div>
 
-                        {/* ADNI Dataset */}
                         <div className="rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 to-transparent p-4 space-y-3">
-                            <div className="flex items-center justify-between">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                                    <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
                                         <Lock className="h-5 w-5 text-amber-600" />
                                     </div>
                                     <div>
@@ -112,7 +110,7 @@ export default function DocumentationPage() {
                                         <p className="text-xs text-muted-foreground">Alzheimer's Disease Neuroimaging Initiative</p>
                                     </div>
                                 </div>
-                                <Badge variant="outline" className="text-amber-600 border-amber-500/50">
+                                <Badge variant="outline" className="text-amber-600 border-amber-500/50 self-start sm:self-auto">
                                     Application Required
                                 </Badge>
                             </div>

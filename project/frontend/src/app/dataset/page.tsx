@@ -415,33 +415,35 @@ export default function DatasetPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Feature</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Description</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {features.map((f) => (
-                    <TableRow key={f.name}>
-                      <TableCell className="font-mono font-medium">{f.name}</TableCell>
-                      <TableCell>
-                        <Badge variant="outline" className={
-                          f.type === "Label" ? "border-red-500 text-red-600" :
-                            f.type === "Clinical" ? "border-blue-500 text-blue-600" :
-                              f.type === "Anatomical" ? "border-green-500 text-green-600" :
-                                "border-orange-500 text-orange-600"
-                        }>
-                          {f.type}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-muted-foreground">{f.description}</TableCell>
+              <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                <Table className="min-w-[500px]">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Feature</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Description</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {features.map((f) => (
+                      <TableRow key={f.name}>
+                        <TableCell className="font-mono font-medium">{f.name}</TableCell>
+                        <TableCell>
+                          <Badge variant="outline" className={
+                            f.type === "Label" ? "border-red-500 text-red-600" :
+                              f.type === "Clinical" ? "border-blue-500 text-blue-600" :
+                                f.type === "Anatomical" ? "border-green-500 text-green-600" :
+                                  "border-orange-500 text-orange-600"
+                          }>
+                            {f.type}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="text-muted-foreground">{f.description}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
 
               <div className="mt-6 p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border">
                 <h4 className="font-semibold mb-2">🧠 CNN Features (ResNet18)</h4>
@@ -468,36 +470,38 @@ export default function DatasetPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Subject ID</TableHead>
-                    <TableHead>Age</TableHead>
-                    <TableHead>Gender</TableHead>
-                    <TableHead>CDR</TableHead>
-                    <TableHead>MMSE</TableHead>
-                    <TableHead>nWBV</TableHead>
-                    <TableHead>Diagnosis</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {sampleSubjects.map((s) => (
-                    <TableRow key={s.id}>
-                      <TableCell className="font-mono text-xs">{s.id}</TableCell>
-                      <TableCell>{s.age}</TableCell>
-                      <TableCell>{s.gender}</TableCell>
-                      <TableCell>
-                        <Badge variant={s.cdr === 0 ? "default" : s.cdr === 0.5 ? "secondary" : "destructive"}>
-                          {s.cdr}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{s.mmse}</TableCell>
-                      <TableCell>{s.nwbv.toFixed(3)}</TableCell>
-                      <TableCell className="text-sm">{s.diagnosis}</TableCell>
+              <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                <Table className="min-w-[600px]">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Subject ID</TableHead>
+                      <TableHead>Age</TableHead>
+                      <TableHead>Gender</TableHead>
+                      <TableHead>CDR</TableHead>
+                      <TableHead>MMSE</TableHead>
+                      <TableHead>nWBV</TableHead>
+                      <TableHead>Diagnosis</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {sampleSubjects.map((s) => (
+                      <TableRow key={s.id}>
+                        <TableCell className="font-mono text-xs">{s.id}</TableCell>
+                        <TableCell>{s.age}</TableCell>
+                        <TableCell>{s.gender}</TableCell>
+                        <TableCell>
+                          <Badge variant={s.cdr === 0 ? "default" : s.cdr === 0.5 ? "secondary" : "destructive"}>
+                            {s.cdr}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{s.mmse}</TableCell>
+                        <TableCell>{s.nwbv.toFixed(3)}</TableCell>
+                        <TableCell className="text-sm">{s.diagnosis}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
 
               <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 rounded-lg border bg-green-500/5 border-green-500/20">

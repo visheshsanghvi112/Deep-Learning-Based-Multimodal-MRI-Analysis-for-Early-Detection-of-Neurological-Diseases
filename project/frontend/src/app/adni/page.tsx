@@ -386,28 +386,30 @@ export default function ADNIPage() {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                            <TableHead>Model</TableHead>
-                                            <TableHead>Source AUC</TableHead>
-                                            <TableHead>Target AUC</TableHead>
-                                            <TableHead>Drop</TableHead>
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {robustnessResults.oasisToAdni.map((r) => (
-                                            <TableRow key={r.model}>
-                                                <TableCell className="font-medium">{r.model}</TableCell>
-                                                <TableCell>{r.srcAuc.toFixed(3)}</TableCell>
-                                                <TableCell className={r.model === "MRI-Only" ? "text-green-600 font-bold" : ""}>
-                                                    {r.tgtAuc.toFixed(3)}
-                                                </TableCell>
-                                                <TableCell className="text-red-500">-{r.drop.toFixed(3)}</TableCell>
+                                <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                                    <Table className="min-w-[450px]">
+                                        <TableHeader>
+                                            <TableRow>
+                                                <TableHead>Model</TableHead>
+                                                <TableHead>Source AUC</TableHead>
+                                                <TableHead>Target AUC</TableHead>
+                                                <TableHead>Drop</TableHead>
                                             </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {robustnessResults.oasisToAdni.map((r) => (
+                                                <TableRow key={r.model}>
+                                                    <TableCell className="font-medium">{r.model}</TableCell>
+                                                    <TableCell>{r.srcAuc.toFixed(3)}</TableCell>
+                                                    <TableCell className={r.model === "MRI-Only" ? "text-green-600 font-bold" : ""}>
+                                                        {r.tgtAuc.toFixed(3)}
+                                                    </TableCell>
+                                                    <TableCell className="text-red-500">-{r.drop.toFixed(3)}</TableCell>
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </div>
                                 <div className="mt-4 p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-sm">
                                     <strong className="text-green-600">Finding:</strong> MRI-Only was most robust (0.607).
                                     Adding clinical features hurt transfer performance.
@@ -427,28 +429,30 @@ export default function ADNIPage() {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                            <TableHead>Model</TableHead>
-                                            <TableHead>Source AUC</TableHead>
-                                            <TableHead>Target AUC</TableHead>
-                                            <TableHead>Drop</TableHead>
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {robustnessResults.adniToOasis.map((r) => (
-                                            <TableRow key={r.model}>
-                                                <TableCell className="font-medium">{r.model}</TableCell>
-                                                <TableCell>{r.srcAuc.toFixed(3)}</TableCell>
-                                                <TableCell className={r.model === "Late Fusion" ? "text-purple-600 font-bold" : ""}>
-                                                    {r.tgtAuc.toFixed(3)}
-                                                </TableCell>
-                                                <TableCell className="text-red-500">-{r.drop.toFixed(3)}</TableCell>
+                                <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                                    <Table className="min-w-[450px]">
+                                        <TableHeader>
+                                            <TableRow>
+                                                <TableHead>Model</TableHead>
+                                                <TableHead>Source AUC</TableHead>
+                                                <TableHead>Target AUC</TableHead>
+                                                <TableHead>Drop</TableHead>
                                             </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {robustnessResults.adniToOasis.map((r) => (
+                                                <TableRow key={r.model}>
+                                                    <TableCell className="font-medium">{r.model}</TableCell>
+                                                    <TableCell>{r.srcAuc.toFixed(3)}</TableCell>
+                                                    <TableCell className={r.model === "Late Fusion" ? "text-purple-600 font-bold" : ""}>
+                                                        {r.tgtAuc.toFixed(3)}
+                                                    </TableCell>
+                                                    <TableCell className="text-red-500">-{r.drop.toFixed(3)}</TableCell>
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </div>
                                 <div className="mt-4 p-3 rounded-lg bg-purple-500/10 border border-purple-500/20 text-sm">
                                     <strong className="text-purple-600">Finding:</strong> Late Fusion was most robust (0.624).
                                     Clinical features helped transfer in this direction.
@@ -497,36 +501,38 @@ export default function ADNIPage() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Subject ID</TableHead>
-                                        <TableHead>Age</TableHead>
-                                        <TableHead>Sex</TableHead>
-                                        <TableHead>Group</TableHead>
-                                        <TableHead>MMSE</TableHead>
-                                        <TableHead>Education</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {sampleSubjects.map((s) => (
-                                        <TableRow key={s.id}>
-                                            <TableCell className="font-mono text-xs">{s.id}</TableCell>
-                                            <TableCell>{s.age}</TableCell>
-                                            <TableCell>{s.sex}</TableCell>
-                                            <TableCell>
-                                                <Badge
-                                                    variant={s.group === "CN" ? "default" : s.group === "MCI" ? "secondary" : "destructive"}
-                                                >
-                                                    {s.group}
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell>{s.mmse}</TableCell>
-                                            <TableCell>{s.educ} yrs</TableCell>
+                            <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                                <Table className="min-w-[500px]">
+                                    <TableHeader>
+                                        <TableRow>
+                                            <TableHead>Subject ID</TableHead>
+                                            <TableHead>Age</TableHead>
+                                            <TableHead>Sex</TableHead>
+                                            <TableHead>Group</TableHead>
+                                            <TableHead>MMSE</TableHead>
+                                            <TableHead>Education</TableHead>
                                         </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
+                                    </TableHeader>
+                                    <TableBody>
+                                        {sampleSubjects.map((s) => (
+                                            <TableRow key={s.id}>
+                                                <TableCell className="font-mono text-xs">{s.id}</TableCell>
+                                                <TableCell>{s.age}</TableCell>
+                                                <TableCell>{s.sex}</TableCell>
+                                                <TableCell>
+                                                    <Badge
+                                                        variant={s.group === "CN" ? "default" : s.group === "MCI" ? "secondary" : "destructive"}
+                                                    >
+                                                        {s.group}
+                                                    </Badge>
+                                                </TableCell>
+                                                <TableCell>{s.mmse}</TableCell>
+                                                <TableCell>{s.educ} yrs</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </div>
 
                             <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div className="p-4 rounded-lg border bg-green-500/5 border-green-500/20">
