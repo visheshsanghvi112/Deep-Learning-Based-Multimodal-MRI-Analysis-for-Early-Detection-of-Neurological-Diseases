@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useCallback, useEffect } from "react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -25,7 +25,23 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { X, ZoomIn } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import {
+  X,
+  ZoomIn,
+  ZoomOut,
+  RotateCcw,
+  Maximize2,
+  Move,
+  Download,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  Layers,
+  Grid3X3,
+  Sparkles
+} from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 // Visualization data organized by category
 const visualizations = {
@@ -190,194 +206,651 @@ const visualizations = {
   ],
 }
 
-function VisualizationCard({
+type VisualizationType = { id: string; src: string; title: string; description: string; insight: string }
+
+// Enhanced Image Viewer with Pan & Zoom
+function EnhancedImageViewer({
   viz,
+  onClose,
+  onNext,
+  onPrev,
+  hasNext,
+  hasPrev,
 }: {
-  viz: { id: string; src: string; title: string; description: string; insight: string }
+  viz: VisualizationType
+  onClose: () => void
+  onNext?: () => void
+  onPrev?: () => void
+  hasNext?: boolean
+  hasPrev?: boolean
 }) {
-  const [imageError, setImageError] = useState(false)
+  const [scale, setScale] = useState(1)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   const [isLoading, setIsLoading] = useState(true)
-  const [isOpen, setIsOpen] = useState(false)
+  const [showControls, setShowControls] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const lastTouchDistance = useRef<number | null>(null)
+
+  const MIN_SCALE = 0.5
+  const MAX_SCALE = 5
+  const ZOOM_STEP = 0.25
+
+  const handleZoomIn = useCallback(() => {
+    setScale(prev => Math.min(prev + ZOOM_STEP, MAX_SCALE))
+  }, [])
+
+  const handleZoomOut = useCallback(() => {
+    setScale(prev => Math.max(prev - ZOOM_STEP, MIN_SCALE))
+  }, [])
+
+  const handleReset = useCallback(() => {
+    setScale(1)
+    setPosition({ x: 0, y: 0 })
+  }, [])
+
+  const handleFitToScreen = useCallback(() => {
+    setScale(1)
+    setPosition({ x: 0, y: 0 })
+  }, [])
+
+  // Mouse wheel zoom
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault()
+    const delta = e.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP
+    setScale(prev => Math.min(Math.max(prev + delta, MIN_SCALE), MAX_SCALE))
+  }, [])
+
+  // Mouse drag for panning
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (scale > 1) {
+      setIsDragging(true)
+      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y })
+    }
+  }, [scale, position])
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (isDragging && scale > 1) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y,
+      })
+    }
+  }, [isDragging, scale, dragStart])
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false)
+  }, [])
+
+  // Touch handling for pinch-to-zoom
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      const distance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      )
+      lastTouchDistance.current = distance
+    } else if (e.touches.length === 1 && scale > 1) {
+      setIsDragging(true)
+      setDragStart({
+        x: e.touches[0].clientX - position.x,
+        y: e.touches[0].clientY - position.y,
+      })
+    }
+  }, [scale, position])
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (e.touches.length === 2 && lastTouchDistance.current !== null) {
+      e.preventDefault()
+      const distance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      )
+      const delta = (distance - lastTouchDistance.current) * 0.01
+      setScale(prev => Math.min(Math.max(prev + delta, MIN_SCALE), MAX_SCALE))
+      lastTouchDistance.current = distance
+    } else if (e.touches.length === 1 && isDragging && scale > 1) {
+      setPosition({
+        x: e.touches[0].clientX - dragStart.x,
+        y: e.touches[0].clientY - dragStart.y,
+      })
+    }
+  }, [isDragging, scale, dragStart])
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false)
+    lastTouchDistance.current = null
+  }, [])
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      switch (e.key) {
+        case 'Escape':
+          onClose()
+          break
+        case '+':
+        case '=':
+          handleZoomIn()
+          break
+        case '-':
+          handleZoomOut()
+          break
+        case '0':
+          handleReset()
+          break
+        case 'ArrowLeft':
+          if (hasPrev && onPrev) onPrev()
+          break
+        case 'ArrowRight':
+          if (hasNext && onNext) onNext()
+          break
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [onClose, handleZoomIn, handleZoomOut, handleReset, hasNext, hasPrev, onNext, onPrev])
+
+  // Auto-hide controls
+  useEffect(() => {
+    let timeout: NodeJS.Timeout
+    const handleActivity = () => {
+      setShowControls(true)
+      clearTimeout(timeout)
+      timeout = setTimeout(() => setShowControls(false), 3000)
+    }
+    handleActivity()
+    window.addEventListener('mousemove', handleActivity)
+    window.addEventListener('touchstart', handleActivity)
+    return () => {
+      clearTimeout(timeout)
+      window.removeEventListener('mousemove', handleActivity)
+      window.removeEventListener('touchstart', handleActivity)
+    }
+  }, [])
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-        <DialogTrigger asChild>
-          <div className="relative h-48 sm:h-56 w-full cursor-pointer group bg-muted/30">
-            {isLoading && !imageError && (
-              <div className="absolute inset-0 flex items-center justify-center bg-muted/50">
-                <div className="text-sm text-muted-foreground">Loading...</div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col"
+    >
+      {/* Top Controls Bar */}
+      <AnimatePresence>
+        {showControls && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-3 sm:p-4"
+          >
+            <div className="flex items-center justify-between max-w-7xl mx-auto">
+              {/* Title */}
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                <Badge className="bg-emerald-600/90 text-white text-[10px] sm:text-xs shrink-0">
+                  {viz.id}
+                </Badge>
+                <h3 className="text-white font-semibold text-sm sm:text-base truncate">
+                  {viz.title}
+                </h3>
               </div>
-            )}
-            {imageError ? (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-sm text-muted-foreground">Image unavailable</div>
-              </div>
-            ) : (
-              <>
-                <Image
-                  src={viz.src}
-                  alt={viz.title}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  className="p-2"
-                  onError={() => setImageError(true)}
-                  onLoad={() => setIsLoading(false)}
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                  <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </>
-            )}
-          </div>
-        </DialogTrigger>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm flex items-center gap-2">
-            <Badge variant="outline" className="text-xs">{viz.id}</Badge>
-            {viz.title}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2">
-          <p className="text-xs text-muted-foreground line-clamp-2">{viz.description}</p>
-          <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
-            💡 {viz.insight}
-          </p>
-        </CardContent>
-      </Card>
 
-      <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-auto">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Badge>{viz.id}</Badge>
-            {viz.title}
-          </DialogTitle>
-          <DialogDescription>{viz.description}</DialogDescription>
-        </DialogHeader>
-        <div className="relative w-full h-[60vh] bg-muted/30 rounded-lg">
-          {!imageError && (
+              {/* Close Button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onClose}
+                className="text-white/70 hover:text-white hover:bg-white/10 shrink-0"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main Image Container */}
+      <div
+        ref={containerRef}
+        className="flex-1 relative overflow-hidden cursor-grab active:cursor-grabbing"
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Loading State */}
+        <AnimatePresence>
+          {isLoading && (
+            <motion.div
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 flex items-center justify-center z-10"
+            >
+              <div className="flex flex-col items-center gap-3">
+                <div className="relative w-12 h-12">
+                  <div className="absolute inset-0 rounded-full border-2 border-emerald-500/30" />
+                  <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-emerald-500 animate-spin" />
+                </div>
+                <span className="text-white/50 text-sm">Loading visualization...</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Image with Transform */}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center p-4 sm:p-8"
+          style={{
+            transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+            transition: isDragging ? 'none' : 'transform 0.2s ease-out',
+          }}
+        >
+          <div className="relative w-full h-full max-w-6xl max-h-[80vh]">
             <Image
               src={viz.src}
               alt={viz.title}
               fill
               style={{ objectFit: "contain" }}
-              className="p-4"
+              className="select-none"
+              onLoad={() => setIsLoading(false)}
+              onError={() => setIsLoading(false)}
               unoptimized
+              priority
             />
+          </div>
+        </motion.div>
+
+        {/* Navigation Arrows */}
+        <AnimatePresence>
+          {showControls && (
+            <>
+              {hasPrev && onPrev && (
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  onClick={onPrev}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white transition-all hover:scale-110"
+                >
+                  <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+                </motion.button>
+              )}
+              {hasNext && onNext && (
+                <motion.button
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  onClick={onNext}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white transition-all hover:scale-110"
+                >
+                  <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                </motion.button>
+              )}
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Bottom Controls Bar */}
+      <AnimatePresence>
+        {showControls && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/90 to-transparent p-3 sm:p-4"
+          >
+            <div className="max-w-4xl mx-auto space-y-3">
+              {/* Zoom Controls */}
+              <div className="flex items-center justify-center gap-1 sm:gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleZoomOut}
+                  disabled={scale <= MIN_SCALE}
+                  className="text-white/70 hover:text-white hover:bg-white/10 h-8 w-8 sm:h-9 sm:w-9 p-0"
+                >
+                  <ZoomOut className="h-4 w-4" />
+                </Button>
+
+                {/* Zoom Level Indicator */}
+                <div className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm min-w-[80px] text-center">
+                  <span className="text-white text-xs sm:text-sm font-mono">
+                    {Math.round(scale * 100)}%
+                  </span>
+                </div>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleZoomIn}
+                  disabled={scale >= MAX_SCALE}
+                  className="text-white/70 hover:text-white hover:bg-white/10 h-8 w-8 sm:h-9 sm:w-9 p-0"
+                >
+                  <ZoomIn className="h-4 w-4" />
+                </Button>
+
+                <div className="w-px h-5 bg-white/20 mx-1 sm:mx-2" />
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleReset}
+                  className="text-white/70 hover:text-white hover:bg-white/10 h-8 w-8 sm:h-9 sm:w-9 p-0"
+                  title="Reset View (0)"
+                >
+                  <RotateCcw className="h-4 w-4" />
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleFitToScreen}
+                  className="text-white/70 hover:text-white hover:bg-white/10 h-8 w-8 sm:h-9 sm:w-9 p-0"
+                  title="Fit to Screen"
+                >
+                  <Maximize2 className="h-4 w-4" />
+                </Button>
+              </div>
+
+              {/* Description & Insight */}
+              <div className="text-center space-y-1.5 px-4">
+                <p className="text-white/60 text-xs sm:text-sm line-clamp-2">
+                  {viz.description}
+                </p>
+                <p className="text-emerald-400 text-xs sm:text-sm font-medium">
+                  💡 {viz.insight}
+                </p>
+              </div>
+
+              {/* Keyboard Shortcuts Hint */}
+              <div className="hidden sm:flex items-center justify-center gap-4 text-[10px] text-white/30">
+                <span>Scroll to zoom</span>
+                <span>•</span>
+                <span>Drag to pan</span>
+                <span>•</span>
+                <span>← → Navigate</span>
+                <span>•</span>
+                <span>ESC Close</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
+// Enhanced Visualization Card
+function VisualizationCard({
+  viz,
+  onOpen,
+  index,
+}: {
+  viz: VisualizationType
+  onOpen: () => void
+  index: number
+}) {
+  const [imageError, setImageError] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.05, duration: 0.3 }}
+    >
+      <Card
+        className="group overflow-hidden cursor-pointer border-border/50 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/5 bg-gradient-to-br from-background to-muted/30"
+        onClick={onOpen}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Image Container */}
+        <div className="relative h-40 sm:h-48 lg:h-52 w-full overflow-hidden bg-muted/30">
+          {/* Loading Skeleton */}
+          <AnimatePresence>
+            {isLoading && !imageError && (
+              <motion.div
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-gradient-to-br from-muted/50 to-muted/30"
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-8 h-8 border-2 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
+                </div>
+                {/* Shimmer Effect */}
+                <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Error State */}
+          {imageError ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted-foreground">
+              <Layers className="h-8 w-8 opacity-50" />
+              <span className="text-xs">Image unavailable</span>
+            </div>
+          ) : (
+            <>
+              {/* Image */}
+              <Image
+                src={viz.src}
+                alt={viz.title}
+                fill
+                style={{ objectFit: "contain" }}
+                className="p-3 transition-transform duration-500 group-hover:scale-105"
+                onError={() => setImageError(true)}
+                onLoad={() => setIsLoading(false)}
+                unoptimized
+              />
+
+              {/* Hover Overlay */}
+              <motion.div
+                initial={false}
+                animate={{ opacity: isHovered ? 1 : 0 }}
+                className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-center"
+              >
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: isHovered ? 1 : 0.8, opacity: isHovered ? 1 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white"
+                >
+                  <ZoomIn className="h-4 w-4" />
+                  <span className="text-sm font-medium">Click to zoom</span>
+                </motion.div>
+              </motion.div>
+
+              {/* Badge Overlay */}
+              <div className="absolute top-2 left-2">
+                <Badge
+                  variant="secondary"
+                  className="bg-black/60 backdrop-blur-sm text-white border-0 text-[10px] font-mono"
+                >
+                  {viz.id}
+                </Badge>
+              </div>
+            </>
           )}
         </div>
-        <div className="p-4 bg-emerald-500/10 rounded-lg">
-          <p className="text-sm font-medium">🔬 Key Insight:</p>
-          <p className="text-sm text-muted-foreground">{viz.insight}</p>
-        </div>
-      </DialogContent>
-    </Dialog>
+
+        {/* Content */}
+        <CardHeader className="pb-2 pt-3">
+          <CardTitle className="text-sm font-semibold line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+            {viz.title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 pb-4">
+          <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+            {viz.description}
+          </p>
+          <div className="flex items-start gap-1.5 pt-1">
+            <Sparkles className="h-3 w-3 text-emerald-500 shrink-0 mt-0.5" />
+            <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400 line-clamp-2">
+              {viz.insight}
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  )
+}
+
+// Category Header Component
+function CategoryHeader({ category, count }: { category: string; count: number }) {
+  return (
+    <div className="flex items-center gap-3 mb-4">
+      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="flex items-center gap-2">
+        <Grid3X3 className="h-4 w-4 text-muted-foreground" />
+        <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+          {category}
+        </span>
+        <Badge variant="secondary" className="text-[10px]">
+          {count}
+        </Badge>
+      </div>
+      <div className="h-px flex-1 bg-gradient-to-r from-border via-transparent to-transparent" />
+    </div>
   )
 }
 
 export default function InterpretabilityPage() {
   const [tab, setTab] = useState("oasis")
+  const [selectedViz, setSelectedViz] = useState<VisualizationType | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+
+  // Get all visualizations in current tab as flat array
+  const currentVisualizations = visualizations[tab as keyof typeof visualizations] || []
+
+  const handleOpen = (viz: VisualizationType, index: number) => {
+    setSelectedViz(viz)
+    setSelectedIndex(index)
+  }
+
+  const handleClose = () => {
+    setSelectedViz(null)
+  }
+
+  const handleNext = () => {
+    if (selectedIndex < currentVisualizations.length - 1) {
+      setSelectedIndex(selectedIndex + 1)
+      setSelectedViz(currentVisualizations[selectedIndex + 1])
+    }
+  }
+
+  const handlePrev = () => {
+    if (selectedIndex > 0) {
+      setSelectedIndex(selectedIndex - 1)
+      setSelectedViz(currentVisualizations[selectedIndex - 1])
+    }
+  }
 
   return (
     <div className="flex w-full flex-col gap-6 px-2 sm:px-0">
       {/* Header */}
-      <section className="space-y-2">
+      <motion.section
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="space-y-3"
+      >
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-          <h2 className="text-lg sm:text-xl font-semibold tracking-tight">
-            Research Visualizations
-          </h2>
+          <div className="flex items-center gap-2">
+            <div className="p-2 rounded-lg bg-emerald-500/10">
+              <Eye className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <h2 className="text-lg sm:text-xl font-semibold tracking-tight">
+              Research Visualizations
+            </h2>
+          </div>
           <Badge variant="outline" className="text-xs">19 Figures</Badge>
-          <Badge className="bg-emerald-600 text-xs">Interactive</Badge>
+          <Badge className="bg-emerald-600 text-xs">Interactive Zoom</Badge>
         </div>
-        <p className="text-sm text-muted-foreground">
-          Click any visualization to view full-size with detailed description.
-          All figures support the research findings documented in the paper.
+        <p className="text-sm text-muted-foreground max-w-2xl">
+          Click any visualization for an immersive full-screen experience with pan & zoom.
+          Use mouse wheel or pinch gestures to zoom, drag to pan when zoomed in.
         </p>
-      </section>
+      </motion.section>
 
       {/* Tabs */}
       <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="flex flex-wrap h-auto gap-1 bg-transparent p-0 sm:bg-muted sm:p-1 sm:h-10">
-          <TabsTrigger value="oasis" className="text-xs sm:text-sm data-[state=active]:bg-background">
+        <TabsList className="flex flex-wrap h-auto gap-1 bg-muted/50 p-1 rounded-xl">
+          <TabsTrigger
+            value="oasis"
+            className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
+          >
             OASIS ({visualizations.oasis.length})
           </TabsTrigger>
-          <TabsTrigger value="adni" className="text-xs sm:text-sm data-[state=active]:bg-background">
+          <TabsTrigger
+            value="adni"
+            className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
+          >
             ADNI ({visualizations.adni.length})
           </TabsTrigger>
-          <TabsTrigger value="transfer" className="text-xs sm:text-sm data-[state=active]:bg-background">
+          <TabsTrigger
+            value="transfer"
+            className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
+          >
             Transfer ({visualizations.transfer.length})
           </TabsTrigger>
-          <TabsTrigger value="preprocessing" className="text-xs sm:text-sm data-[state=active]:bg-background">
+          <TabsTrigger
+            value="preprocessing"
+            className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
+          >
             Data ({visualizations.preprocessing.length})
           </TabsTrigger>
-          <TabsTrigger value="embeddings" className="text-xs sm:text-sm data-[state=active]:bg-background">
+          <TabsTrigger
+            value="embeddings"
+            className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
+          >
             Embeddings ({visualizations.embeddings.length})
           </TabsTrigger>
-          <TabsTrigger value="longitudinal" className="text-xs sm:text-sm data-[state=active]:bg-background">
-            Longitudinal ({visualizations.longitudinal.length})
+          <TabsTrigger
+            value="longitudinal"
+            className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
+          >
+            🔬 Longitudinal ({visualizations.longitudinal.length})
           </TabsTrigger>
         </TabsList>
 
-        {/* OASIS Tab */}
-        <TabsContent value="oasis" className="mt-4">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
-            {visualizations.oasis.map((viz) => (
-              <VisualizationCard key={viz.id} viz={viz} />
-            ))}
-          </div>
-        </TabsContent>
-
-        {/* ADNI Tab */}
-        <TabsContent value="adni" className="mt-4">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {visualizations.adni.map((viz) => (
-              <VisualizationCard key={viz.id} viz={viz} />
-            ))}
-          </div>
-        </TabsContent>
-
-        {/* Transfer Tab */}
-        <TabsContent value="transfer" className="mt-4">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {visualizations.transfer.map((viz) => (
-              <VisualizationCard key={viz.id} viz={viz} />
-            ))}
-          </div>
-        </TabsContent>
-
-        {/* Preprocessing Tab */}
-        <TabsContent value="preprocessing" className="mt-4">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {visualizations.preprocessing.map((viz) => (
-              <VisualizationCard key={viz.id} viz={viz} />
-            ))}
-          </div>
-        </TabsContent>
-
-        {/* Embeddings Tab */}
-        <TabsContent value="embeddings" className="mt-4">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
-            {visualizations.embeddings.map((viz) => (
-              <VisualizationCard key={viz.id} viz={viz} />
-            ))}
-          </div>
-        </TabsContent>
-
-        {/* Longitudinal Tab */}
-        <TabsContent value="longitudinal" className="mt-4">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {visualizations.longitudinal.map((viz) => (
-              <VisualizationCard key={viz.id} viz={viz} />
-            ))}
-          </div>
-        </TabsContent>
+        {/* Tab Contents */}
+        {Object.entries(visualizations).map(([key, vizList]) => (
+          <TabsContent key={key} value={key} className="mt-6">
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {vizList.map((viz, index) => (
+                <VisualizationCard
+                  key={viz.id}
+                  viz={viz}
+                  onOpen={() => handleOpen(viz, index)}
+                  index={index}
+                />
+              ))}
+            </div>
+          </TabsContent>
+        ))}
       </Tabs>
 
-      {/* Summary Cards */}
-      <section className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <Card>
+      {/* Summary Stats */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4"
+      >
+        <Card className="bg-gradient-to-br from-blue-500/5 to-transparent border-blue-500/20">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">📊 Total Figures</CardTitle>
+            <CardTitle className="text-sm flex items-center gap-2">
+              <Layers className="h-4 w-4 text-blue-500" />
+              Total Figures
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">19</div>
@@ -385,9 +858,12 @@ export default function InterpretabilityPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-purple-500/5 to-transparent border-purple-500/20">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🔬 Datasets</CardTitle>
+            <CardTitle className="text-sm flex items-center gap-2">
+              <Grid3X3 className="h-4 w-4 text-purple-500" />
+              Datasets
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">2</div>
@@ -395,9 +871,12 @@ export default function InterpretabilityPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-emerald-500/5 to-transparent border-emerald-500/20">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">📈 Key Finding</CardTitle>
+            <CardTitle className="text-sm flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-emerald-500" />
+              Key Finding
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-lg font-bold text-emerald-600">0.83 AUC</div>
@@ -405,22 +884,56 @@ export default function InterpretabilityPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-orange-500/5 to-transparent border-orange-500/20">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">⚠️ Circularity Gap</CardTitle>
+            <CardTitle className="text-sm flex items-center gap-2">
+              <Eye className="h-4 w-4 text-orange-500" />
+              Circularity Gap
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-lg font-bold text-orange-600">+39%</div>
             <p className="text-xs text-muted-foreground">Level-1 vs Level-2</p>
           </CardContent>
         </Card>
-      </section>
+      </motion.section>
 
       {/* Alert */}
-      <Alert className="text-xs">
-        All visualizations are generated from actual research data on OASIS-1 (436 subjects)
-        and ADNI-1 (629 subjects). Click any figure to view full-size with interpretation.
+      <Alert className="text-xs bg-muted/30 border-muted-foreground/20">
+        <div className="flex items-start gap-2">
+          <Eye className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5" />
+          <div>
+            All visualizations are generated from actual research data on OASIS-1 (436 subjects)
+            and ADNI-1 (629 subjects). Click any figure to view full-size with zoom controls.
+            <span className="hidden sm:inline text-muted-foreground/70">
+              {" "}Use keyboard shortcuts: +/- to zoom, ← → to navigate, ESC to close.
+            </span>
+          </div>
+        </div>
       </Alert>
+
+      {/* Full-screen Image Viewer */}
+      <AnimatePresence>
+        {selectedViz && (
+          <EnhancedImageViewer
+            viz={selectedViz}
+            onClose={handleClose}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            hasNext={selectedIndex < currentVisualizations.length - 1}
+            hasPrev={selectedIndex > 0}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Custom Shimmer Animation */}
+      <style jsx global>{`
+        @keyframes shimmer {
+          100% {
+            transform: translateX(100%);
+          }
+        }
+      `}</style>
     </div>
   )
 }
