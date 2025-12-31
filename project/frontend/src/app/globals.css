@@ -119,6 +119,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -133,6 +134,7 @@
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 200% 50%;
   }
@@ -147,6 +149,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -154,9 +157,12 @@
 
 /* Pulse glow effect */
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
   }
@@ -168,9 +174,12 @@
 
 /* Float animation */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -192,11 +201,11 @@
   border-radius: inherit;
   padding: 1px;
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.4), rgba(139, 92, 246, 0.4), rgba(255, 0, 255, 0.4));
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -221,9 +230,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -236,9 +247,12 @@
 
 /* Subtle background pulse */
 @keyframes bg-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.5;
   }
+
   50% {
     opacity: 0.8;
   }
@@ -246,4 +260,62 @@
 
 .animate-bg-pulse {
   animation: bg-pulse 4s ease-in-out infinite;
+}
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATIONS
+============================================================================= */
+
+/* GPU acceleration for animations */
+.animate-text-shimmer,
+.animate-pulse-glow,
+.animate-float,
+.animate-gradient,
+.animate-bg-pulse {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth scrolling optimization */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+
+  /* Disable hover effects on mobile */
+  .spotlight-glow::before {
+    display: none;
+  }
+
+  /* Simplify animations on mobile */
+  .animate-text-shimmer {
+    animation-duration: 4s;
+  }
+
+  .animate-pulse-glow {
+    animation-duration: 3s;
+  }
+
+  /* Reduce transform complexity on mobile */
+  [class*="hover:scale"],
+  [class*="hover:rotate"] {
+    transition-duration: 0.2s;
+  }
 }

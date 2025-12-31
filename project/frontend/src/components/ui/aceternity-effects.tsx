@@ -20,19 +20,27 @@ export function SpotlightCard({
     const [isFocused, setIsFocused] = useState(false)
     const [position, setPosition] = useState({ x: 0, y: 0 })
     const [opacity, setOpacity] = useState(0)
+    const [isTouchDevice, setIsTouchDevice] = useState(false)
+
+    // Detect touch device on mount
+    useEffect(() => {
+        setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
+    }, [])
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!divRef.current) return
+        if (isTouchDevice || !divRef.current) return
         const rect = divRef.current.getBoundingClientRect()
         setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
     }
 
     const handleMouseEnter = () => {
+        if (isTouchDevice) return
         setIsFocused(true)
         setOpacity(1)
     }
 
     const handleMouseLeave = () => {
+        if (isTouchDevice) return
         setIsFocused(false)
         setOpacity(0)
     }
@@ -45,13 +53,15 @@ export function SpotlightCard({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div
-                className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300"
-                style={{
-                    opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
-                }}
-            />
+            {!isTouchDevice && (
+                <div
+                    className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300"
+                    style={{
+                        opacity,
+                        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
+                    }}
+                />
+            )}
             {children}
         </div>
     )
@@ -330,12 +340,17 @@ export function RevealOnScroll({
 }) {
     const ref = useRef<HTMLDivElement>(null)
     const isInView = useInView(ref, { once: true, margin: "-50px" })
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768)
+    }, [])
 
     const directions = {
-        up: { y: 40, x: 0 },
-        down: { y: -40, x: 0 },
-        left: { y: 0, x: 40 },
-        right: { y: 0, x: -40 },
+        up: { y: isMobile ? 20 : 40, x: 0 },
+        down: { y: isMobile ? -20 : -40, x: 0 },
+        left: { y: 0, x: isMobile ? 20 : 40 },
+        right: { y: 0, x: isMobile ? -20 : -40 },
     }
 
     return (
@@ -344,7 +359,7 @@ export function RevealOnScroll({
             className={className}
             initial={{ opacity: 0, ...directions[direction] }}
             animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, ...directions[direction] }}
-            transition={{ duration: 0.6, delay, ease: "easeOut" }}
+            transition={{ duration: isMobile ? 0.4 : 0.6, delay, ease: "easeOut" }}
         >
             {children}
         </motion.div>
@@ -364,14 +379,20 @@ export function MagneticButton({
     strength?: number
 }) {
     const ref = useRef<HTMLDivElement>(null)
+    const [isTouchDevice, setIsTouchDevice] = useState(false)
     const x = useMotionValue(0)
     const y = useMotionValue(0)
 
     const xSpring = useSpring(x, { stiffness: 300, damping: 20 })
     const ySpring = useSpring(y, { stiffness: 300, damping: 20 })
 
+    // Detect touch device on mount
+    useEffect(() => {
+        setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
+    }, [])
+
     const handleMouseMove = (e: React.MouseEvent) => {
-        if (!ref.current) return
+        if (isTouchDevice || !ref.current) return
         const rect = ref.current.getBoundingClientRect()
         const centerX = rect.left + rect.width / 2
         const centerY = rect.top + rect.height / 2
@@ -380,8 +401,14 @@ export function MagneticButton({
     }
 
     const handleMouseLeave = () => {
+        if (isTouchDevice) return
         x.set(0)
         y.set(0)
+    }
+
+    // On touch devices, render without motion
+    if (isTouchDevice) {
+        return <div className={cn("inline-block", className)}>{children}</div>
     }
 
     return (

@@ -1,12 +1,18 @@
 "use client"
 
-import { useRef, useMemo, useState, useCallback } from "react"
+import { useRef, useMemo, useState, useCallback, useEffect } from "react"
 import { Canvas, useFrame, extend } from "@react-three/fiber"
 import { Points, shaderMaterial, Line, OrbitControls } from "@react-three/drei"
 import * as THREE from "three"
 import { EffectComposer, Bloom, Vignette, ChromaticAberration } from "@react-three/postprocessing"
 import { BlendFunction } from "postprocessing"
 import { motion, AnimatePresence } from "framer-motion"
+
+// Detect mobile device
+const isMobileDevice = () => {
+  if (typeof window === 'undefined') return false
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+}
 
 // =============================================================================
 // BRAIN REGION DATA - Links to dementia research
@@ -190,12 +196,14 @@ declare module "@react-three/fiber" {
 // =============================================================================
 // NEURAL CONNECTIONS - Lines between particles
 // =============================================================================
-function NeuralConnections({ positions, count = 150 }: { positions: Float32Array; count?: number }) {
+function NeuralConnections({ positions, count = 150, isMobile = false }: { positions: Float32Array; count?: number; isMobile?: boolean }) {
   const lines = useMemo(() => {
     const connections: Array<{ start: THREE.Vector3; end: THREE.Vector3; color: string }> = []
     const numParticles = positions.length / 3
+    // Reduce connections on mobile for performance
+    const actualCount = isMobile ? Math.floor(count * 0.3) : count
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < actualCount; i++) {
       const idx1 = Math.floor(Math.random() * numParticles)
       const idx2 = Math.floor(Math.random() * numParticles)
 
@@ -220,13 +228,13 @@ function NeuralConnections({ positions, count = 150 }: { positions: Float32Array
       }
     }
     return connections
-  }, [positions, count])
+  }, [positions, count, isMobile])
 
   const groupRef = useRef<THREE.Group>(null)
   const [opacity, setOpacity] = useState(0.15)
 
   useFrame((state) => {
-    // Pulsing opacity
+    // Pulsing opacity - less frequent updates on mobile
     const pulse = Math.sin(state.clock.elapsedTime * 0.8) * 0.1 + 0.2
     setOpacity(pulse)
 
@@ -294,20 +302,24 @@ function EnhancedBrainParticles({
   count = 5000,
   hoveredRegion,
   selectedRegion,
+  isMobile = false,
 }: {
   count?: number
   hoveredRegion: RegionId | null
   selectedRegion: RegionId | null
+  isMobile?: boolean
 }) {
   const pointsRef = useRef<THREE.Points>(null)
   const materialRef = useRef<THREE.ShaderMaterial>(null)
+  // Reduce particle count on mobile for performance
+  const actualCount = isMobile ? Math.min(count, 2500) : count
 
   const particles = useMemo(() => {
-    const positions = new Float32Array(count * 3)
-    const aRandom = new Float32Array(count * 3)
-    const aRegion = new Float32Array(count)
+    const positions = new Float32Array(actualCount * 3)
+    const aRandom = new Float32Array(actualCount * 3)
+    const aRegion = new Float32Array(actualCount)
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < actualCount; i++) {
       let x, y, z
       let found = false
       while (!found) {
@@ -342,7 +354,7 @@ function EnhancedBrainParticles({
     }
 
     return { positions, aRandom, aRegion }
-  }, [count])
+  }, [actualCount])
 
   useFrame((state) => {
     if (materialRef.current) {
@@ -388,7 +400,7 @@ function EnhancedBrainParticles({
           blending={THREE.AdditiveBlending}
         />
       </Points>
-      <NeuralConnections positions={particles.positions} count={120} />
+      <NeuralConnections positions={particles.positions} count={120} isMobile={isMobile} />
     </>
   )
 }
@@ -430,11 +442,13 @@ function Scene({
   selectedRegion,
   onHover,
   onClick,
+  isMobile = false,
 }: {
   hoveredRegion: RegionId | null
   selectedRegion: RegionId | null
   onHover: (region: RegionId | null) => void
   onClick: (region: RegionId) => void
+  isMobile?: boolean
 }) {
   return (
     <>
@@ -448,6 +462,7 @@ function Scene({
         count={6000}
         hoveredRegion={hoveredRegion}
         selectedRegion={selectedRegion}
+        isMobile={isMobile}
       />
 
       <EnhancedGlassSkull opacity={selectedRegion ? 0.05 : 0.12} />
@@ -465,25 +480,28 @@ function Scene({
         minPolarAngle={Math.PI * 0.25}
       />
 
-      <EffectComposer>
-        <Bloom
-          luminanceThreshold={0.4}
-          mipmapBlur
-          intensity={1.0}
-          radius={0.7}
-        />
-        <ChromaticAberration
-          offset={new THREE.Vector2(0.0005, 0.0005)}
-          radialModulation={false}
-          modulationOffset={0}
-          blendFunction={BlendFunction.NORMAL}
-        />
-        <Vignette
-          eskil={false}
-          offset={0.15}
-          darkness={0.8}
-        />
-      </EffectComposer>
+      {/* Disable expensive post-processing on mobile for better performance */}
+      {!isMobile && (
+        <EffectComposer>
+          <Bloom
+            luminanceThreshold={0.4}
+            mipmapBlur
+            intensity={1.0}
+            radius={0.7}
+          />
+          <ChromaticAberration
+            offset={new THREE.Vector2(0.0005, 0.0005)}
+            radialModulation={false}
+            modulationOffset={0}
+            blendFunction={BlendFunction.NORMAL}
+          />
+          <Vignette
+            eskil={false}
+            offset={0.15}
+            darkness={0.8}
+          />
+        </EffectComposer>
+      )}
     </>
   )
 }
@@ -619,7 +637,13 @@ export function BrainVisualizationEnhanced() {
   const [hoveredRegion, setHoveredRegion] = useState<RegionId | null>(null)
   const [selectedRegion, setSelectedRegion] = useState<RegionId | null>(null)
   const [isInView, setIsInView] = useState(true) // Start as true for immediate rendering
+  const [isMobile, setIsMobile] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // Detect mobile on mount
+  useEffect(() => {
+    setIsMobile(isMobileDevice())
+  }, [])
 
   const handleClick = useCallback((region: RegionId) => {
     setSelectedRegion((prev) => (prev === region ? null : region))
@@ -631,14 +655,19 @@ export function BrainVisualizationEnhanced() {
         <Canvas
           camera={{ position: [0, 0.5, 4.5], fov: 45 }}
           style={{ width: "100%", height: "100%" }}
-          gl={{ antialias: true, alpha: false }}
-          dpr={[1, 1.5]} // Limit pixel ratio for performance
+          gl={{
+            antialias: !isMobile, // Disable antialiasing on mobile
+            alpha: false,
+            powerPreference: isMobile ? "low-power" : "high-performance"
+          }}
+          dpr={isMobile ? [1, 1] : [1, 1.5]} // Lower DPR on mobile for performance
         >
           <Scene
             hoveredRegion={hoveredRegion}
             selectedRegion={selectedRegion}
             onHover={setHoveredRegion}
             onClick={handleClick}
+            isMobile={isMobile}
           />
         </Canvas>
       ) : (
