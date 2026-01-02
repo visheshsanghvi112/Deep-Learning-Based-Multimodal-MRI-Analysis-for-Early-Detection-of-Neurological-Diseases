@@ -374,7 +374,7 @@ D:/discs/
 │   ├── RESEARCH_PAPER_FULL.md                 # Complete research paper draft
 │   ├── RESEARCH_PAPER_IEEE_FORMAT.md          # IEEE formatted paper version
 │   ├── ADNIMERGE_USAGE_SUMMARY.md             # Analysis of ADNIMERGE data utilization
-│   ├── DEPLOYMENT_GUIDE.md                    # Frontend + backend deployment steps
+│   ├── DEPLOYMENT_GUIDE.md                    # Frontend deployment guide (Vercel)
 │   └── README_FIGURES.md                      # Figure descriptions for paper
 │
 ├── 📊 EXTRACTED FEATURES (Output)
@@ -419,9 +419,6 @@ D:/discs/
 ├── 🚀 PROJECT (Main Deep Learning Codebase)
 │   └── project/
 │       ├── .gitignore
-│       │
-│       ├── 📁 backend/                        # FastAPI Backend
-│       │   └── main.py                        # API endpoints for model inference
 │       │
 │       ├── 📁 frontend/                       # Next.js 16 Web Application
 │       │   ├── package.json                   # Dependencies
@@ -527,7 +524,6 @@ D:/discs/
 │
 ├── ⚙️ CONFIGURATION FILES
 │   ├── requirements.txt                       # Python dependencies
-│   ├── render.yaml                            # Render.com backend config
 │   └── .gitignore                            # Git ignore patterns
 │
 └── 📦 OTHER FILES
@@ -544,8 +540,7 @@ D:/discs/
 |-----------|---------|
 | `extracted_features/` | Pre-computed CNN features for fast training |
 | `figures/` | Publication-ready visualizations |
-| `project/frontend/` | Live website at neuroscope.vercel.app |
-| `project/backend/` | FastAPI backend for model inference |
+| `project/frontend/` | Live website at neuroscope-mri.vercel.app (static) |
 | `project/scripts/` | Main training & extraction scripts |
 | `project_adni/` | ADNI-specific experiments (Level-1, Level-2, cross-dataset) |
 | **`project_longitudinal/`** | **NEW: Longitudinal progression experiment (2,262 scans)** |

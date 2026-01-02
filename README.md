@@ -488,29 +488,25 @@ D:/discs/
 
 ## 🚀 Deployment
 
-### Live URLs:
+### Live Demo:
 ```
-Frontend: https://neuroscope-mri.vercel.app (Next.js on Vercel)
-Backend:  https://neuroscope-api.onrender.com (FastAPI on Render)
+https://neuroscope-mri.vercel.app
 ```
+
+**Frontend:** Next.js 16 deployed on Vercel
 
 ### Deploy Your Own:
 
-**Frontend (Vercel):**
+**Vercel (Frontend):**
 ```bash
-1. vercel.com → Import GitHub repo
-2. Root Directory: project/frontend
-3. Framework: Next.js (auto-detected)
-4. Deploy
+1. Fork this repository on GitHub
+2. Visit vercel.com → Import GitHub repo
+3. Root Directory: project/frontend
+4. Framework: Next.js (auto-detected)
+5. Deploy
 ```
 
-**Backend (Render):**
-```bash
-1. render.com → New Web Service
-2. Build: pip install -r requirements.txt
-3. Start: gunicorn project.backend.main:app -k uvicorn.workers.UvicornWorker
-4. Deploy
-```
+Your site will be live at: `https://your-project-name.vercel.app`
 
 **Full guide:** See `docs/DEPLOYMENT_GUIDE.md`
 
