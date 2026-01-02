@@ -6,6 +6,7 @@
 
 <p>
   <img src="https://img.shields.io/badge/Status-Production%20Ready-00C853?style=for-the-badge&logo=statuspage&logoColor=white" alt="Status"/>
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="License"/>
   <img src="https://img.shields.io/badge/Datasets-OASIS--1%20%2B%20ADNI--1-2196F3?style=for-the-badge&logo=databricks&logoColor=white" alt="Dataset"/>
   <img src="https://img.shields.io/badge/Total%20Subjects-834-FF6F00?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="Subjects"/>
   <img src="https://img.shields.io/badge/Frontend-Live-9C27B0?style=for-the-badge&logo=vercel&logoColor=white" alt="Frontend"/>
@@ -42,7 +43,7 @@
 
 <div align="center">
 
-### 🎯 [**View Live Frontend →**](https://neuroscope.vercel.app)
+### 🎯 [**View Live Frontend →**](https://neuroscope-mri.vercel.app)
 
 *Interactive research portal with complete documentation, cross-dataset results, and honest assessment*
 
@@ -127,13 +128,13 @@ The research explores **honest multimodal fusion** with:
 
 | Document | Description | Status |
 |----------|-------------|--------|
-| **[DATA_CLEANING_AND_PREPROCESSING.md](DATA_CLEANING_AND_PREPROCESSING.md)** | 📚 Complete data cleaning pipeline (20+ pages) | ✅ Thesis-Ready |
-| **[PROJECT_ASSESSMENT_HONEST_TAKE.md](PROJECT_ASSESSMENT_HONEST_TAKE.md)** | 🔍 Honest analysis of why fusion underperforms (15+ pages) | ✅ Complete |
-| **[REALISTIC_PATH_TO_PUBLICATION.md](REALISTIC_PATH_TO_PUBLICATION.md)** | 🎯 2-3 week roadmap to competitive AUC (12+ pages) | ✅ Action Plan |
+| **[docs/DATA_CLEANING_AND_PREPROCESSING.md](docs/DATA_CLEANING_AND_PREPROCESSING.md)** | 📚 Complete data cleaning pipeline (20+ pages) | ✅ Thesis-Ready |
+| **[docs/PROJECT_ASSESSMENT_HONEST_TAKE.md](docs/PROJECT_ASSESSMENT_HONEST_TAKE.md)** | 🔍 Honest analysis of why fusion underperforms (15+ pages) | ✅ Complete |
+| **[docs/REALISTIC_PATH_TO_PUBLICATION.md](docs/REALISTIC_PATH_TO_PUBLICATION.md)** | 🎯 2-3 week roadmap to competitive AUC (12+ pages) | ✅ Action Plan |
 | **[project_longitudinal/docs/](project_longitudinal/docs/)** | 🔄 Longitudinal progression experiment | ✅ NEW |
-| **[DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)** | 🚀 Frontend + backend deployment steps | ✅ Ready |
-| [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md) | 📊 Original project overview | ✅ Reference |
-| [FINAL_PAPER_DRAFT.md](FINAL_PAPER_DRAFT.md) | 📝 Research paper draft | ✅ Draft |
+| **[docs/DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md)** | 🚀 Frontend + backend deployment steps | ✅ Ready |
+| [docs/PROJECT_DOCUMENTATION.md](docs/PROJECT_DOCUMENTATION.md) | 📊 Original project overview | ✅ Reference |
+| [docs/RESEARCH_PAPER_FULL.md](docs/RESEARCH_PAPER_FULL.md) | 📝 Complete research paper | ✅ Draft |
 
 **All documentation is downloadable from the live frontend:** `/documentation` page
 
@@ -141,7 +142,7 @@ The research explores **honest multimodal fusion** with:
 
 ## 🖥️ Live Frontend Features
 
-The **[NeuroScope Research Portal](https://neuroscope.vercel.app)** includes:
+The **[NeuroScope Research Portal](https://neuroscope-mri.vercel.app)** includes:
 
 ### 📊 Interactive Pages:
 - **Homepage (`/`):** Research overview with 3D brain visualization
@@ -167,7 +168,7 @@ The **[NeuroScope Research Portal](https://neuroscope.vercel.app)** includes:
 
 ### Option 1: View Live Demo
 ```bash
-Visit: https://neuroscope.vercel.app
+Visit: https://neuroscope-mri.vercel.app
 ```
 
 ### Option 2: Run Locally
@@ -293,7 +294,7 @@ uvicorn main:app --reload
 - **Standard baseline protocols** (no cherry-picking)
 - **Transparent documentation** of all steps
 
-**Full details:** See `DATA_CLEANING_AND_PREPROCESSING.md`
+**Full details:** See `docs/DATA_CLEANING_AND_PREPROCESSING.md`
 
 ---
 
@@ -329,56 +330,80 @@ Total pipeline:  200GB+
 ```
 D:/discs/
 ├── 📄 README.md                              ← You are here
-├── 📚 Complete Documentation (3 files)
-│   ├── DATA_CLEANING_AND_PREPROCESSING.md   ← 20+ pages, thesis-ready
-│   ├── PROJECT_ASSESSMENT_HONEST_TAKE.md    ← 15+ pages, critical analysis
-│   └── REALISTIC_PATH_TO_PUBLICATION.md     ← 12+ pages, biomarker strategy
+├── 📄 LICENSE                                ← MIT License
+├── 📄 requirements.txt                       ← Python dependencies
 │
-├── 🚀 Deployment & Config
-│   ├── DEPLOYMENT_GUIDE.md                  ← Frontend + backend steps
-│   ├── DEPLOYMENT_QUICK_FIX.md              ← Quick reference
-│   ├── vercel.json                          ← Deployment config
-│   └── render.yaml                          ← Backend config
+├── 📁 data/                                  ← All datasets (README inside)
+│   ├── disc1/ ... disc12/                    ← OASIS raw MRI (12 folders)
+│   ├── ADNI/                                 ← ADNI raw data
+│   └── extracted_features/                   ← Processed features
+│       ├── oasis_all_features.npz            ← OASIS features (1.83 MB)
+│       └── adni_baseline_features.npz        ← ADNI features
+│
+├── 📁 docs/                                  ← All documentation (README inside)
+│   ├── RESEARCH_PAPER_FULL.md                ← Complete research paper
+│   ├── RESEARCH_PAPER_IEEE_FORMAT.md         ← IEEE formatted version
+│   ├── DATA_CLEANING_AND_PREPROCESSING.md    ← 20+ pages, thesis-ready
+│   ├── PROJECT_ASSESSMENT_HONEST_TAKE.md     ← 15+ pages, critical analysis
+│   ├── REALISTIC_PATH_TO_PUBLICATION.md      ← 12+ pages, biomarker strategy
+│   ├── PROJECT_DOCUMENTATION.md              ← Project overview
+│   ├── PROJECT_INSPECTION_REPORT.md          ← Detailed inspection
+│   ├── DEPLOYMENT_GUIDE.md                   ← Frontend + backend steps
+│   ├── README_FIGURES.md                     ← Figure documentation
+│   └── *.txt                                 ← Analysis reports
+│
+├── 📁 scripts/                               ← Utility scripts (README inside)
+│   ├── generate_visualizations.py            ← Main visualization generator
+│   ├── generate_data_figures.py              ← Data statistics plots
+│   ├── generate_interpretability_images.py   ← Model interpretability viz
+│   ├── visualize_adnimerge_usage.py          ← ADNIMERGE usage plots
+│   ├── check_adnimerge_usage.py              ← ADNIMERGE analysis
+│   ├── extract_adni_samples.py               ← ADNI data extraction
+│   ├── generate_adni_json.py                 ← ADNI metadata generation
+│   └── quick_adni_check.py                   ← Quick ADNI validation
+│
+├── 📁 figures/                               ← All visualizations & plots
+│   ├── A1_oasis_model_comparison.*           ← OASIS results (PDF + PNG)
+│   ├── B1_adni_level1_honest.*               ← ADNI honest results
+│   ├── C1_in_vs_cross_dataset_collapse.*     ← Transfer learning analysis
+│   ├── D1_preprocessing_pipeline.*           ← Data pipeline flowchart
+│   └── longitudinal/                         ← Longitudinal visualizations
 │
 ├── 🖥️ project/
-│   ├── frontend/                            ← Next.js 16 app
+│   ├── frontend/                             ← Next.js 16 app
 │   │   ├── src/
 │   │   │   ├── app/
-│   │   │   │   ├── page.tsx                 ← Homepage
-│   │   │   │   ├── documentation/           ← Research docs hub
-│   │   │   │   ├── dataset/                 ← OASIS-1 explorer
-│   │   │   │   ├── adni/                    ← ADNI-1 explorer
-│   │   │   │   ├── results/                 ← Classification results
-│   │   │   │   ├── interpretability/        ← Research visualizations
-│   │   │   │   ├── roadmap/                 ← Research journey
-│   │   │   │   ├── pipeline/                ← ML pipeline
-│   │   │   │   └── brain-explorer/          ← 3D brain visualization
+│   │   │   │   ├── page.tsx                  ← Homepage
+│   │   │   │   ├── documentation/            ← Research docs hub
+│   │   │   │   ├── dataset/                  ← OASIS-1 explorer
+│   │   │   │   ├── adni/                     ← ADNI-1 explorer
+│   │   │   │   ├── results/                  ← Classification results
+│   │   │   │   ├── interpretability/         ← Research visualizations
+│   │   │   │   ├── roadmap/                  ← Research journey
+│   │   │   │   ├── pipeline/                 ← ML pipeline
+│   │   │   │   └── brain-explorer/           ← 3D brain visualization
 │   │   │   └── components/
-│   │   │       ├── hero-3d.tsx              ← 3D brain viz
-│   │   │       └── ui/                      ← shadcn/ui components
-│   │   ├── public/                          ← Static files + markdown docs
+│   │   │       ├── hero-3d.tsx               ← 3D brain viz
+│   │   │       └── ui/                       ← shadcn/ui components
+│   │   ├── public/                           ← Static files + markdown docs
 │   │   └── package.json
 │   │
-│   └── backend/                             ← FastAPI backend
-│       └── main.py                          ← API endpoints
+│   └── backend/                              ← FastAPI backend
+│       └── main.py                           ← API endpoints
 │
-├── 🧠 project_adni/                         ← ADNI pipeline
+├── 🧠 project_adni/                          ← ADNI pipeline
 │   ├── src/
-│   │   ├── baseline_selection.py            ← Baseline scan selection
-│   │   ├── data_split.py                    ← Train/test splitting
-│   │   ├── train_level1.py                  ← Honest model (no MMSE)
-│   │   ├── train_level2.py                  ← Circular model (with MMSE)
-│   │   └── cross_dataset_robustness.py      ← Transfer experiments
-│   └── data/                                ← Processed features
+│   │   ├── baseline_selection.py             ← Baseline scan selection
+│   │   ├── data_split.py                     ← Train/test splitting
+│   │   ├── train_level1.py                   ← Honest model (no MMSE)
+│   │   ├── train_level2.py                   ← Circular model (with MMSE)
+│   │   └── cross_dataset_robustness.py       ← Transfer experiments
+│   └── data/                                 ← Processed features
 │
-├── 📊 Data & Features
-│   ├── extracted_features/
-│   │   ├── oasis_all_features.npz           ← OASIS features (1.83 MB)
-│   │   └── adni_baseline_features.npz       ← ADNI features
-│   ├── disc1/ ... disc12/                   ← OASIS raw MRI
-│   └── ADNI/                                ← ADNI raw data
-│
-└── requirements.txt                         ← Python dependencies
+└── 🔄 project_longitudinal/                  ← Longitudinal analysis
+    ├── src/                                  ← Analysis scripts
+    ├── docs/                                 ← Longitudinal documentation
+    └── results/                              ← Longitudinal results
 ```
 
 ---
@@ -457,7 +482,7 @@ D:/discs/
 - **Fusion gain:** +14% (statistically significant)
 - **Venue:** Workshop or mid-tier journal
 
-**Full roadmap:** See `REALISTIC_PATH_TO_PUBLICATION.md`
+**Full roadmap:** See `docs/REALISTIC_PATH_TO_PUBLICATION.md`
 
 ---
 
@@ -465,7 +490,7 @@ D:/discs/
 
 ### Live URLs:
 ```
-Frontend: https://neuroscope.vercel.app (Next.js on Vercel)
+Frontend: https://neuroscope-mri.vercel.app (Next.js on Vercel)
 Backend:  https://neuroscope-api.onrender.com (FastAPI on Render)
 ```
 
@@ -487,7 +512,7 @@ Backend:  https://neuroscope-api.onrender.com (FastAPI on Render)
 4. Deploy
 ```
 
-**Full guide:** See `DEPLOYMENT_GUIDE.md`
+**Full guide:** See `docs/DEPLOYMENT_GUIDE.md`
 
 ---
 
