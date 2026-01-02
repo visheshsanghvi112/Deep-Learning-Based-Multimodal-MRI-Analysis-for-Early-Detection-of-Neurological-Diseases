@@ -88,43 +88,25 @@ export default function Home() {
 
         <RevealOnScroll delay={0.1}>
           <Card3D>
-            <SpotlightCard className="h-full border-orange-500/20 bg-gradient-to-br from-orange-500/10 to-transparent" spotlightColor="rgba(249, 115, 22, 0.15)">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium flex items-center gap-2">
-                  <TrendingDown className="h-4 w-4 text-orange-500" />
-                  Honest Baseline
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-                  <AnimatedCounter value={0.60} suffix=" AUC" duration={1.5} decimals={2} />
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Level-1 (no cognitive scores) - realistic early detection
-                </p>
-              </CardContent>
-            </SpotlightCard>
-          </Card3D>
-        </RevealOnScroll>
-
-        <RevealOnScroll delay={0.15}>
-          <Card3D>
-            <SpotlightCard className="h-full border-emerald-500/30 bg-gradient-to-br from-emerald-500/15 to-cyan-500/10" spotlightColor="rgba(16, 185, 129, 0.2)">
+            <SpotlightCard className="h-full border-emerald-500/30 bg-gradient-to-br from-orange-500/5 via-emerald-500/10 to-transparent" spotlightColor="rgba(16, 185, 129, 0.15)">
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium flex items-center gap-2">
                   <TrendingUp className="h-4 w-4 text-emerald-500" />
-                  🎯 Level-MAX
-                  <Badge className="ml-1 text-[10px] bg-emerald-600">BREAKTHROUGH</Badge>
+                  Honest Detection
+                  <Badge className="ml-1 text-[10px] bg-emerald-600">Level-MAX</Badge>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">
-                  <TextGradient colors="from-emerald-400 to-cyan-400">
-                    <AnimatedCounter value={0.81} suffix=" AUC" duration={1.5} decimals={2} />
-                  </TextGradient>
+                <div className="flex items-end gap-2">
+                  <div className="text-2xl font-bold">
+                    <TextGradient colors="from-emerald-400 to-cyan-400">
+                      <AnimatedCounter value={0.81} suffix=" AUC" duration={1.5} decimals={2} />
+                    </TextGradient>
+                  </div>
+                  <div className="text-xs text-muted-foreground pb-1">(vs 0.60 baseline)</div>
                 </div>
                 <p className="text-xs text-emerald-600 mt-1 font-semibold">
-                  +16.5% with biomarkers (CSF, APOE4, Volumetrics)
+                  +16.5% with biomarkers (no cognitive scores)
                 </p>
               </CardContent>
             </SpotlightCard>

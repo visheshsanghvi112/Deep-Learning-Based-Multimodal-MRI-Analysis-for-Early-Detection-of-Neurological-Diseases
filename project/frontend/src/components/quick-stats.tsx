@@ -28,18 +28,11 @@ const stats: QuickStat[] = [
     color: "text-emerald-500"
   },
   {
-    label: "🎯 Level-MAX",
+    label: "ADNI Level-MAX",
     value: "0.81",
     subtext: "Bio-Profile",
     icon: <TrendingUp className="h-4 w-4" />,
     color: "text-emerald-500"
-  },
-  {
-    label: "ADNI L1",
-    value: "0.60",
-    subtext: "Honest Baseline",
-    icon: <Database className="h-4 w-4" />,
-    color: "text-purple-500"
   },
   {
     label: "Cross-Dataset",

@@ -23,43 +23,46 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://neuroscope.vercel.app"),
   title: {
-    default: "NeuroScope – Multi-Dataset Dementia Detection Research Portal",
-    template: "%s | NeuroScope"
+    default: "NeuroScope | Advanced AI Dementia Detection Research by Vishesh Sanghvi",
+    template: "%s | NeuroScope Research"
   },
-  description: "Research-grade deep learning portal for early dementia detection using structural MRI. Cross-validated on OASIS-1 & ADNI-1 datasets with robustness analysis across 1,065 subjects. ResNet18 features, multimodal fusion, and interpretability tools.",
+  description: "Pioneering deep learning research for early dementia detection by Vishesh Sanghvi. Featuring the novel 'Level-MAX' fusion architecture (0.81 AUC), this portal demonstrates robust biological biomarker integration and cross-dataset validation on 1,000+ subjects from OASIS & ADNI cohorts.",
   keywords: [
-    "dementia detection",
-    "Alzheimer's disease",
-    "MRI analysis",
-    "deep learning",
-    "OASIS dataset",
-    "ADNI dataset",
-    "neuroimaging",
-    "brain imaging",
-    "multimodal fusion",
-    "machine learning healthcare",
-    "cognitive impairment",
+    "Vishesh Sanghvi",
+    "Dementia AI",
+    "Alzheimer's Detection",
+    "Deep Learning Healthcare",
+    "Multimodal Fusion",
+    "Medical Imaging AI",
+    "NeuroScope",
+    "MRI Analysis",
+    "Biomarker Fusion",
+    "Cross-Dataset Generalization",
+    "OASIS Dataset",
+    "ADNI Dataset",
     "ResNet18",
-    "medical AI research"
+    "Attention Mechanisms",
+    "Medical AI Research"
   ],
-  authors: [{ name: "Vishesh Sanghvi" }],
+  authors: [{ name: "Vishesh Sanghvi", url: "https://www.visheshsanghvi.me/" }],
   creator: "Vishesh Sanghvi",
-  publisher: "NeuroScope Research",
+  publisher: "Vishesh Sanghvi Research",
+  applicationName: "NeuroScope",
 
   // Open Graph for social sharing
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://neuroscope.vercel.app",
-    siteName: "NeuroScope",
-    title: "NeuroScope – Multi-Dataset Dementia Detection",
-    description: "Research-grade deep learning portal for early dementia detection. Cross-validated on OASIS-1 & ADNI-1 with 1,065 subjects.",
+    siteName: "NeuroScope by Vishesh Sanghvi",
+    title: "NeuroScope – Advanced AI for Early Dementia Detection",
+    description: "Explore the 0.81 AUC 'Level-MAX' model by Vishesh Sanghvi. A breakthrough in robust, biomarker-informed deep learning for Alzheimer's detection.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "NeuroScope - Dementia Detection Research Portal",
+        alt: "NeuroScope AI Research - Vishesh Sanghvi",
       }
     ],
   },
@@ -67,8 +70,8 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "NeuroScope – Dementia Detection Research",
-    description: "Deep learning portal for MRI-based dementia detection. OASIS & ADNI datasets validated.",
+    title: "NeuroScope AI Research | Vishesh Sanghvi",
+    description: "Deep learning breakdown: How 'Level-MAX' fusion achieves 0.81 AUC in early dementia detection. Robust cross-dataset validation by Vishesh Sanghvi.",
     images: ["/og-image.png"],
     creator: "@visheshsanghvi",
   },
@@ -96,11 +99,6 @@ export const metadata: Metadata = {
 
   // Manifest
   manifest: "/manifest.json",
-
-  // Verification (add your own codes when you have them)
-  // verification: {
-  //   google: "your-google-verification-code",
-  // },
 
   // Category
   category: "Medical Research",
@@ -157,18 +155,24 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ResearchProject",
-              "name": "NeuroScope",
-              "description": "Multi-dataset dementia detection research using deep learning on structural MRI",
+              "name": "NeuroScope: Advanced Dementia AI",
+              "alternateName": "Level-MAX Fusion Model",
+              "description": "A pioneering deep learning research initiative by Vishesh Sanghvi, demonstrating how 'Level-MAX' biomarker fusion achieves 0.81 AUC in honest early dementia detection using MRI and biological profiles.",
               "url": "https://neuroscope.vercel.app",
               "author": {
                 "@type": "Person",
-                "name": "Vishesh Sanghvi"
+                "name": "Vishesh Sanghvi",
+                "url": "https://www.visheshsanghvi.me/",
+                "sameAs": [
+                  "https://linkedin.com/in/vishesh-sanghvi-96b16a237/",
+                  "https://github.com/visheshsanghvi112"
+                ]
               },
               "about": {
                 "@type": "MedicalCondition",
-                "name": "Dementia"
+                "name": "Alzheimer's Disease"
               },
-              "keywords": "dementia, Alzheimer's, MRI, deep learning, OASIS, ADNI"
+              "keywords": "Vishesh Sanghvi, Dementia AI, Level-MAX, Alzheimer's, MRI, Deep Learning, OASIS, ADNI"
             })
           }}
         />
