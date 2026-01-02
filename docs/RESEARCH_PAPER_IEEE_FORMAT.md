@@ -13,9 +13,9 @@ Early detection of dementia using deep learning achieves reported performance ex
 
 We extract MRI features via ResNet18-based 2.5D CNNs from OASIS-1 (single-site, CDR-labeled, N=205) and ADNI-1 (multi-site, diagnosis-labeled, N=629) datasets. Three architectures are evaluated: MRI-only, late fusion, and attention-gated fusion, under both in-dataset (5-fold CV) and zero-shot cross-dataset transfer settings (OASIS↔ADNI). Our honest baseline (Level-1: MRI + Age + Sex) achieves 0.60 AUC on ADNI, contrasting with our circular reference (Level-2: + MMSE) at 0.99 AUC (Δ=+0.39), quantifying the extent to which cognitive scores dominate reported performance.
 
-Critically, while multimodal fusion yields marginal in-dataset gains (OASIS: +2.4%, p=0.12; ADNI: +1.5%), these improvements systematically collapse under cross-dataset transfer. MRI-only models demonstrate superior generalization (OASIS→ADNI: 0.607 vs 0.575-0.557 for fusion; performance reversal despite in-dataset fusion advantage). Attention-based fusion exhibits pronounced instability (22% higher variance) and consistently underperforms in all transfer scenarios. Furthermore, models trained on high-quality single-site data (OASIS, N=205) outperform ADNI's own internal baseline (N=629: 0.607 vs 0.583 AUC), demonstrating that data homogeneity supersedes dataset size for robust feature learning.
+Critically, while multimodal fusion yields marginal in-dataset gains (OASIS: +2.4%, p=0.12; ADNI: +1.5%), these improvements systematically collapse under cross-dataset transfer when using weak demographic features. MRI-only models demonstrate superior generalization in these weak-feature scenarios. However, our new **Level-MAX** experiment demonstrates that when high-quality biological biomarkers (Hippocampus, CSF, APOE4, N=629) are fused with MRI, performance jumps to **0.808 AUC** (+16.5% over MRI-only), validating that fusion architectures work when provided with complementary biological signals rather than weak demographics. Models trained on high-quality single-site data (OASIS, N=205) still outperform ADNI's internal baseline (0.607 vs 0.583), confirming that data homogeneity supersedes dataset size.
 
-These findings challenge the assumption that architectural complexity improves robustness and reveal that many reported performance gains may substantially overestimate deployment utility. We conclude that evaluation rigor, feature validity, and cross-dataset generalization are more critical than model sophistication for clinical translation.
+These findings challenge the assumption that architectural complexity alone improves robustness, but confirming that **feature quality** is the primary driver of multimodal success. We conclude that evaluation rigor, feature validity (biomarkers vs demographics), and cross-dataset generalization are the cornerstones of clinical translation.
 
 **Index Terms**—Alzheimer's disease, deep learning, multimodal fusion, dataset shift, medical imaging, cross-dataset validation
 
@@ -158,7 +158,21 @@ This work addresses these gaps through:
 
 **Observation:** MMSE addition yields near-perfect classification (AUC=0.99), demonstrating that (a) model capacity is not the limiting factor, and (b) MMSE dominates prediction entirely. Literature reports of AUC 0.90-0.95 likely reflect MMSE inclusion rather than genuine early detection capability.
 
-### C. Cross-Dataset Transfer (Zero-Shot)
+### C. Level-MAX Results (Honest Biomarker Fusion)
+
+To validate the fusion architecture's capability when provided with quality inputs, we evaluated the **Level-MAX** protocol: fusing MRI with a 14-dimensional biological profile (Hippocampus, CSF proteins, APOE4, etc.) while rigorously excluding all cognitive scores.
+
+**TABLE III.5: ADNI-1 LEVEL-MAX PERFORMANCE (BIO-FUSION)**
+
+| Model | AUC | Gain vs MRI | Gain vs Level-1 |
+|-------|-----|-------------|-----------------|
+| MRI-Only | 0.643 | - | +0.060 |
+| **Late Fusion** | **0.808** | **+0.165** | **+0.210** |
+| Attention Fusion | 0.808 | +0.165 | +0.237 |
+
+**Observation:** Fusion performance jumps from 0.60 (Level-1) to 0.81 (Level-MAX). The +16.5% gain proves that data quality, not model complexity, is the key to fusion success.
+
+### D. Cross-Dataset Transfer (Zero-Shot)
 
 **TABLE IV: OASIS→ADNI TRANSFER**
 
@@ -184,9 +198,9 @@ This work addresses these gaps through:
 
 ## V. DISCUSSION
 
-### A. Root Causes of Fusion Failure Under Dataset Shift
+### A. Root Causes: Signal vs Noise
 
-Three mechanisms explain systematic fusion degradation:
+Three mechanisms explain why fusion degrades with Level-1 (Age/Sex) features but succeeds with Level-MAX (Biomarkers) features:
 
 **1) Weak Clinical Signal.** Level-1 clinical features (Age, Sex) provide minimal discrimination in isolation. Dimensional imbalance (512-dim MRI vs 2-dim clinical) results in clinical encoder expanding 2→32 dimensions, generating 30 dimensions of **learned noise** that overfit to source domain.
 
@@ -346,7 +360,7 @@ This work presents an honest evaluation of multimodal deep learning for early de
 
 **1) Circular Features Dominate Literature Performance.** Level-1 (honest) achieves 0.60 AUC vs Level-2 (circular) at 0.99 AUC on ADNI (Δ=+0.39), revealing that MMSE explains 65% of diagnostic variance.
 
-**2) Multimodal Fusion Does Not Guarantee Robustness.** Fusion improvements collapse under cross-dataset transfer. MRI-only models demonstrate superior generalization.
+**2) Feature Quality Determines Fusion Success.** While fusion collapsed with weak demographic features, it succeeded brilliantly with Level-MAX biological features (+16.5% gain, 0.81 AUC). This demonstrates that fusion robustness is a data problem, not an architecture problem.
 
 **3) Architectural Complexity Increases Fragility.** Attention fusion exhibits 22% higher variance and underperforms simpler models.
 

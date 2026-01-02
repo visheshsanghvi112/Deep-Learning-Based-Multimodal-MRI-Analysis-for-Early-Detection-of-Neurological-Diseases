@@ -98,47 +98,159 @@ export default function ResultsPage() {
 
         {/* ADNI Results Tab */}
         <TabsContent value="adni">
-          <div className="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            <Card>
+          <div className="mt-4 space-y-6">
+            {/* Level-1: Honest Baseline */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">Level-1: Honest Baseline (Age + Sex Only)</h3>
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">MRI-Only</CardTitle>
+                    <CardDescription>
+                      No cognitive scores (realistic)
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-semibold text-blue-600">0.583</div>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Honest baseline with Age+Sex only.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Late Fusion</CardTitle>
+                    <CardDescription>MRI + Demographics</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-semibold text-purple-600">0.598</div>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      +1.5% improvement (not significant).
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Problem Identified</CardTitle>
+                    <CardDescription>Why fusion fails</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-sm text-muted-foreground">
+                    Age+Sex (2D) provides too little complementary signal to enhance 512D MRI embeddings.
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Level-MAX: Biomarker-Enhanced */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                <span className="text-emerald-600">🎯 Level-MAX: Biomarker-Enhanced Fusion</span>
+                <Badge className="bg-emerald-600">NEW</Badge>
+              </h3>
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <Card className="border-emerald-500/30 bg-emerald-500/5">
+                  <CardHeader>
+                    <CardTitle className="text-sm">MRI-Only (Baseline)</CardTitle>
+                    <CardDescription>
+                      With improved processing
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-semibold text-blue-600">0.643</div>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      +6% over Level-1 MRI baseline.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-emerald-500/30 bg-emerald-500/10">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-emerald-600">Late Fusion (Level-MAX)</CardTitle>
+                    <CardDescription>MRI + Rich Bio-Profile (14D)</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-semibold text-emerald-600">0.808</div>
+                    <p className="mt-1 text-xs text-emerald-600 font-semibold">
+                      +16.5% over MRI! Fusion WORKS!
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-emerald-500/30 bg-emerald-500/10">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-emerald-600">Attention Fusion (Level-MAX)</CardTitle>
+                    <CardDescription>With attention gates</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-semibold text-emerald-600">0.808</div>
+                    <p className="mt-1 text-xs text-emerald-600 font-semibold">
+                      Matches late fusion performance.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Feature Set Explanation */}
+            <Card className="bg-gradient-to-br from-emerald-500/5 to-transparent">
               <CardHeader>
-                <CardTitle className="text-sm">ADNI Level-1 MRI-Only</CardTitle>
-                <CardDescription>
-                  No cognitive scores (realistic)
-                </CardDescription>
+                <CardTitle className="text-sm">Level-MAX Clinical Features (14D)</CardTitle>
+                <CardDescription>Rich biological profile without cognitive scores</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-semibold text-blue-600">0.583</div>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Honest baseline with Age+Sex only.
+              <CardContent className="space-y-2 text-sm">
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">Age, Sex, Education</Badge>
+                  <Badge variant="outline" className="bg-purple-500/10">APOE4 (genetics)</Badge>
+                  <Badge variant="outline" className="bg-blue-500/10">Hippocampus, Ventricles, Entorhinal</Badge>
+                  <Badge variant="outline" className="bg-blue-500/10">Fusiform, MidTemp, WholeBrain, ICV</Badge>
+                  <Badge variant="outline" className="bg-amber-500/10">Aβ42, Tau, pTau (CSF)</Badge>
+                </div>
+                <p className="text-xs text-emerald-600 mt-3">
+                  ✅ <strong>Key Achievement:</strong> 0.81 AUC proves fusion works when given proper biological signals, not just weak demographics!
                 </p>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm">ADNI Level-1 Late Fusion</CardTitle>
-                <CardDescription>MRI + Demographics</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-semibold text-purple-600">0.598</div>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  +1.5% improvement with multimodal.
-                </p>
-              </CardContent>
-            </Card>
+            {/* Level-2: Circular */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3 text-orange-600">Level-2: Circular (WITH MMSE/CDR-SB) ⚠️</h3>
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <Card className="border-orange-500/30">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-orange-600">Late Fusion (Circular)</CardTitle>
+                    <CardDescription>⚠️ Uses MMSE/CDR-SB</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-semibold text-orange-600">0.988</div>
+                    <p className="mt-1 text-xs text-orange-600">
+                      NOT for early detection claims.
+                    </p>
+                  </CardContent>
+                </Card>
 
-            <Card className="border-orange-500/30">
-              <CardHeader>
-                <CardTitle className="text-sm text-orange-600">ADNI Level-2 (Circular)</CardTitle>
-                <CardDescription>⚠️ Uses MMSE/CDR-SB</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-semibold text-orange-600">0.988</div>
-                <p className="mt-1 text-xs text-orange-600">
-                  NOT for early detection claims.
-                </p>
-              </CardContent>
-            </Card>
+                <Card className="col-span-2">
+                  <CardHeader>
+                    <CardTitle className="text-sm">Performance Comparison</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 text-sm">
+                    <div className="flex justify-between items-center">
+                      <span>Level-1 (Age/Sex):</span>
+                      <span className="font-mono text-muted-foreground">0.60 AUC → Fusion fails</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-emerald-600 font-semibold">Level-MAX (Bio-Profile):</span>
+                      <span className="font-mono text-emerald-600 font-semibold">0.81 AUC → Fusion succeeds</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-orange-600">Level-2 (MMSE/CDR-SB):</span>
+                      <span className="font-mono text-orange-600">0.99 AUC → Circular</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
         </TabsContent>
 

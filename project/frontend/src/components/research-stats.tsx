@@ -16,12 +16,20 @@ export const ResearchStats = memo(function ResearchStats() {
         detailText="CDR 0 vs 0.5. Late Fusion AUC 0.80."
       />
       <MetricsCard
-        title="ADNI-1"
-        description="Multi-site, 629 subjects"
+        title="ADNI Level-1"
+        description="Honest baseline (Age/Sex)"
         value="0.60"
         icon={<Database className="h-4 w-4" />}
         trend="neutral"
-        detailText="Level-1 (Honest): MRI + Age/Sex only."
+        detailText="Level-1: MRI + Age/Sex only."
+      />
+      <MetricsCard
+        title="🎯 Level-MAX"
+        description="Biomarker breakthrough"
+        value="0.81"
+        icon={<Target className="h-4 w-4" />}
+        trend="up"
+        detailText="+16.5% with CSF, APOE4, Volumetrics!"
       />
       <MetricsCard
         title="Cross-Dataset"

@@ -259,39 +259,50 @@ export default function RoadmapPage() {
 
           <TimelineStep
             step={7}
+            title="🎯 Level-MAX: Biomarker Breakthrough"
+            description="Enriched clinical features from 2D (Age/Sex) to 14D biological profile (CSF, APOE4, Hippocampus, 6 other volumetrics). Proved fusion works with quality features!"
+            status="success"
+            result="✅ 0.81 AUC (+16.5% over MRI-only)"
+            icon={Trophy}
+            color="bg-emerald-500"
+            delay={0.28}
+          />
+
+          <TimelineStep
+            step={8}
             title="Ran Longitudinal Experiment"
             description="Used 2,262 scans from 639 subjects (avg 3.6 scans/person) to predict progression. ResNet features gave near-chance results."
             status="error"
             result="❌ ResNet: 0.52 AUC (near chance)"
             icon={Brain}
             color="bg-red-500"
-            delay={0.3}
+            delay={0.32}
           />
 
           <TimelineStep
-            step={8}
+            step={9}
             title="Investigated Why It Failed"
             description="Deep analysis revealed: 136 Dementia patients mislabeled as 'Stable', ResNet is scale-invariant (can't detect atrophy), wrong features for the task."
             status="info"
             result="🔍 Found 3 critical issues"
             icon={Lightbulb}
             color="bg-amber-500"
-            delay={0.35}
+            delay={0.37}
           />
 
           <TimelineStep
-            step={9}
+            step={10}
             title="Switched to Actual Biomarkers"
             description="Used hippocampus volume, ventricular size, entorhinal thickness from ADNIMERGE instead of CNN features. Focused on MCI cohort only."
             status="success"
             result="✅ Biomarkers: 0.74 → 0.83 AUC"
             icon={Brain}
             color="bg-emerald-500"
-            delay={0.4}
+            delay={0.42}
           />
 
           <TimelineStep
-            step={10}
+            step={11}
             title="Breakthrough: Longitudinal WORKS!"
             description="Adding temporal change (atrophy rate) improved AUC by +9.5%. Hippocampus alone achieves 0.725 AUC. APOE4 carriers have 2x conversion risk."
             status="success"
@@ -299,7 +310,7 @@ export default function RoadmapPage() {
             icon={CheckCircle2}
             color="bg-emerald-600"
             isLast
-            delay={0.45}
+            delay={0.47}
           />
         </div>
       </section>
@@ -318,6 +329,7 @@ export default function RoadmapPage() {
                   <CardTitle className="text-sm text-emerald-600">✅ What Worked</CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-1">
+                  <p>• Level-MAX biomarker fusion (0.81 AUC)</p>
                   <p>• Hippocampus volume (0.725 AUC alone)</p>
                   <p>• Longitudinal atrophy rate (+9.5%)</p>
                   <p>• Simple logistic regression</p>

@@ -107,6 +107,30 @@ export default function Home() {
           </Card3D>
         </RevealOnScroll>
 
+        <RevealOnScroll delay={0.15}>
+          <Card3D>
+            <SpotlightCard className="h-full border-emerald-500/30 bg-gradient-to-br from-emerald-500/15 to-cyan-500/10" spotlightColor="rgba(16, 185, 129, 0.2)">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium flex items-center gap-2">
+                  <TrendingUp className="h-4 w-4 text-emerald-500" />
+                  🎯 Level-MAX
+                  <Badge className="ml-1 text-[10px] bg-emerald-600">BREAKTHROUGH</Badge>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">
+                  <TextGradient colors="from-emerald-400 to-cyan-400">
+                    <AnimatedCounter value={0.81} suffix=" AUC" duration={1.5} decimals={2} />
+                  </TextGradient>
+                </div>
+                <p className="text-xs text-emerald-600 mt-1 font-semibold">
+                  +16.5% with biomarkers (CSF, APOE4, Volumetrics)
+                </p>
+              </CardContent>
+            </SpotlightCard>
+          </Card3D>
+        </RevealOnScroll>
+
         <RevealOnScroll delay={0.2}>
           <Card3D>
             <SpotlightCard className="h-full border-emerald-500/30 bg-gradient-to-br from-emerald-500/15 to-transparent animate-pulse-glow" spotlightColor="rgba(16, 185, 129, 0.2)">
@@ -214,9 +238,9 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <Badge variant="outline" className="text-xs shrink-0">Solution</Badge>
-                    <p className="text-muted-foreground">
-                      Level-1.5: Add CSF biomarkers (ABETA, TAU, PTAU) + APOE4
+                    <Badge variant="outline" className="text-xs shrink-0 bg-emerald-500/10 text-emerald-600">✅ Solved</Badge>
+                    <p className="text-emerald-600 font-semibold">
+                      Level-MAX: 0.81 AUC with CSF biomarkers (ABETA, TAU, PTAU) + APOE4 + Volumetrics
                     </p>
                   </div>
                 </CardContent>

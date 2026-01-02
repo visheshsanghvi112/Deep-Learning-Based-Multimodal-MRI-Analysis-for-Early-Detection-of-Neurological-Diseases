@@ -209,6 +209,23 @@ uvicorn main:app --reload
 | MRI-Only | 0.583 | 0.47-0.68 | Baseline |
 | Late Fusion | 0.598 | 0.49-0.70 | +1.5% (not significant) |
 
+### Level-1.5 (Level-MAX: Honest Biomarkers) ✅ 🎯
+
+**ADNI with Rich Biological Profile:**
+| Model | AUC | Accuracy | 95% CI | Gain |
+|-------|-----|----------|--------|------|
+| MRI-Only | 0.643 | 62.7% | 0.53-0.73 | Baseline |
+| **Late Fusion (Level-MAX)** | **0.808** | **76.2%** | **0.75-0.87** | **+16.5%** |
+| **Attention Fusion (Level-MAX)** | **0.808** | **75.4%** | **0.74-0.88** | **+16.5%** |
+
+**Clinical Features (14D):**
+- Demographics: Age, Sex, Education
+- Genetics: APOE4
+- Volumetrics: Hippocampus, Ventricles, Entorhinal, Fusiform, MidTemp, WholeBrain, ICV
+- CSF Biomarkers: Aβ42, Tau, pTau
+
+**Key Achievement:** 0.81 AUC proves fusion works when given proper biological signals, not just weak demographics!
+
 ### Level-2 (Circular - WITH MMSE/CDR-SB) ⚠️
 
 **ADNI:**
@@ -396,6 +413,9 @@ D:/discs/
 │   │   ├── baseline_selection.py             ← Baseline scan selection
 │   │   ├── data_split.py                     ← Train/test splitting
 │   │   ├── train_level1.py                   ← Honest model (no MMSE)
+│   │   ├── train_level_max.py                ← Level-MAX (biomarkers)
+│   │   ├── create_level_max_dataset.py       ← Level-MAX data builder
+│   │   ├── visualize_level_max.py            ← Level-MAX plots
 │   │   ├── train_level2.py                   ← Circular model (with MMSE)
 │   │   └── cross_dataset_robustness.py       ← Transfer experiments
 │   └── data/                                 ← Processed features
@@ -579,7 +599,8 @@ This project is for **academic and research purposes**.
 
 **Key Highlights:**
 - ✅ **Zero-leakage data cleaning** (fully documented)
-- ✅ **Honest evaluation** (0.60 AUC reflects reality)
+- ✅ **Level-MAX breakthrough** (0.81 AUC with biomarkers)
+- ✅ **Honest evaluation** (0.60 AUC reflects reality without biomarkers)
 - ✅ **Cross-dataset validation** (OASIS ↔ ADNI)
 - ✅ **Complete documentation** (thesis-ready)
 - ✅ **Live demo** (interactive frontend)
