@@ -204,6 +204,29 @@ const visualizations = {
       insight: "Right features (biomarkers) matter more than complex models (LSTM)."
     },
   ],
+  level_max: [
+    {
+      id: "E1",
+      src: "/figures/E1_level_max_auc_comparison.png",
+      title: "Level-MAX AUC Comparison",
+      description: "Comparison of MRI-Only vs. Level-MAX Fusion models showing significant AUC improvement.",
+      insight: "+16.5% improvement (0.643 → 0.808) with 14D biological profile."
+    },
+    {
+      id: "E2",
+      src: "/figures/E2_level_max_accuracy_comparison.png",
+      title: "Level-MAX Accuracy",
+      description: "Classification accuracy comparison between baseline and enhanced fusion models.",
+      insight: "Attention Fusion reaches 76.2% accuracy, significantly beating MRI-only baseline."
+    },
+    {
+      id: "E3",
+      src: "/figures/E3_level_max_summary.png",
+      title: "Level-MAX Summary",
+      description: "Comprehensive summary of AUC and Accuracy across all Level-MAX experiments.",
+      insight: "Fusion models consistently outperform single-modality baselines when using proper biomarkers."
+    },
+  ],
 }
 
 type VisualizationType = { id: string; src: string; title: string; description: string; insight: string }
@@ -771,7 +794,7 @@ export default function InterpretabilityPage() {
               Research Visualizations
             </h2>
           </div>
-          <Badge variant="outline" className="text-xs">19 Figures</Badge>
+          <Badge variant="outline" className="text-xs">22 Figures</Badge>
           <Badge className="bg-emerald-600 text-xs">Interactive Zoom</Badge>
         </div>
         <p className="text-sm text-muted-foreground max-w-2xl">
@@ -814,6 +837,12 @@ export default function InterpretabilityPage() {
             Embeddings ({visualizations.embeddings.length})
           </TabsTrigger>
           <TabsTrigger
+            value="level_max"
+            className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
+          >
+            Level-MAX ({visualizations.level_max.length})
+          </TabsTrigger>
+          <TabsTrigger
             value="longitudinal"
             className="text-xs sm:text-sm data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
           >
@@ -853,7 +882,7 @@ export default function InterpretabilityPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">19</div>
+            <div className="text-2xl font-bold">22</div>
             <p className="text-xs text-muted-foreground">Publication-ready</p>
           </CardContent>
         </Card>
