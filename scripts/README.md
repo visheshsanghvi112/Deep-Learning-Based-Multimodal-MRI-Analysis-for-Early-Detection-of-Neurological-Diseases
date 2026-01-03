@@ -1,6 +1,6 @@
 # Scripts
 
-This folder contains utility scripts for data processing, visualization generation, and analysis.
+This directory contains essential utility scripts for data processing, visualization generation, and systematic analysis of the project's datasets.
 
 ## Visualization Scripts
 - **generate_visualizations.py** - Main visualization generation script
