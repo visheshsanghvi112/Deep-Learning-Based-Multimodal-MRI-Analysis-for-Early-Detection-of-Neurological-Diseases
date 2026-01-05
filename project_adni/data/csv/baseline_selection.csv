@@ -1,0 +1,630 @@
+Subject,Image_Data_ID,Group,Sex,Age,Visit,Acq_Date,Description
+002_S_0295,I45108,CN,M,85,sc,4/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_0413,I45117,CN,F,76,sc,5/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_0619,I48617,AD,M,78,sc,6/01/2006,MPR-R; GradWarp; N3; Scaled
+002_S_0685,I40683,CN,F,90,sc,7/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_0729,I40708,MCI,F,65,sc,7/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_0782,I118669,MCI,M,82,sc,8/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+002_S_0816,I40731,AD,M,71,sc,8/30/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_0938,I40980,AD,F,82,sc,10/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_0954,I40744,MCI,F,69,sc,10/10/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+002_S_1018,I40817,AD,F,71,sc,11/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_1070,I40831,MCI,M,74,sc,11/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_1155,I91395,MCI,M,59,m12,1/16/2008,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_1261,I62377,CN,F,71,sc,2/15/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_1268,I64037,MCI,M,83,sc,2/14/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+002_S_1280,I60056,CN,F,71,sc,2/13/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+003_S_0907,I52781,CN,F,89,sc,9/11/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+003_S_0908,I62589,MCI,F,63,sc,9/12/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+003_S_0981,I89046,CN,F,85,m06,5/02/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+003_S_1057,I52821,MCI,F,61,sc,12/04/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+003_S_1122,I52799,MCI,F,77,sc,12/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_0221,I32899,AD,M,68,m06,10/06/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+005_S_0222,I51469,MCI,M,87,m06,10/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_0223,I32855,CN,F,78,sc,2/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_0324,I32891,MCI,F,75,sc,3/30/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+005_S_0448,I67876,MCI,M,86,m06,11/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_0546,I68423,MCI,M,80,m06,2/02/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+005_S_0553,I32644,CN,M,85,sc,6/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_0602,I32672,CN,M,71,sc,6/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_0610,I32667,CN,M,79,sc,6/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_0814,I73529,AD,F,72,m06,3/30/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_1224,I60406,MCI,M,81,sc,1/23/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+005_S_1341,I78709,AD,F,72,m06,10/02/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+006_S_0498,I55930,CN,M,71,m06,3/13/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+006_S_0547,I62561,AD,M,76,m06,3/05/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+006_S_0681,I62579,CN,F,78,m06,3/30/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+006_S_0731,I90848,CN,M,72,sc,8/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+006_S_1130,I55972,MCI,F,71,sc,11/30/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+007_S_0041,I35734,MCI,F,71,sc,10/21/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+007_S_0068,I35790,CN,F,75,sc,11/30/2005,MPR-R; GradWarp; B1 Correction; N3; Scaled
+007_S_0070,I36628,CN,M,74,sc,1/18/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+007_S_0101,I118681,MCI,M,74,sc,12/20/2005,MPR; GradWarp; B1 Correction; N3; Scaled_2
+007_S_0128,I36640,MCI,F,64,sc,1/16/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+007_S_0249,I36530,MCI,F,72,sc,3/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+007_S_0293,I36549,MCI,M,88,sc,3/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+007_S_0316,I118693,AD,M,81,sc,3/29/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+007_S_0414,I36599,MCI,F,80,sc,5/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+007_S_0698,I59896,MCI,M,75,m06,3/23/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+007_S_1206,I59981,CN,M,73,sc,1/17/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+007_S_1222,I60003,CN,F,73,sc,1/19/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+007_S_1339,I78754,AD,F,80,m06,10/11/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+009_S_0751,I101528,CN,M,71,sc,7/25/2006,MPR; GradWarp; N3; Scaled
+009_S_0842,I75284,CN,M,74,m06,4/10/2007,MPR; GradWarp; N3; Scaled
+009_S_0862,I75401,CN,F,74,m06,4/04/2007,MPR; GradWarp; N3; Scaled
+009_S_1030,I54651,MCI,M,68,sc,11/01/2006,MPR; GradWarp; N3; Scaled
+010_S_0067,I96211,CN,M,75,sc,11/30/2005,MPR; ; N3; Scaled
+010_S_0419,I63320,CN,M,70,sc,5/16/2006,MPR; ; N3; Scaled
+010_S_0422,I63332,MCI,M,62,sc,11/30/2006,MPR; ; N3; Scaled
+010_S_0472,I62630,CN,M,73,sc,11/22/2006,MPR; ; N3; Scaled
+010_S_0786,I65597,AD,M,75,sc,9/27/2006,MPR; ; N3; Scaled
+010_S_0829,I63349,AD,F,65,sc,2/08/2007,MPR; ; N3; Scaled
+010_S_0904,I118704,MCI,M,84,sc,12/07/2006,MPR; ; N3; Scaled_2
+011_S_0003,I31863,AD,M,82,m06,3/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0005,I32246,CN,M,74,sc,9/02/2005,MPR-R; GradWarp; B1 Correction; N3; Scaled
+011_S_0010,I32270,AD,F,74,sc,11/07/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0016,I32306,CN,M,66,sc,9/27/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0021,I31942,CN,F,73,m06,4/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0022,I31979,CN,M,64,m06,4/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0023,I32409,CN,M,72,sc,10/31/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0053,I31996,AD,M,81,m06,5/30/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0168,I35499,MCI,M,89,sc,2/10/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+011_S_0183,I32003,AD,F,72,sc,3/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0241,I66950,MCI,M,83,m12,3/26/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0326,I89390,MCI,M,77,sc,3/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0362,I89404,MCI,F,71,sc,3/28/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+011_S_0856,I89408,MCI,M,60,sc,9/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_0861,I35513,MCI,M,87,sc,9/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+011_S_1282,I62636,MCI,F,77,sc,2/09/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+012_S_0634,I118691,MCI,M,82,sc,6/16/2006,MPR; ; N3; Scaled_2
+012_S_0637,I59243,CN,F,76,sc,6/16/2006,MPR; ; N3; Scaled
+012_S_0689,I92398,AD,M,64,sc,7/05/2006,MPR-R; ; N3; Scaled
+012_S_0712,I92401,AD,M,77,sc,6/29/2006,MPR; ; N3; Scaled
+012_S_0720,I92529,AD,F,78,sc,8/09/2006,MPR; ; N3; Scaled
+012_S_0803,I118716,AD,F,85,sc,9/22/2006,MPR; ; N3; Scaled_2
+012_S_0932,I59255,MCI,M,75,sc,9/20/2006,MPR; ; N3; Scaled
+012_S_1009,I118717,CN,M,76,sc,11/01/2006,MPR; ; N3; Scaled_2
+012_S_1033,I59219,MCI,F,73,sc,11/16/2006,MPR; ; N3; Scaled
+012_S_1133,I59224,CN,F,80,sc,1/12/2007,MPR; ; N3; Scaled
+012_S_1165,I59229,MCI,M,82,sc,12/28/2006,MPR; ; N3; Scaled
+012_S_1292,I92429,MCI,M,76,sc,3/01/2007,MPR; ; N3; Scaled
+012_S_1321,I92238,MCI,M,84,m06,9/20/2007,MPR; ; N3; Scaled
+013_S_0240,I51151,MCI,M,88,sc,3/20/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+013_S_0325,I54665,MCI,F,71,sc,4/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+013_S_0502,I51138,CN,M,75,sc,7/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+013_S_0575,I51160,CN,F,86,sc,8/14/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+013_S_0860,I51533,MCI,M,85,sc,9/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+013_S_1035,I71370,CN,M,88,m06,5/29/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+013_S_1120,I51494,MCI,F,78,sc,11/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+013_S_1186,I62656,MCI,M,83,sc,1/29/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+013_S_1205,I91450,AD,M,84,m12,1/24/2008,MPR; GradWarp; B1 Correction; N3; Scaled
+013_S_1275,I62666,MCI,F,79,sc,2/22/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+014_S_0169,I40858,MCI,F,72,sc,2/07/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+014_S_0328,I90019,AD,M,77,m06,10/24/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+014_S_0519,I39647,CN,M,74,sc,5/12/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+014_S_0520,I39660,CN,F,78,sc,5/12/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+014_S_0548,I39665,CN,F,74,sc,5/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+014_S_0557,I69569,MCI,M,73,m06,12/19/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+014_S_0558,I39683,CN,M,80,sc,6/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+014_S_0563,I39692,MCI,M,81,sc,7/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+014_S_1095,I45740,AD,F,80,sc,12/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+016_S_0354,I92669,MCI,M,76,sc,5/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+016_S_0359,I75447,CN,F,82,m06,12/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+016_S_0538,I64604,CN,M,84,m06,3/01/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+016_S_0702,I40781,MCI,M,85,sc,7/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+016_S_0991,I40794,AD,F,86,sc,11/01/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+016_S_1028,I40799,MCI,F,77,sc,11/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+016_S_1117,I46384,MCI,F,69,sc,12/01/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+016_S_1121,I90546,MCI,F,57,m06,6/28/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+016_S_1326,I62395,MCI,M,66,sc,3/01/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+018_S_0043,I36485,CN,M,76,sc,12/08/2005,MPR; ; N3; Scaled
+018_S_0055,I86354,CN,M,76,sc,12/01/2005,MPR; ; N3; Scaled
+018_S_0057,I118828,MCI,M,77,sc,11/17/2005,MPR-R; ; N3; Scaled_2
+018_S_0080,I118825,MCI,M,85,sc,12/29/2005,MPR; ; N3; Scaled_2
+018_S_0087,I36504,MCI,M,75,sc,12/22/2005,MPR; ; N3; Scaled
+018_S_0142,I36886,MCI,M,79,sc,1/19/2006,MPR; ; N3; Scaled
+018_S_0155,I36892,MCI,M,81,sc,2/23/2006,MPR; ; N3; Scaled
+018_S_0286,I37007,AD,M,66,sc,3/23/2006,MPR; ; N3; Scaled
+018_S_0335,I35009,AD,F,84,sc,5/16/2006,MPR; ; N3; Scaled
+018_S_0369,I37194,CN,M,76,sc,3/30/2006,MPR; ; N3; Scaled
+018_S_0406,I37199,MCI,M,78,sc,4/20/2006,MPR; ; N3; Scaled
+018_S_0425,I118766,CN,M,86,sc,4/19/2006,MPR; ; N3; Scaled_2
+018_S_0450,I118763,MCI,M,69,sc,5/04/2006,MPR-R; ; N3; Scaled_2
+018_S_0633,I35036,AD,M,83,sc,6/15/2006,MPR-R; ; N3; Scaled
+018_S_0682,I35044,AD,M,68,sc,7/06/2006,MPR; ; N3; Scaled
+020_S_0097,I76606,CN,F,74,m06,9/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+020_S_0213,I60600,AD,M,63,sc,3/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+020_S_0883,I94854,CN,F,77,m06,5/14/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+020_S_0899,I60618,CN,F,80,sc,9/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+020_S_1288,I60664,CN,M,60,sc,2/21/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+021_S_0141,I33396,MCI,M,81,sc,1/23/2006,MPR; GradWarp; N3; Scaled
+021_S_0159,I67958,CN,F,79,m12,3/05/2007,MPR; GradWarp; N3; Scaled
+021_S_0231,I33493,MCI,M,60,sc,2/28/2006,MPR-R; GradWarp; N3; Scaled
+021_S_0273,I33692,MCI,M,63,m06,10/06/2006,MPR-R; GradWarp; N3; Scaled
+021_S_0276,I33469,MCI,M,72,m06,9/29/2006,MPR; GradWarp; N3; Scaled
+021_S_0337,I33437,CN,M,76,sc,3/28/2006,MPR; GradWarp; N3; Scaled
+021_S_0343,I33444,AD,M,72,sc,4/06/2006,MPR; GradWarp; N3; Scaled
+021_S_0424,I33644,MCI,M,81,sc,4/20/2006,MPR-R; GradWarp; N3; Scaled
+021_S_0626,I34672,MCI,M,83,sc,6/29/2006,MPR; GradWarp; N3; Scaled
+021_S_0642,I33452,AD,M,85,sc,6/28/2006,MPR; GradWarp; N3; Scaled
+021_S_0647,I68467,CN,M,74,m06,2/09/2007,MPR; GradWarp; N3; Scaled
+021_S_0753,I33461,AD,M,66,sc,8/04/2006,MPR; GradWarp; N3; Scaled
+021_S_0984,I33476,CN,M,77,sc,10/23/2006,MPR; GradWarp; N3; Scaled
+021_S_1109,I68072,AD,F,78,m06,7/10/2007,MPR; GradWarp; N3; Scaled
+022_S_0004,I59357,MCI,M,69,m12,11/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0014,I64654,CN,F,79,m06,5/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0066,I59446,CN,M,75,sc,11/23/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0096,I59456,CN,M,80,sc,1/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0129,I59484,AD,F,80,sc,2/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0130,I64663,CN,M,74,m06,8/16/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0544,I64672,MCI,F,77,sc,5/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0750,I59552,MCI,F,76,sc,8/07/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_0961,I65980,MCI,M,74,m06,5/18/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_1351,I59615,MCI,F,72,sc,3/16/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+022_S_1394,I68082,MCI,M,77,sc,5/29/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+023_S_0030,I118750,MCI,F,80,sc,10/10/2005,MPR; GradWarp; B1 Correction; N3; Scaled_2
+023_S_0031,I118843,CN,F,78,sc,10/12/2005,MPR; GradWarp; B1 Correction; N3; Scaled_2
+023_S_0042,I31084,MCI,M,73,sc,10/31/2005,MPR-R; GradWarp; B1 Correction; N3; Scaled
+023_S_0058,I108504,CN,M,70,sc,11/30/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0061,I119062,CN,F,77,sc,11/29/2005,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+023_S_0078,I51999,MCI,F,76,sc,12/16/2005,MPR-R; GradWarp; B1 Correction; N3; Scaled
+023_S_0081,I31134,CN,M,71,m06,7/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0083,I31143,AD,M,73,sc,12/14/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0084,I118970,AD,F,75,sc,1/04/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+023_S_0126,I31271,MCI,F,78,sc,2/08/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+023_S_0139,I31300,AD,F,66,sc,1/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0217,I118982,MCI,F,84,m06,8/15/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+023_S_0331,I31369,MCI,F,65,sc,3/23/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0376,I118976,MCI,M,71,sc,4/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+023_S_0388,I118853,MCI,M,71,sc,4/10/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+023_S_0604,I31455,MCI,M,87,sc,6/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0625,I101445,MCI,M,77,m06,2/27/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+023_S_0855,I31509,MCI,M,76,sc,9/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0887,I31526,MCI,F,74,sc,9/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0916,I31533,AD,M,80,sc,9/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0926,I31547,CN,F,71,sc,9/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_0963,I118903,CN,M,73,sc,10/04/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+023_S_1046,I118907,MCI,M,72,sc,11/06/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+023_S_1126,I128366,MCI,M,80,sc,12/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+023_S_1190,I46417,CN,F,77,sc,1/08/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+023_S_1247,I118994,MCI,F,73,sc,1/31/2007,MPR; GradWarp; B1 Correction; N3; Scaled_2
+023_S_1262,I62433,AD,F,73,sc,2/09/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+024_S_0985,I64699,CN,M,80,m06,5/04/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+024_S_1063,I63392,CN,F,78,sc,10/31/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+024_S_1171,I63406,AD,M,72,sc,1/04/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+024_S_1307,I63415,AD,F,75,sc,2/23/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+024_S_1393,I65271,MCI,M,83,sc,3/13/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0074,I34316,CN,M,78,sc,12/09/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0116,I34325,MCI,M,79,sc,1/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0118,I34114,CN,M,81,sc,2/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0120,I119070,CN,M,72,sc,2/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+027_S_0179,I34136,MCI,M,81,sc,2/24/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+027_S_0256,I34150,MCI,M,70,sc,3/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0307,I34159,MCI,M,79,sc,4/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0403,I34181,CN,M,76,sc,4/20/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+027_S_0404,I47091,AD,F,88,m06,11/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0408,I37548,MCI,M,82,sc,5/10/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0417,I34226,MCI,M,80,sc,5/12/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+027_S_0461,I47115,MCI,M,81,m06,12/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0485,I37557,MCI,M,64,sc,5/08/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0644,I34240,MCI,M,75,sc,6/16/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_0835,I35666,MCI,M,73,sc,9/11/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+027_S_0850,I48996,AD,M,78,sc,9/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_1045,I47210,MCI,F,83,sc,11/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_1081,I79200,AD,M,85,m06,8/22/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+027_S_1082,I47204,AD,F,70,sc,11/27/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+027_S_1213,I47223,MCI,F,75,sc,1/19/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+027_S_1254,I47228,AD,M,84,sc,1/31/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_1277,I79205,MCI,M,87,m06,8/29/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_1385,I47574,AD,F,70,sc,2/28/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+027_S_1387,I67201,MCI,M,86,sc,2/26/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0824,I96284,CN,F,76,sc,8/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0836,I65013,AD,M,83,sc,8/23/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0843,I66997,CN,M,71,sc,9/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0845,I64867,CN,M,80,sc,9/12/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0866,I65611,CN,F,80,sc,9/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0878,I64876,MCI,M,72,sc,9/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0914,I124879,MCI,M,75,sc,12/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_0999,I64898,AD,M,71,sc,11/30/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+029_S_1056,I71491,AD,F,72,m06,6/19/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_1073,I65022,MCI,F,66,sc,11/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_1215,I60746,MCI,M,79,sc,1/19/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+029_S_1318,I60760,MCI,F,83,sc,2/17/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+029_S_1384,I83471,MCI,M,73,m06,10/04/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+031_S_0294,I86206,MCI,M,79,sc,3/16/2006,MPR-R; GradWarp; N3; Scaled
+031_S_0321,I65383,AD,M,68,sc,3/21/2006,MPR; GradWarp; N3; Scaled
+031_S_0351,I65401,MCI,M,69,sc,4/18/2006,MPR-R; GradWarp; N3; Scaled
+031_S_0554,I64711,AD,M,72,sc,5/23/2006,MPR-R; GradWarp; N3; Scaled
+031_S_0568,I64922,MCI,F,80,sc,5/22/2006,MPR; GradWarp; N3; Scaled
+031_S_0618,I67110,CN,M,75,sc,6/06/2006,MPR-R; GradWarp; N3; Scaled
+031_S_0830,I79342,MCI,M,71,sc,9/13/2006,MPR-R; GradWarp; N3; Scaled
+031_S_0867,I67423,MCI,M,72,sc,9/20/2006,MPR; GradWarp; N3; Scaled
+031_S_1066,I67434,MCI,M,72,sc,11/10/2006,MPR; GradWarp; N3; Scaled
+031_S_1209,I67441,AD,F,72,sc,1/12/2007,MPR; GradWarp; N3; Scaled
+032_S_0095,I63424,CN,M,71,sc,12/22/2005,MPR; ; N3; Scaled
+032_S_0147,I119079,AD,F,60,sc,1/26/2006,MPR; ; N3; Scaled_2
+032_S_0187,I37217,MCI,M,77,sc,2/13/2006,MPR-R; ; N3; Scaled
+032_S_0214,I119084,MCI,M,65,sc,2/20/2006,MPR-R; ; N3; Scaled_2
+032_S_0400,I119087,AD,M,69,sc,4/17/2006,MPR; ; N3; Scaled_2
+032_S_0479,I36469,CN,F,74,sc,5/15/2006,MPR; ; N3; Scaled
+032_S_0677,I37228,CN,M,71,sc,6/29/2006,MPR; ; N3; Scaled
+032_S_0718,I36474,MCI,F,81,sc,7/12/2006,MPR; ; N3; Scaled
+032_S_0978,I37238,MCI,M,73,sc,10/16/2006,MPR; ; N3; Scaled
+032_S_1101,I119117,AD,F,71,m06,5/23/2007,MPR; ; N3; Scaled_2
+032_S_1169,I65052,CN,F,72,sc,12/21/2006,MPR-R; ; N3; Scaled
+033_S_0511,I42240,MCI,M,58,sc,6/01/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0513,I42258,MCI,M,69,sc,5/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0514,I42276,MCI,M,81,sc,5/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0516,I42308,CN,M,88,sc,5/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0723,I42384,MCI,M,79,sc,7/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0724,I42400,AD,M,79,sc,7/26/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0725,I42409,MCI,M,81,sc,7/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0733,I42425,AD,F,57,sc,7/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0734,I42434,CN,M,73,sc,7/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0739,I42441,AD,M,83,sc,7/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0741,I42450,CN,F,80,sc,7/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0889,I51629,AD,F,73,sc,9/25/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+033_S_0906,I42468,MCI,F,65,sc,9/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0920,I42481,CN,F,80,sc,9/22/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+033_S_0922,I66583,MCI,M,69,m06,4/27/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_0923,I66592,CN,M,84,m06,4/20/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1016,I67489,CN,F,79,m06,6/05/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1086,I42785,CN,M,82,sc,12/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1098,I42832,CN,F,72,sc,11/21/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+033_S_1116,I42844,MCI,M,83,sc,11/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1279,I54757,MCI,F,68,sc,2/12/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1281,I78942,AD,F,78,m06,9/18/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1283,I54785,AD,M,60,sc,2/07/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1284,I54799,MCI,M,86,sc,2/12/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1285,I51588,AD,F,80,sc,2/06/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+033_S_1308,I78951,AD,M,80,m06,9/10/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+035_S_0033,I45166,MCI,M,83,sc,11/22/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+035_S_0048,I45183,CN,M,78,sc,11/22/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+035_S_0156,I39533,CN,M,74,sc,1/31/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+035_S_0204,I39542,MCI,F,71,sc,2/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+035_S_0292,I39569,MCI,M,77,sc,3/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+035_S_0341,I45213,AD,M,74,sc,4/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+035_S_0555,I39614,CN,M,77,sc,11/14/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+035_S_0997,I62908,MCI,F,81,sc,11/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0576,I36903,CN,M,78,sc,6/01/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0577,I65055,AD,F,73,m06,12/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0656,I36924,MCI,M,83,sc,7/07/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0672,I65636,CN,F,63,m06,2/12/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0673,I36949,MCI,M,78,sc,7/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0748,I36959,MCI,M,80,sc,8/10/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0759,I68522,AD,F,82,m06,3/15/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0760,I38652,AD,F,69,sc,8/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0813,I36979,CN,M,73,sc,8/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0869,I36993,MCI,F,83,sc,10/30/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+036_S_0945,I36999,MCI,M,72,sc,10/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_0976,I65091,MCI,M,81,sc,12/12/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_1001,I38661,AD,M,69,sc,11/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_1023,I65104,CN,F,77,sc,12/20/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+036_S_1135,I65109,MCI,M,76,sc,12/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+036_S_1240,I65118,MCI,F,67,sc,2/13/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+037_S_0150,I68780,MCI,M,75,m06,9/20/2006,MPR; GradWarp; N3; Scaled
+037_S_0303,I65148,CN,M,84,sc,4/07/2006,MPR-R; GradWarp; N3; Scaled
+037_S_0327,I79732,CN,M,70,sc,4/19/2006,MPR; GradWarp; N3; Scaled
+037_S_0454,I71588,CN,F,83,m12,6/13/2007,MPR-R; GradWarp; N3; Scaled
+037_S_0467,I79766,CN,F,82,m06,12/21/2006,MPR; GradWarp; N3; Scaled
+037_S_0501,I86797,MCI,M,79,m06,1/05/2007,MPR-R; GradWarp; N3; Scaled
+037_S_0539,I79792,MCI,M,74,sc,6/15/2006,MPR-R; GradWarp; N3; Scaled
+037_S_0552,I90999,MCI,F,61,m06,1/03/2007,MPR; GradWarp; N3; Scaled
+037_S_0566,I79803,MCI,M,79,sc,6/13/2006,MPR; GradWarp; N3; Scaled
+037_S_0588,I79824,MCI,M,65,sc,11/28/2006,MPR; GradWarp; N3; Scaled
+037_S_0627,I79831,AD,F,59,sc,7/06/2006,MPR; GradWarp; N3; Scaled
+037_S_1078,I79838,MCI,M,71,sc,11/29/2006,MPR; GradWarp; N3; Scaled
+037_S_1225,I86395,MCI,M,77,m06,8/20/2007,MPR; GradWarp; N3; Scaled
+037_S_1421,I94525,MCI,F,75,m06,2/20/2008,MPR; GradWarp; N3; Scaled
+041_S_0125,I39468,CN,M,74,m06,8/07/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_0262,I124897,CN,M,86,sc,3/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_0282,I39486,MCI,M,72,sc,4/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_0314,I34680,MCI,M,72,sc,3/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_0446,I40433,MCI,M,89,sc,5/02/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+041_S_0549,I64143,MCI,M,70,m06,4/05/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_0598,I40037,MCI,M,72,sc,6/16/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_0679,I40046,MCI,M,63,sc,7/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_0898,I34698,CN,F,83,sc,10/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_1002,I71615,CN,F,77,m06,6/07/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_1010,I65230,MCI,M,74,sc,12/12/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_1260,I65239,MCI,M,71,sc,2/01/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_1368,I65248,AD,F,75,sc,3/05/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_1412,I72219,MCI,M,59,sc,6/25/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_1418,I121653,MCI,M,83,m12,7/28/2008,MPR; GradWarp; B1 Correction; N3; Scaled
+041_S_1423,I72232,MCI,M,70,sc,8/03/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+041_S_1425,I73357,MCI,F,76,sc,8/06/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+051_S_1040,I58038,MCI,M,72,sc,10/31/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+051_S_1072,I58011,MCI,F,60,sc,11/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+051_S_1123,I74333,CN,F,77,m06,8/01/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+051_S_1131,I62943,MCI,M,87,sc,12/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+051_S_1296,I58022,AD,M,77,sc,2/12/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+051_S_1331,I64152,MCI,F,77,sc,4/13/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_0671,I64161,MCI,F,61,sc,7/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_0951,I64170,CN,M,85,sc,10/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_0952,I89952,MCI,F,82,sc,10/19/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+052_S_1054,I72246,MCI,M,71,m06,6/06/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_1168,I65667,MCI,F,81,sc,12/08/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_1250,I62240,CN,F,73,sc,2/02/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_1251,I62282,CN,F,74,sc,2/09/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_1346,I62299,MCI,M,73,sc,3/13/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+052_S_1352,I80187,MCI,M,87,m06,10/10/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+053_S_0389,I119140,MCI,F,72,sc,4/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+053_S_0507,I80199,MCI,F,55,sc,5/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+053_S_0621,I64189,MCI,F,62,sc,6/12/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+053_S_0919,I65689,MCI,M,63,sc,10/16/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+053_S_1044,I64203,AD,M,66,sc,10/26/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+057_S_0464,I34707,MCI,M,83,sc,5/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_0474,I34720,AD,F,77,sc,5/03/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+057_S_0643,I83126,CN,F,72,m06,1/24/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_0779,I80629,CN,M,80,sc,8/16/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+057_S_0818,I121435,CN,F,74,sc,9/06/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+057_S_0839,I38670,MCI,F,80,sc,9/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_0934,I62965,CN,F,71,m06,4/25/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+057_S_0941,I34747,MCI,F,73,sc,10/11/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+057_S_1007,I47765,MCI,M,72,sc,10/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_1217,I62984,MCI,F,68,sc,1/31/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_1265,I69492,MCI,F,82,sc,1/31/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_1269,I68545,MCI,M,74,sc,1/31/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_1371,I62998,AD,M,84,sc,3/21/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+057_S_1373,I80258,AD,M,76,m06,10/17/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+057_S_1379,I80267,AD,M,88,m06,10/03/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_0535,I50434,AD,M,77,m06,12/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_0578,I72306,CN,F,78,m12,6/11/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_0690,I50468,AD,M,80,sc,7/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_0730,I50487,AD,F,71,sc,7/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_0768,I50506,CN,M,77,sc,8/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_0793,I50533,AD,M,70,m06,2/27/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_1099,I50557,CN,F,79,sc,11/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_1182,I75092,MCI,F,77,m06,8/21/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+062_S_1299,I50584,MCI,M,72,sc,2/20/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0019,I45228,CN,F,73,sc,10/12/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0029,I119180,AD,M,64,sc,10/14/2005,MPR; GradWarp; B1 Correction; N3; Scaled_2
+067_S_0038,I35875,MCI,M,77,sc,11/10/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0056,I119186,CN,F,70,sc,11/09/2005,MPR; GradWarp; B1 Correction; N3; Scaled_2
+067_S_0059,I35902,CN,F,71,sc,12/12/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0076,I35911,AD,M,78,sc,12/06/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0077,I119192,MCI,M,80,sc,12/21/2005,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+067_S_0098,I35920,MCI,F,84,sc,1/30/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0176,I34797,MCI,M,75,sc,4/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0177,I34806,CN,F,75,sc,3/10/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0257,I34824,CN,F,79,sc,5/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+067_S_0284,I34837,MCI,F,77,sc,3/17/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+067_S_0290,I34846,MCI,M,75,sc,3/28/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+067_S_0336,I119202,MCI,M,76,sc,5/04/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+067_S_0607,I35938,MCI,F,78,sc,6/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+068_S_0109,I130231,AD,F,70,sc,1/03/2006,MPR; ; N3; Scaled_2
+068_S_0127,I63111,CN,M,71,sc,2/14/2006,MPR; ; N3; Scaled
+068_S_0210,I63114,CN,F,72,sc,2/16/2006,MPR; ; N3; Scaled
+068_S_0442,I65727,MCI,M,75,sc,5/09/2006,MPR-R; ; N3; Scaled
+068_S_0473,I140334,CN,M,73,sc,5/03/2006,MPR; ; N3; Scaled
+068_S_0872,I72469,MCI,M,70,m06,6/15/2007,MPR; ; N3; Scaled
+072_S_0315,I86438,CN,M,72,sc,3/29/2006,MPR; ; N3; Scaled
+073_S_0089,I119227,CN,M,65,sc,1/26/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+073_S_0311,I119229,CN,F,78,sc,5/31/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+073_S_0312,I119230,CN,M,83,sc,5/31/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+073_S_0386,I49680,CN,F,72,sc,4/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+073_S_0518,I39909,MCI,M,69,sc,9/11/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+073_S_0565,I39919,AD,M,75,sc,6/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+073_S_0746,I63122,MCI,F,74,sc,11/30/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+073_S_0909,I75485,MCI,F,69,sc,10/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+082_S_0928,I39805,MCI,F,83,sc,9/29/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+082_S_1119,I80361,MCI,M,77,m06,9/27/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+082_S_1256,I63155,CN,F,72,sc,2/16/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+082_S_1377,I63170,AD,M,83,sc,3/20/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+094_S_0526,I80713,CN,F,86,m12,5/22/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+094_S_0531,I122726,MCI,F,75,m06,3/19/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_0692,I47295,CN,F,77,sc,7/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_0711,I64356,CN,M,78,m06,2/13/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_0921,I49510,MCI,M,71,sc,10/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1027,I49527,AD,F,69,sc,10/26/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+094_S_1090,I72508,AD,M,72,m06,5/29/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1164,I67223,AD,F,70,sc,12/11/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1188,I66051,MCI,F,81,sc,12/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1241,I66069,CN,M,72,sc,2/16/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1267,I80718,CN,M,73,sc,3/16/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1293,I64374,MCI,M,77,sc,3/12/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1397,I319849,AD,F,56,m12,5/15/2008,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1398,I95667,MCI,F,78,m06,11/15/2007,MPR; GradWarp; N3; Scaled
+094_S_1402,I85603,AD,M,70,m06,11/12/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+094_S_1417,I73647,MCI,M,63,sc,7/16/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+098_S_0149,I89429,AD,M,88,sc,1/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+098_S_0160,I65739,MCI,M,75,sc,1/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+098_S_0171,I65752,CN,F,78,sc,2/04/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+098_S_0172,I65757,CN,F,71,sc,2/26/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+098_S_0269,I89486,MCI,M,68,m06,10/22/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+098_S_0667,I89495,MCI,M,69,sc,6/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+098_S_0896,I56031,CN,M,77,sc,9/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0040,I34607,CN,M,73,sc,10/24/2005,MPR-R; GradWarp; B1 Correction; N3; Scaled
+099_S_0051,I47889,MCI,M,68,m12,12/26/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0054,I35825,MCI,F,81,sc,11/16/2005,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0060,I34502,MCI,M,71,m06,7/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0090,I35841,CN,M,70,sc,1/11/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0111,I35849,MCI,F,76,sc,1/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0291,I34524,MCI,M,79,sc,3/09/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0352,I34537,CN,F,77,sc,4/07/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0372,I65451,AD,M,80,m12,5/15/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0470,I47926,AD,F,87,m06,11/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0533,I47935,CN,F,82,m06,12/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_0534,I65464,CN,M,64,m12,5/23/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+099_S_0551,I34586,MCI,M,64,sc,5/18/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+099_S_0880,I68581,MCI,M,84,sc,10/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_1034,I47953,MCI,M,75,sc,11/02/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+099_S_1144,I79241,AD,M,78,m06,8/10/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+100_S_0006,I33025,MCI,F,80,sc,11/15/2005,MPR; ; N3; Scaled
+100_S_0015,I33066,CN,M,81,sc,9/26/2005,MPR-R; ; N3; Scaled
+100_S_0035,I33074,CN,M,77,sc,10/20/2005,MPR; ; N3; Scaled
+100_S_0047,I33086,CN,M,85,sc,11/17/2005,MPR-R; ; N3; Scaled
+100_S_0069,I33105,CN,M,73,sc,12/13/2005,MPR; ; N3; Scaled
+100_S_0190,I33109,MCI,M,79,sc,4/24/2006,MPR; ; N3; Scaled
+100_S_0296,I33121,MCI,M,79,sc,4/03/2006,MPR-R; ; N3; Scaled
+100_S_0995,I138912,MCI,F,79,sc,10/27/2006,MPR; ; N3; Scaled
+109_S_0950,I97200,MCI,M,74,sc,10/25/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+109_S_0967,I55044,CN,M,77,sc,10/23/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+109_S_1014,I63479,CN,F,85,sc,12/28/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+109_S_1114,I63489,MCI,F,78,sc,12/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+109_S_1157,I66158,AD,F,85,sc,1/03/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+109_S_1183,I66167,MCI,M,80,sc,1/03/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+109_S_1343,I66176,MCI,M,65,sc,3/20/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_0166,I39810,CN,F,73,sc,2/10/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_0173,I96321,CN,M,73,sc,2/10/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+114_S_0374,I39817,AD,F,76,sc,4/10/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_0378,I95688,MCI,F,69,sc,4/04/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_0410,I49897,MCI,F,62,m06,11/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_0416,I39836,CN,F,73,sc,4/20/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+114_S_0458,I39845,MCI,F,83,sc,5/09/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+114_S_0601,I39850,CN,F,77,sc,6/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_0979,I39859,AD,M,86,sc,11/01/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_1103,I49757,MCI,M,83,sc,11/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_1106,I49910,MCI,F,74,sc,11/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+114_S_1118,I49768,MCI,M,83,sc,12/08/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+116_S_0361,I59753,MCI,M,75,sc,4/27/2006,MPR; GradWarp; N3; Scaled
+116_S_0370,I59777,AD,F,75,sc,4/24/2006,MPR-R; GradWarp; N3; Scaled
+116_S_0382,I59725,CN,F,76,sc,5/15/2006,MPR; GradWarp; N3; Scaled
+116_S_0392,I59690,AD,F,85,sc,6/05/2006,MPR; GradWarp; N3; Scaled
+116_S_0487,I59686,AD,M,77,sc,6/01/2006,MPR-R; GradWarp; N3; Scaled
+116_S_0648,I59666,CN,F,72,sc,8/03/2006,MPR; GradWarp; N3; Scaled
+116_S_0649,I74411,MCI,M,88,m12,8/08/2007,MPR; GradWarp; N3; Scaled
+116_S_0657,I59739,CN,F,78,sc,8/24/2006,MPR; GradWarp; N3; Scaled
+116_S_0752,I59637,MCI,F,82,sc,8/16/2006,MPR; GradWarp; N3; Scaled
+116_S_0834,I59798,MCI,M,64,sc,9/29/2006,MPR-R; GradWarp; N3; Scaled
+116_S_1232,I72838,CN,F,73,m06,8/01/2007,MPR; GradWarp; N3; Scaled
+116_S_1243,I59735,MCI,M,77,sc,2/07/2007,MPR-R; GradWarp; N3; Scaled
+116_S_1249,I59647,CN,F,71,sc,2/07/2007,MPR-R; GradWarp; N3; Scaled
+116_S_1271,I59652,MCI,M,71,sc,2/21/2007,MPR; GradWarp; N3; Scaled
+116_S_1315,I59718,MCI,F,83,sc,3/08/2007,MPR; GradWarp; N3; Scaled
+121_S_1322,I119268,MCI,F,72,sc,3/02/2007,MPR; ; N3; Scaled_2
+123_S_0050,I64390,MCI,M,78,sc,11/11/2005,MPR; ; N3; Scaled
+123_S_0072,I64395,CN,M,71,sc,1/04/2006,MPR; ; N3; Scaled
+123_S_0088,I64400,AD,M,66,sc,1/06/2006,MPR; ; N3; Scaled
+123_S_0091,I64405,AD,M,62,sc,12/23/2005,MPR; ; N3; Scaled
+123_S_0094,I119300,AD,F,71,sc,12/28/2005,MPR; ; N3; Scaled_2
+123_S_0106,I64965,CN,F,74,m06,8/01/2006,MPR-R; ; N3; Scaled
+123_S_0108,I119311,MCI,M,79,m06,8/08/2006,MPR; ; N3; Scaled_2
+123_S_0113,I63551,CN,M,75,sc,3/08/2006,MPR; ; N3; Scaled
+123_S_0162,I64422,AD,M,72,sc,2/08/2006,MPR-R; ; N3; Scaled
+123_S_0298,I64427,CN,M,77,sc,4/11/2006,MPR-R; ; N3; Scaled
+123_S_0390,I64430,MCI,M,81,sc,4/11/2006,MPR; ; N3; Scaled
+123_S_1300,I119334,MCI,F,74,sc,3/08/2007,MPR; ; N3; Scaled_2
+126_S_0605,I38861,CN,F,76,sc,6/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+126_S_0606,I38918,AD,F,69,sc,7/20/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+126_S_0680,I38926,CN,M,78,sc,7/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+126_S_0708,I38944,MCI,M,76,sc,7/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+126_S_0709,I38964,MCI,M,84,sc,7/26/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+126_S_0784,I39005,AD,F,76,sc,10/05/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+126_S_0865,I39028,MCI,M,74,sc,11/06/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+126_S_0891,I39054,AD,F,79,sc,9/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+126_S_1187,I48959,MCI,M,77,sc,1/17/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+126_S_1221,I48976,AD,M,71,sc,1/23/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+127_S_0112,I35799,MCI,M,71,sc,1/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_0259,I34362,CN,M,71,sc,3/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_0260,I34384,CN,F,79,sc,3/23/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+127_S_0393,I34393,MCI,F,86,sc,4/12/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+127_S_0394,I34398,MCI,F,84,sc,5/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_0431,I80737,AD,M,85,m12,6/28/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_0622,I86188,CN,F,75,m06,12/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_0684,I34458,CN,F,77,sc,7/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_0754,I80760,AD,F,68,sc,9/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_0844,I34471,AD,F,85,sc,10/09/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+127_S_0925,I67266,MCI,M,75,sc,10/30/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_1032,I63632,MCI,M,85,sc,11/08/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+127_S_1140,I63637,MCI,M,85,sc,12/14/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_1382,I66310,AD,M,64,sc,3/16/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_1419,I73656,MCI,M,78,sc,7/23/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+127_S_1427,I91126,MCI,F,70,sc,8/20/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+128_S_0863,I98875,CN,M,79,sc,9/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+128_S_0947,I69073,MCI,F,83,sc,10/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+128_S_1043,I69091,MCI,M,69,sc,11/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+128_S_1088,I69104,MCI,M,88,sc,12/07/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+128_S_1148,I69113,MCI,F,70,sc,12/18/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+128_S_1242,I105428,CN,F,72,m12,3/21/2008,MPR; GradWarp; B1 Correction; N3; Scaled
+128_S_1407,I69390,MCI,F,75,sc,6/06/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+128_S_1408,I91999,MCI,M,72,m06,2/01/2008,MPR; GradWarp; B1 Correction; N3; Scaled
+129_S_0778,I91135,CN,M,73,sc,8/14/2006,MPR; GradWarp; N3; Scaled
+129_S_1246,I69733,MCI,M,72,sc,2/06/2007,MPR; GradWarp; N3; Scaled
+130_S_0102,I39147,MCI,F,71,m06,7/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_0232,I39157,CN,M,79,m06,9/05/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_0423,I39132,MCI,M,79,sc,5/30/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_0505,I39142,MCI,M,80,sc,7/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_0783,I39152,MCI,F,79,sc,8/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_0886,I39171,CN,F,71,sc,9/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_0956,I39185,AD,F,64,sc,10/20/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_0969,I39275,CN,M,70,sc,10/18/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+130_S_1200,I63752,CN,M,85,sc,1/15/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled
+130_S_1201,I63757,AD,F,76,sc,1/15/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_1290,I63766,AD,F,79,sc,2/07/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+130_S_1337,I80953,AD,M,72,m06,9/26/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+131_S_0123,I63784,CN,M,73,sc,1/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+131_S_0441,I48029,CN,F,73,sc,4/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+131_S_0457,I92406,AD,F,83,sc,5/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+131_S_0497,I70896,AD,M,76,m06,1/10/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+131_S_1389,I81972,MCI,M,76,sc,3/16/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+132_S_0987,I83166,MCI,F,79,sc,3/21/2007,MPR-R; GradWarp; N3; Scaled
+133_S_0433,I39937,CN,F,86,sc,5/03/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+133_S_0488,I107934,CN,F,71,sc,5/09/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+133_S_0525,I39980,CN,F,70,sc,5/30/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+133_S_0629,I40954,MCI,M,71,sc,6/23/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+133_S_0638,I81551,MCI,M,84,m06,3/01/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+133_S_0727,I119534,MCI,F,69,sc,9/07/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled_2
+133_S_0771,I92286,MCI,F,74,sc,9/05/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+133_S_0792,I66373,MCI,M,74,sc,8/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+133_S_0912,I119626,MCI,F,74,sc,10/09/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+133_S_0913,I63819,MCI,F,57,sc,12/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+133_S_1170,I89957,AD,M,73,sc,12/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0086,I66413,CN,F,80,sc,3/31/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+136_S_0107,I40445,MCI,F,61,sc,2/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0184,I40179,CN,F,78,sc,3/06/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0186,I40201,CN,F,81,sc,2/24/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0194,I40239,AD,F,81,sc,4/10/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+136_S_0195,I119720,MCI,M,80,sc,3/13/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+136_S_0196,I119724,CN,F,78,sc,4/17/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+136_S_0299,I40312,AD,F,89,sc,5/01/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0300,I119728,AD,M,56,sc,5/09/2006,MPR; GradWarp; B1 Correction; N3; Scaled_2
+136_S_0426,I40356,AD,M,80,sc,5/16/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0429,I40387,MCI,M,63,sc,6/14/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+136_S_0579,I40410,MCI,F,65,sc,6/29/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0695,I70924,MCI,M,74,sc,9/18/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_0873,I119737,MCI,F,78,sc,10/02/2006,MPR; GradWarp; N3; Scaled_2
+136_S_0874,I66815,MCI,F,67,m06,6/05/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+136_S_1227,I63838,MCI,F,65,sc,2/06/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+137_S_0158,I42985,MCI,F,81,m06,10/17/2006,MPR; GradWarp; N3; Scaled
+137_S_0283,I66428,CN,M,78,sc,3/15/2006,MPR; GradWarp; N3; Scaled
+137_S_0301,I45881,CN,F,74,sc,3/30/2006,MPR; GradWarp; N3; Scaled
+137_S_0366,I46608,AD,F,57,sc,5/10/2006,MPR; GradWarp; N3; Scaled
+137_S_0443,I46622,MCI,M,63,sc,6/15/2006,MPR; GradWarp; N3; Scaled
+137_S_0459,I42992,CN,M,74,m06,11/14/2006,MPR; GradWarp; N3; Scaled
+137_S_0481,I46647,MCI,M,85,sc,5/11/2006,MPR-R; GradWarp; N3; Scaled
+137_S_0631,I66230,MCI,M,78,m12,7/24/2007,MPR-R; GradWarp; N3; Scaled
+137_S_0668,I43001,MCI,M,74,sc,8/07/2006,MPR; GradWarp; N3; Scaled
+137_S_0669,I43009,MCI,M,64,sc,7/21/2006,MPR; GradWarp; N3; Scaled
+137_S_0686,I46668,CN,M,72,sc,7/03/2006,MPR; GradWarp; N3; Scaled
+137_S_0722,I66248,MCI,M,71,m06,2/28/2007,MPR; GradWarp; N3; Scaled
+137_S_0796,I89979,AD,M,80,sc,8/21/2006,MPR; GradWarp; N3; Scaled
+137_S_0800,I43035,MCI,M,74,sc,8/14/2006,MPR; GradWarp; N3; Scaled
+137_S_0825,I66443,MCI,M,88,m06,4/24/2007,MPR; GradWarp; N3; Scaled
+137_S_0972,I45933,CN,M,78,sc,12/04/2006,MPR; GradWarp; N3; Scaled
+137_S_0973,I43060,MCI,M,77,sc,11/15/2006,MPR; GradWarp; N3; Scaled
+137_S_0994,I45943,MCI,F,55,sc,11/01/2006,MPR; GradWarp; N3; Scaled
+137_S_1041,I86261,AD,M,72,m12,12/12/2007,MPR; GradWarp; N3; Scaled
+137_S_1414,I74557,MCI,M,74,sc,8/01/2007,MPR; GradWarp; N3; Scaled
+137_S_1426,I79102,MCI,M,84,sc,9/07/2007,MPR-R; GradWarp; N3; Scaled
+141_S_0696,I82738,AD,F,74,sc,8/25/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_0717,I98888,CN,M,76,sc,8/27/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+141_S_0726,I85668,CN,M,82,m12,11/14/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_0767,I47306,CN,F,73,sc,8/27/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+141_S_0790,I81495,AD,F,84,m06,4/26/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_0810,I47314,CN,M,84,sc,10/17/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+141_S_0851,I89678,MCI,F,73,m06,4/28/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_0852,I47744,AD,F,84,sc,9/25/2006,MPR-R; GradWarp; B1 Correction; N3; Scaled
+141_S_0853,I112292,AD,M,87,sc,8/27/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_0915,I48563,MCI,F,81,sc,11/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_0982,I47703,MCI,F,80,sc,11/15/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_1004,I94935,MCI,F,75,m06,5/18/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_1052,I121561,MCI,F,70,m12,1/08/2008,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_1094,I47732,CN,M,76,sc,11/21/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_1137,I48581,AD,F,82,sc,12/19/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_1152,I48590,AD,F,71,sc,12/26/2006,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_1245,I48599,MCI,F,71,sc,1/29/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+141_S_1255,I48608,MCI,F,77,sc,2/03/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+941_S_1194,I63847,CN,M,85,sc,1/20/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+941_S_1197,I79115,CN,F,83,m06,8/30/2007,MPR; GradWarp; B1 Correction; N3; Scaled
+941_S_1202,I63874,CN,M,78,sc,1/30/2007,MPR-R; GradWarp; B1 Correction; N3; Scaled

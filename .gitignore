@@ -22,19 +22,44 @@ build/
 /ADNI/
 disc*/
 extracted_features/
-data/
-downloads/
+/data/
+/downloads/
 
 # Project Data (Large Files)
-# Ignore all data content, but keep directory structure if needed via .gitkeep strategies (not applied here, checking simplistic approach)
-project/data/
-project_adni/data/
+# Ignore all data content, but keep directory structure if needed via .gitkeep strategies
+# project/data/, project_adni/data/ are now allowed, but specific heavy files are ignored globally below.
+
 *.csv
 *.xlsx
 *.npz
 *.nii
 *.nii.gz
 *.dcm
+
+# Exception: Allow specific data files in project directories
+!project/data/**/*.csv
+!project/data/**/*.xlsx
+!project/data/**/*.npz
+!project/data/**/*.txt
+!project/data/**/*.png
+!project/data/**/*.json
+!project/data/**/*.md
+
+!project_adni/data/**/*.csv
+!project_adni/data/**/*.xlsx
+!project_adni/data/**/*.npz
+!project_adni/data/**/*.txt
+!project_adni/data/**/*.png
+!project_adni/data/**/*.json
+!project_adni/data/**/*.md
+
+!project_longitudinal/data/**/*.csv
+!project_longitudinal/data/**/*.xlsx
+!project_longitudinal/data/**/*.npz
+!project_longitudinal/data/**/*.txt
+!project_longitudinal/data/**/*.png
+!project_longitudinal/data/**/*.json
+!project_longitudinal/data/**/*.md
 
 # Results & Models
 project/results/
