@@ -22,6 +22,8 @@ build/
 /ADNI/
 disc*/
 extracted_features/
+data/
+downloads/
 
 # Project Data (Large Files)
 # Ignore all data content, but keep directory structure if needed via .gitkeep strategies (not applied here, checking simplistic approach)
