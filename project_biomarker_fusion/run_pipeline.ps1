@@ -58,4 +58,6 @@ Write-Host "  - results/comparison.json      : Comparison with baselines"
 Write-Host "  - results/model_comparison.png : Visualization"
 Write-Host "  - results/checkpoints/         : Trained model weights"
 
-Write-Host "`n📊 Check the results and update documentation!`n" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "📊 Check the results and update documentation!" -ForegroundColor Yellow
+Write-Host ""
