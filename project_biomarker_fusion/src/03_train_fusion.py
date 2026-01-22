@@ -71,12 +71,12 @@ class MultimodalFusionModel(nn.Module):
       - 3 x 512 = 1536 dim
     
     Branch 2: Biomarker pathway
-      - Processes baseline (6), followup (3), delta (3) biomarkers
-      - 12 dim total
+      - Processes baseline (9), followup (6), delta (6) biomarkers
+      - 21 dim total
     
     Fusion: Attention-gated combination
     """
-    def __init__(self, resnet_dim=512, bio_baseline_dim=6, bio_followup_dim=3, 
+    def __init__(self, resnet_dim=512, bio_baseline_dim=9, bio_followup_dim=6, 
                  hidden_dim=128, dropout=0.5):
         super().__init__()
         
@@ -91,9 +91,9 @@ class MultimodalFusionModel(nn.Module):
         )
         
         # Biomarker pathway
-        bio_total_dim = bio_baseline_dim + bio_followup_dim + bio_followup_dim  # 6+3+3=12
+        bio_total_dim = bio_baseline_dim + bio_followup_dim + bio_followup_dim  # 9+6+6=21
         self.bio_branch = nn.Sequential(
-            nn.Linear(bio_total_dim, hidden_dim),        # 12 -> 128
+            nn.Linear(bio_total_dim, hidden_dim),        # 21 -> 128
             nn.ReLU(),
             nn.Dropout(dropout),
             nn.Linear(hidden_dim, hidden_dim // 2),      # 128 -> 64

@@ -24,7 +24,10 @@ OUTPUT_PATH = r"D:\discs\project_biomarker_fusion\data\biomarker_longitudinal.np
 BIOMARKERS = [
     'Hippocampus',    # Best single predictor (0.725 AUC)
     'Ventricles',     # Enlargement marker
-    'Entorhinal',     # Early atrophy
+    'Entorhinal',     # Early atrophy (0.691 AUC)
+    'MidTemp',        # Temporal lobe (0.678 AUC)
+    'Fusiform',       # Face recognition (0.670 AUC)
+    'WholeBrain',     # Total volume (0.604 AUC)
     'APOE4',          # Genetic risk
     'AGE',            # Demographics
     'PTGENDER'        # Sex
@@ -87,6 +90,9 @@ def extract_biomarkers_for_subject(subject_id, adni_df):
         features['hippocampus'] = row.get('Hippocampus', np.nan)
         features['ventricles'] = row.get('Ventricles', np.nan)
         features['entorhinal'] = row.get('Entorhinal', np.nan)
+        features['midtemp'] = row.get('MidTemp', np.nan)
+        features['fusiform'] = row.get('Fusiform', np.nan)
+        features['wholebrain'] = row.get('WholeBrain', np.nan)
         features['apoe4'] = row.get('APOE4', np.nan)
         features['age'] = row.get('AGE', np.nan)
         features['sex'] = 1 if row.get('PTGENDER') == 'Male' else 0
@@ -100,6 +106,9 @@ def extract_biomarkers_for_subject(subject_id, adni_df):
     delta_features['hippocampus_delta'] = followup_features['hippocampus'] - baseline_features['hippocampus']
     delta_features['ventricles_delta'] = followup_features['ventricles'] - baseline_features['ventricles']
     delta_features['entorhinal_delta'] = followup_features['entorhinal'] - baseline_features['entorhinal']
+    delta_features['midtemp_delta'] = followup_features['midtemp'] - baseline_features['midtemp']
+    delta_features['fusiform_delta'] = followup_features['fusiform'] - baseline_features['fusiform']
+    delta_features['wholebrain_delta'] = followup_features['wholebrain'] - baseline_features['wholebrain']
     
     return {
         'baseline': baseline_features,
@@ -139,11 +148,11 @@ def main():
         followup = biomarkers['followup']
         delta = biomarkers['delta']
         
-        if any(np.isnan(list(baseline.values())[:3])):  # Missing key biomarkers
+        if any(np.isnan(list(baseline.values())[:6])):  # Missing key biomarkers (6 volumes)
             print(f"Warning: {subject_id} - missing baseline biomarkers")
             continue
         
-        if any(np.isnan(list(followup.values())[:3])):
+        if any(np.isnan(list(followup.values())[:6])):
             print(f"Warning: {subject_id} - missing followup biomarkers")
             continue
         
@@ -176,23 +185,32 @@ def main():
         'splits': results_df['split'].values,
         'labels': results_df['label'].values,
         
-        # Baseline
+        # Baseline (9 features)
         'baseline_hippocampus': results_df['baseline_hippocampus'].values,
         'baseline_ventricles': results_df['baseline_ventricles'].values,
         'baseline_entorhinal': results_df['baseline_entorhinal'].values,
+        'baseline_midtemp': results_df['baseline_midtemp'].values,
+        'baseline_fusiform': results_df['baseline_fusiform'].values,
+        'baseline_wholebrain': results_df['baseline_wholebrain'].values,
         'baseline_apoe4': results_df['baseline_apoe4'].values,
         'baseline_age': results_df['baseline_age'].values,
         'baseline_sex': results_df['baseline_sex'].values,
         
-        # Followup
+        # Followup (6 features)
         'followup_hippocampus': results_df['followup_hippocampus'].values,
         'followup_ventricles': results_df['followup_ventricles'].values,
         'followup_entorhinal': results_df['followup_entorhinal'].values,
+        'followup_midtemp': results_df['followup_midtemp'].values,
+        'followup_fusiform': results_df['followup_fusiform'].values,
+        'followup_wholebrain': results_df['followup_wholebrain'].values,
         
-        # Deltas
+        # Deltas (6 features)
         'delta_hippocampus': results_df['delta_hippocampus'].values,
         'delta_ventricles': results_df['delta_ventricles'].values,
         'delta_entorhinal': results_df['delta_entorhinal'].values,
+        'delta_midtemp': results_df['delta_midtemp'].values,
+        'delta_fusiform': results_df['delta_fusiform'].values,
+        'delta_wholebrain': results_df['delta_wholebrain'].values,
         
         'time_diff_months': results_df['time_diff_months'].values
     }

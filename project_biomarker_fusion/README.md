@@ -29,7 +29,7 @@ This directory contains a **brand new experiment** that does NOT modify any exis
 |-----------|-------|----------|
 | ResNet longitudinal | 0.52 | ❌ Too weak |
 | Biomarkers + delta | 0.83 | ✅ Strong but lacks imaging |
-| **ResNet + Biomarkers + Delta** | **???** | 🎯 **Target: 0.85+** |
+| **ResNet + 6 Biomarkers + Delta** | **???** | 🎯 **Target: 0.85+** |
 
 ---
 
@@ -61,6 +61,9 @@ This directory contains a **brand new experiment** that does NOT modify any exis
 - Hippocampus volume: 1
 - Ventricles volume: 1
 - Entorhinal volume: 1
+- MidTemp volume: 1
+- Fusiform volume: 1
+- WholeBrain volume: 1
 - APOE4 status: 1
 - Age: 1
 - Sex: 1
@@ -70,26 +73,32 @@ This directory contains a **brand new experiment** that does NOT modify any exis
 - Hippocampus volume: 1
 - Ventricles volume: 1
 - Entorhinal volume: 1
+- MidTemp volume: 1
+- Fusiform volume: 1
+- WholeBrain volume: 1
 
 **Delta (Change):**
 - ResNet delta: 512-dim
 - Hippocampus delta: 1
 - Ventricles delta: 1
 - Entorhinal delta: 1
+- MidTemp delta: 1
+- Fusiform delta: 1
+- WholeBrain delta: 1
 
-**Total: 512*3 + 3*3 + 3 = 1,548 features**
+**Total: 512*3 + 9 + 6 + 6 = 1,557 features**
 
 ### Architecture
 
 ```
 Baseline MRI (512)  ──┐
-Baseline Bio (6)    ──┼──> Early Fusion ──> MLP ──> 2 classes
+Baseline Bio (9)    ──┼──> Early Fusion ──> MLP ──> 2 classes
                       │
 Followup MRI (512)  ──┤
-Followup Bio (3)    ──┤
+Followup Bio (6)    ──┤
                       │
 Delta MRI (512)     ──┤
-Delta Bio (3)       ──┘
+Delta Bio (6)       ──┘
 ```
 
 ### Training Protocol

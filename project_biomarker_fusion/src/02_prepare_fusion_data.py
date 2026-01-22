@@ -83,23 +83,32 @@ def load_biomarker_features():
             'split': str(data['splits'][i]),
             'label': int(data['labels'][i]),
             
-            # Baseline
-            'baseline_hippocampus': data['baseline_hippocampus'][i],
-            'baseline_ventricles': data['baseline_ventricles'][i],
-            'baseline_entorhinal': data['baseline_entorhinal'][i],
-            'baseline_apoe4': data['baseline_apoe4'][i],
-            'baseline_age': data['baseline_age'][i],
-            'baseline_sex': data['baseline_sex'][i],
-            
-            # Followup
-            'followup_hippocampus': data['followup_hippocampus'][i],
-            'followup_ventricles': data['followup_ventricles'][i],
-            'followup_entorhinal': data['followup_entorhinal'][i],
-            
-            # Deltas
-            'delta_hippocampus': data['delta_hippocampus'][i],
-            'delta_ventricles': data['delta_ventricles'][i],
-            'delta_entorhinal': data['delta_entorhinal'][i],
+# Baseline (9 features)
+        'baseline_hippocampus': data['baseline_hippocampus'][i],
+        'baseline_ventricles': data['baseline_ventricles'][i],
+        'baseline_entorhinal': data['baseline_entorhinal'][i],
+        'baseline_midtemp': data['baseline_midtemp'][i],
+        'baseline_fusiform': data['baseline_fusiform'][i],
+        'baseline_wholebrain': data['baseline_wholebrain'][i],
+        'baseline_apoe4': data['baseline_apoe4'][i],
+        'baseline_age': data['baseline_age'][i],
+        'baseline_sex': data['baseline_sex'][i],
+        
+        # Followup (6 features)
+        'followup_hippocampus': data['followup_hippocampus'][i],
+        'followup_ventricles': data['followup_ventricles'][i],
+        'followup_entorhinal': data['followup_entorhinal'][i],
+        'followup_midtemp': data['followup_midtemp'][i],
+        'followup_fusiform': data['followup_fusiform'][i],
+        'followup_wholebrain': data['followup_wholebrain'][i],
+        
+        # Deltas (6 features)
+        'delta_hippocampus': data['delta_hippocampus'][i],
+        'delta_ventricles': data['delta_ventricles'][i],
+        'delta_entorhinal': data['delta_entorhinal'][i],
+        'delta_midtemp': data['delta_midtemp'][i],
+        'delta_fusiform': data['delta_fusiform'][i],
+        'delta_wholebrain': data['delta_wholebrain'][i],
             
             'time_diff_months': data['time_diff_months'][i]
         }
@@ -164,10 +173,10 @@ def prepare_arrays(merged_data):
     followup_resnet = np.zeros((n, 512))
     delta_resnet = np.zeros((n, 512))
     
-    # Biomarkers (6 baseline, 3 followup, 3 delta)
-    baseline_bio = np.zeros((n, 6))
-    followup_bio = np.zeros((n, 3))
-    delta_bio = np.zeros((n, 3))
+    # Biomarkers (9 baseline, 6 followup, 6 delta)
+    baseline_bio = np.zeros((n, 9))
+    followup_bio = np.zeros((n, 6))
+    delta_bio = np.zeros((n, 6))
     
     time_diff = np.zeros(n)
     
@@ -181,28 +190,37 @@ def prepare_arrays(merged_data):
         followup_resnet[i] = data['followup_resnet']
         delta_resnet[i] = data['delta_resnet']
         
-        # Baseline biomarkers
+        # Baseline biomarkers (9 features)
         baseline_bio[i] = [
             data['baseline_hippocampus'],
             data['baseline_ventricles'],
             data['baseline_entorhinal'],
+            data['baseline_midtemp'],
+            data['baseline_fusiform'],
+            data['baseline_wholebrain'],
             data['baseline_apoe4'],
             data['baseline_age'],
             data['baseline_sex']
         ]
         
-        # Followup biomarkers
+        # Followup biomarkers (6 features)
         followup_bio[i] = [
             data['followup_hippocampus'],
             data['followup_ventricles'],
-            data['followup_entorhinal']
+            data['followup_entorhinal'],
+            data['followup_midtemp'],
+            data['followup_fusiform'],
+            data['followup_wholebrain']
         ]
         
-        # Delta biomarkers
+        # Delta biomarkers (6 features)
         delta_bio[i] = [
             data['delta_hippocampus'],
             data['delta_ventricles'],
-            data['delta_entorhinal']
+            data['delta_entorhinal'],
+            data['delta_midtemp'],
+            data['delta_fusiform'],
+            data['delta_wholebrain']
         ]
         
         time_diff[i] = data['time_diff_months']
