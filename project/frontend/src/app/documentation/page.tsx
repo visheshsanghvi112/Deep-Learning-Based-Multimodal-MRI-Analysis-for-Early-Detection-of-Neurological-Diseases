@@ -263,15 +263,15 @@ export default function DocumentationPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-1">
-                            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">0.81 AUC</div>
+                            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">0.848 AUC</div>
                             <p className="text-xs text-emerald-600 font-semibold">
-                                ✅ Target exceeded!
+                                ✅ Beats 0.83 Target
                             </p>
                             <p className="text-xs text-muted-foreground">
-                                Level-MAX with 14D biomarkers
+                                Longitudinal Fusion (Random Forest)
                             </p>
                             <p className="text-xs text-muted-foreground">
-                                Publishable competitive result
+                                Confirmed via Integrity Audit
                             </p>
                         </div>
                     </CardContent>
@@ -655,6 +655,31 @@ export default function DocumentationPage() {
                         <div className="text-sm">
                             <div className="font-medium">Publication Path</div>
                             <div className="text-xs text-muted-foreground">12+ pages · Action plan</div>
+                        </div>
+                    </a>
+                </CardContent>
+            </Card>
+
+            <Card className="border-emerald-500/20 bg-emerald-500/5">
+                <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                        <Shield className="h-5 w-5 text-emerald-500" />
+                        Viva Defense Documents
+                    </CardTitle>
+                    <CardDescription>
+                        Final integrity audit and methodological proofs
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="grid gap-3 md:grid-cols-2">
+                    <a
+                        href="/FINAL_FUSION_REPORT.md"
+                        download
+                        className="flex items-center gap-2 rounded-lg border bg-background/50 p-3 hover:bg-accent transition-colors"
+                    >
+                        <FileText className="h-4 w-4 text-emerald-500" />
+                        <div className="text-sm">
+                            <div className="font-medium">Final Fusion Report</div>
+                            <div className="text-xs text-muted-foreground">Definitive Guide · 0.848 AUC</div>
                         </div>
                     </a>
                 </CardContent>

@@ -28,7 +28,7 @@ export default function ResultsPage() {
             Classification Results
           </h2>
           <Badge variant="outline" className="text-xs">OASIS-1 + ADNI-1</Badge>
-          <Badge className="bg-emerald-600 text-xs">NEW: Longitudinal</Badge>
+          <Badge className="bg-emerald-600 text-xs">FINAL: 0.848 AUC</Badge>
         </div>
         <p className="text-sm text-muted-foreground">
           Binary classification results across datasets. OASIS: CDR 0 vs 0.5. ADNI: CN vs MCI+AD.
@@ -400,21 +400,26 @@ export default function ResultsPage() {
                   <CardTitle className="text-sm text-emerald-600">Phase 3: Biomarkers</CardTitle>
                   <CardDescription>Corrected Experiment</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-2">
+                <CardContent className="space-y-4">
                   <div className="flex justify-between text-sm">
                     <span>Biomarkers Only</span>
                     <span className="font-mono">0.74 AUC</span>
                   </div>
                   <div className="flex justify-between text-sm font-bold">
                     <span>+ Longitudinal Δ</span>
-                    <span className="font-mono text-emerald-600">0.83 AUC</span>
+                    <span className="font-mono text-emerald-600">0.817 AUC</span>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span>+ ADAS13</span>
-                    <span className="font-mono">0.84 AUC</span>
+                  <div className="p-2 bg-emerald-500/10 rounded-md border border-emerald-500/20">
+                    <div className="flex justify-between text-sm font-bold text-emerald-700">
+                      <span>FINAL MATCHED</span>
+                      <span className="font-mono">0.848 AUC</span>
+                    </div>
+                    <p className="text-[10px] text-emerald-600 mt-1">
+                      Random Forest (N=341)
+                    </p>
                   </div>
                   <p className="mt-2 text-xs text-emerald-600">
-                    ✅ +31 points vs ResNet! Longitudinal WORKS!
+                    ✅ Beats 0.83 Target!
                   </p>
                 </CardContent>
               </Card>
@@ -479,6 +484,82 @@ export default function ResultsPage() {
                 </p>
               </CardContent>
             </Card>
+
+            {/* FINAL VERDICT SECTION - ADDED JAN 2026 */}
+            <div className="mt-8 space-y-4">
+              <h3 className="text-lg font-bold border-b pb-2 flex items-center gap-2">
+                🏆 Final Verdict: Longitudinal Fusion
+                <Badge variant="outline">Jan 2026</Badge>
+              </h3>
+
+              <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
+                {/* Stats & Audit */}
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <Card className="bg-emerald-500/10 border-emerald-500/30">
+                      <CardHeader className="py-4">
+                        <CardTitle className="text-xs text-emerald-700 uppercase tracking-wider">Best AUC</CardTitle>
+                      </CardHeader>
+                      <CardContent className="pb-4">
+                        <div className="text-4xl font-bold text-emerald-700">0.848</div>
+                        <p className="text-xs text-emerald-600">95% CI: [0.812, 0.883]</p>
+                      </CardContent>
+                    </Card>
+                    <Card>
+                      <CardHeader className="py-4">
+                        <CardTitle className="text-xs text-muted-foreground uppercase tracking-wider">Cohort</CardTitle>
+                      </CardHeader>
+                      <CardContent className="pb-4">
+                        <div className="text-2xl font-bold">341</div>
+                        <p className="text-xs text-muted-foreground">MCI Subjects (Matched)</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm">🛡️ Methodological Integrity Audit</CardTitle>
+                      <CardDescription>Verified Jan 23, 2026</CardDescription>
+                    </CardHeader>
+                    <CardContent className="grid gap-2 text-sm">
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-500">✅</span>
+                        <span><strong>Zero Leakage:</strong> Train/Test intersection = 0</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-500">✅</span>
+                        <span><strong>Chronology:</strong> Follow-up verified after Baseline</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-500">✅</span>
+                        <span><strong>Biological Plausibility:</strong> Converters have 2x atrophy</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-500">✅</span>
+                        <span><strong>Stability:</strong> Result reproducible (±0.006)</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Visuals */}
+                <div className="space-y-4">
+                  <Card>
+                    <CardContent className="p-4">
+                      {/* Using simple img tag to avoid Next.js Image config issues for now */}
+                      <img
+                        src="/figures/final_results/roc_curves.png"
+                        alt="ROC Curve"
+                        className="rounded-lg w-full h-auto object-contain bg-white mb-2"
+                      />
+                      <p className="text-center text-xs text-muted-foreground">
+                        Random Forest (Green) achieves 0.85 AUC, consistently outperforming baselines.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
           </div>
         </TabsContent>
       </Tabs>

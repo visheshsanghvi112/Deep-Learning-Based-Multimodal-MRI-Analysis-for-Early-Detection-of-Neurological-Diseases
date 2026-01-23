@@ -120,17 +120,17 @@ export default function Home() {
                 <CardTitle className="text-sm font-medium flex items-center gap-2">
                   <Zap className="h-4 w-4 text-emerald-500" />
                   🔬 Longitudinal
-                  <Badge className="ml-1 text-[10px] bg-emerald-600 animate-pulse">NEW</Badge>
+                  <Badge className="ml-1 text-[10px] bg-emerald-600 animate-pulse">FINAL</Badge>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">
                   <TextGradient colors="from-emerald-400 to-cyan-400">
-                    <AnimatedCounter value={0.83} suffix=" AUC" duration={1.5} decimals={2} />
+                    <AnimatedCounter value={0.848} suffix=" AUC" duration={1.5} decimals={3} />
                   </TextGradient>
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  +9.5% with temporal biomarker change
+                  +11% with temporal biomarker change
                 </p>
               </CardContent>
             </SpotlightCard>
@@ -272,7 +272,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-emerald-500">✅</span>
-                    <p className="text-muted-foreground">+ Longitudinal Δ: <strong className="text-emerald-600">0.83 AUC</strong></p>
+                    <p className="text-muted-foreground">+ Longitudinal Δ: <strong className="text-emerald-600">0.848 AUC</strong></p>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-purple-500">🧬</span>

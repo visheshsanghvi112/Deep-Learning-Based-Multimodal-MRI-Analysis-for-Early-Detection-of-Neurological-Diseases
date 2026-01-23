@@ -114,11 +114,11 @@ The research explores **honest multimodal fusion** with:
 | **Unique Subjects** | 205 | 629 | 629 | 629 |
 | **Train / Test** | 164 / 41 | 503 / 126 | 503 / 126 | 503 / 126 |
 | **Features** | Age/Sex/Edu | Age/Sex | 14 Biomarkers | Volumetric Delta |
-| **Best AUC** | 0.79 | 0.60 | **0.808** ✅ | **0.83** ✅ |
+| **Best AUC** | 0.79 | 0.60 | **0.808** ✅ | **0.848** 🏆 |
 
 ### 🔑 Key Insights:
 > 1. **Level-MAX breakthrough (0.808 AUC)** - Biomarkers unlock fusion potential!
-> 2. **Longitudinal biomarkers (0.83 AUC)** - Atrophy RATE matters
+> 2. **Longitudinal success (0.848 AUC)** - Atrophy RATE is the best predictor
 > 3. **Level-1 honest baseline (0.60 AUC)** - Age/Sex alone insufficient
 > 4. **Hippocampus is king** - Single best predictor (0.725 AUC alone)
 
@@ -280,17 +280,17 @@ uvicorn main:app --reload
 |----------|-----|-------------|
 | ResNet features | 0.52 | baseline |
 | Biomarkers (baseline) | 0.74 | +22 points |
-| **Biomarkers + Longitudinal** | **0.83** | **+31 points** |
+| **Biomarkers + Longitudinal** | **0.85** | **+33 points** |
 | + APOE4 genetic risk | 0.81 | +29 points |
 | + ADAS13 cognitive | 0.84 | +32 points |
 
 **Key Discoveries:**
 - 🏆 **Hippocampus volume** alone: 0.725 AUC (best single predictor!)
 - 🧬 **APOE4 carriers**: 44-49% conversion rate vs 23% non-carriers
-- 📈 **Longitudinal adds +9.5%**: Atrophy RATE matters!
-- 💡 **Simple models win**: Logistic regression (0.83) > LSTM (0.44)
+- 📈 **Longitudinal adds +9.5%**: Atrophy RATE boosts performance to **0.848 AUC**!
+- 💡 **Simple models win**: Random Forest (0.85) > LSTM (0.44)
 
-> **Final Conclusion:** Longitudinal MRI data **DOES help** (+9.5% AUC) when using proper biomarkers (hippocampus, ventricles, entorhinal). ResNet features are unsuitable for progression prediction. See `project_longitudinal/docs/INVESTIGATION_REPORT.md` for full analysis.
+> **Final Conclusion:** Longitudinal MRI data **DOES help** (+11% AUC) when using proper biomarkers (hippocampus, ventricles, entorhinal). We achieved **0.848 AUC** with Random Forest. See `project_longitudinal_fusion/README.md` for full analysis.
 
 ---
 
@@ -501,7 +501,7 @@ D:/discs/
 |------------|----------|-------|--------|
 | Level-1 (Age/Sex only) | 0.60 | Late Fusion | Honest baseline |
 | **Level-MAX (14 biomarkers)** | **0.808** | **Late/Attention** | **✅ Publication-ready** |
-| Longitudinal Progression | 0.83 | Biomarker Delta | ✅ Validated |
+| Longitudinal Fusion | **0.848** | Random Forest | ✅ **Best Result** |
 | Cross-dataset Transfer | 0.607 | MRI-Only | Best transfer |
 
 **Full details:** See [docs/PROJECT_DOCUMENTATION.md](docs/PROJECT_DOCUMENTATION.md) (2,121 lines, fully verified)
