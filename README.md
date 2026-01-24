@@ -133,7 +133,8 @@ The research explores **honest multimodal fusion** with:
 | **[docs/PROJECT_ASSESSMENT_HONEST_TAKE.md](docs/PROJECT_ASSESSMENT_HONEST_TAKE.md)** | 🔍 Honest analysis of why fusion underperforms (15+ pages) | ✅ Complete |
 | **[docs/REALISTIC_PATH_TO_PUBLICATION.md](docs/REALISTIC_PATH_TO_PUBLICATION.md)** | 🎯 Roadmap to competitive AUC (12+ pages) | ✅ Achieved! |
 | **[docs/LEVEL_MAX_RESULTS.md](docs/LEVEL_MAX_RESULTS.md)** | 🎯 Level-MAX breakthrough (0.808 AUC) | ✅ NEW |
-| **[project_longitudinal/docs/](project_longitudinal/docs/)** | 🔄 Longitudinal progression experiment | ✅ Complete |
+| **[project_longitudinal_fusion/](project_longitudinal_fusion/README.md)** | 🏆 **Longitudinal FINAL SUCCESS (0.848 AUC)** | ✅ **VICTORY** |
+| **[project_longitudinal/](project_longitudinal/README.md)** | ⏳ Longitudinal Archive (Investigation) | ✅ Archived |
 | **[docs/DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md)** | 🚀 Frontend + backend deployment steps | ✅ Ready |
 | [docs/RESEARCH_PAPER_FULL.md](docs/RESEARCH_PAPER_FULL.md) | 📝 Complete research paper | ✅ Draft |
 
@@ -422,10 +423,14 @@ D:/discs/
 │   │   └── cross_dataset_robustness.py       ← Transfer experiments
 │   └── data/                                 ← Processed features
 │
-└── 🔄 project_longitudinal/                  ← Longitudinal analysis
-    ├── src/                                  ← Analysis scripts
-    ├── docs/                                 ← Longitudinal documentation
-    └── results/                              ← Longitudinal results
+├── 🏆 project_longitudinal_fusion/           ← FINAL SUCCESS (0.848 AUC)
+│   ├── README.md                             ← Master Report
+│   ├── FINAL_FUSION_REPORT.md                ← Viva Document
+│   ├── scripts/                              ← Analysis & Audit scripts
+│   └── results/                              ← validated 0.848 results
+│
+└── ⏳ project_longitudinal/                  ← (Archive) Initial investigation
+    └── src/                                  ← Legacy scripts
 ```
 
 ---
@@ -601,6 +606,7 @@ This project is for **academic and research purposes**.
 
 **Key Highlights:**
 - ✅ **Zero-leakage data cleaning** (fully documented)
+- ✅ **Longitudinal VICTORY** (0.848 AUC on full MCI cohort)
 - ✅ **Level-MAX breakthrough** (0.81 AUC with biomarkers)
 - ✅ **Honest evaluation** (0.60 AUC reflects reality without biomarkers)
 - ✅ **Cross-dataset validation** (OASIS ↔ ADNI)
@@ -624,6 +630,6 @@ This project is for **academic and research purposes**.
 
 <br/><br/>
 
-<sub>📅 Last Updated: January 22, 2026 | 🚀 Frontend Live | 📚 Complete Documentation Available</sub>
+<sub>📅 Last Updated: January 24, 2026 | 🚀 Frontend Live | 📚 Complete Documentation Available</sub>
 
 </div>
