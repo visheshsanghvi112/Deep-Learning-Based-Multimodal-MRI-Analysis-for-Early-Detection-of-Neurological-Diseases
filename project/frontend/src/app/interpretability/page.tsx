@@ -180,7 +180,7 @@ const visualizations = {
       src: "/figures/L3_feature_combinations.png",
       title: "Feature Combinations",
       description: "Performance comparison of different feature combinations from ResNet to biomarkers.",
-      insight: "Biomarkers + Longitudinal achieves 0.83 AUC (+31 pts vs ResNet)."
+      insight: "Biomarkers + Longitudinal achieves 0.848 AUC (+31 pts vs ResNet)."
     },
     {
       id: "L4",
@@ -194,7 +194,7 @@ const visualizations = {
       src: "/figures/L5_longitudinal_improvement.png",
       title: "Longitudinal Improvement",
       description: "Direct comparison showing the benefit of adding temporal change information.",
-      insight: "Adding atrophy rate improves AUC by +9.5% (0.74 → 0.83)."
+      insight: "Adding atrophy rate improves AUC by +11.2% (0.74 → 0.848)."
     },
     {
       id: "L6",
@@ -908,7 +908,7 @@ export default function InterpretabilityPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-lg font-bold text-emerald-600">0.83 AUC</div>
+            <div className="text-lg font-bold text-emerald-600">0.848 AUC</div>
             <p className="text-xs text-muted-foreground">Longitudinal biomarkers</p>
           </CardContent>
         </Card>

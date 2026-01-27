@@ -240,7 +240,7 @@ export default function DocumentationPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-1">
-                            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">0.81 AUC</div>
+                            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">0.808 AUC</div>
                             <p className="text-xs text-emerald-600 font-semibold">
                                 Level-MAX (with biomarkers)
                             </p>
@@ -487,7 +487,7 @@ export default function DocumentationPage() {
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <CheckCircle2 className="h-3 w-3 text-emerald-500 mt-0.5" />
-                                        <span className="text-emerald-600 font-semibold">Level-MAX: 0.81 AUC (+16.5% with biomarkers!)</span>
+                                        <span className="text-emerald-600 font-semibold">Level-MAX: 0.808 AUC (+16.5% with biomarkers!)</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <CheckCircle2 className="h-3 w-3 text-green-500 mt-0.5" />
@@ -514,7 +514,7 @@ export default function DocumentationPage() {
                                     <strong className="text-emerald-700 dark:text-emerald-400">Level-MAX proves fusion works with quality features!</strong>
                                     <p className="text-muted-foreground mt-1">
                                         By enriching clinical features from 2D (Age/Sex) to 14D biological profile (CSF, APOE4, Volumetrics),
-                                        we achieved <strong className="text-emerald-600">0.81 AUC</strong> - validating that the fusion architecture was never broken,
+                                        we achieved <strong className="text-emerald-600">0.808 AUC</strong> - validating that the fusion architecture was never broken,
                                         it just needed complementary biological signals instead of weak demographics.
                                     </p>
                                 </div>
@@ -533,7 +533,7 @@ export default function DocumentationPage() {
                                     Level-MAX Achievement
                                 </CardTitle>
                                 <CardDescription>
-                                    How we achieved competitive 0.81 AUC with biomarker-enhanced fusion
+                                    How we achieved competitive 0.808 AUC with biomarker-enhanced fusion
                                 </CardDescription>
                             </div>
                             <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20">

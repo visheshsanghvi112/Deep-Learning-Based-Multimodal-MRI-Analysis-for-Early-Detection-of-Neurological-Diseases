@@ -95,8 +95,8 @@ def create_feature_combinations():
     fig, ax = plt.subplots(figsize=(10, 6))
     
     approaches = ['ResNet\nfeatures', 'Baseline\nbiomarkers', 'Delta\nbiomarkers', 
-                  'Baseline +\nDelta', '+ Age +\nAPOE4', '+ ADAS13']
-    aucs = [0.52, 0.736, 0.759, 0.831, 0.813, 0.842]
+                  'Baseline +\nDelta (RF)', '+ Age +\nAPOE4', '+ ADAS13']
+    aucs = [0.52, 0.736, 0.759, 0.848, 0.813, 0.842]
     
     colors = ['#ef4444', '#3b82f6', '#3b82f6', '#10b981', '#10b981', '#8b5cf6']
     
@@ -171,8 +171,8 @@ def create_apoe4_analysis():
 def create_longitudinal_improvement():
     fig, ax = plt.subplots(figsize=(8, 5))
     
-    conditions = ['Baseline\nBiomarkers Only', 'Baseline +\nLongitudinal Δ']
-    aucs = [0.736, 0.831]
+    conditions = ['Baseline\nBiomarkers Only', 'Baseline +\nLongitudinal Δ (RF)']
+    aucs = [0.736, 0.848]
     
     colors = ['#3b82f6', '#10b981']
     
@@ -184,9 +184,9 @@ def create_longitudinal_improvement():
                 f'{auc:.3f}', ha='center', va='bottom', fontsize=16, fontweight='bold')
     
     # Add improvement arrow
-    ax.annotate('', xy=(1, 0.831), xytext=(0, 0.736),
+    ax.annotate('', xy=(1, 0.848), xytext=(0, 0.736),
                 arrowprops=dict(arrowstyle='->', color='#059669', lw=3))
-    ax.text(0.5, 0.79, '+9.5%', fontsize=20, color='#059669', fontweight='bold', ha='center')
+    ax.text(0.5, 0.79, '+11.2%', fontsize=20, color='#059669', fontweight='bold', ha='center')
     
     ax.set_ylim(0.5, 0.95)
     ax.set_ylabel('AUC', fontsize=14)
@@ -210,12 +210,12 @@ def create_journey_summary():
     
     # Timeline data
     phases = ['Phase 1\nResNet', 'Phase 2\nInvestigation', 'Phase 3\nBiomarkers']
-    aucs = [0.52, None, 0.83]  # None for investigation phase
+    aucs = [0.52, None, 0.848]  # None for investigation phase
     x_positions = [0, 1, 2]
     
     # Draw timeline
     ax.plot([0, 2], [0.52, 0.52], 'r--', linewidth=2, alpha=0.5)  # Baseline
-    ax.plot([0, 2], [0.83, 0.83], 'g--', linewidth=2, alpha=0.5)  # Target
+    ax.plot([0, 2], [0.848, 0.848], 'g--', linewidth=2, alpha=0.5)  # Target
     
     # Phase 1 - Red circle
     ax.scatter([0], [0.52], s=500, c='#ef4444', zorder=5, edgecolors='white', linewidth=3)
@@ -228,14 +228,14 @@ def create_journey_summary():
     ax.text(1, 0.53, 'Investigation:\n3 Issues Found', ha='center', va='top', fontsize=10)
     
     # Phase 3 - Green circle
-    ax.scatter([2], [0.83], s=500, c='#10b981', zorder=5, edgecolors='white', linewidth=3)
-    ax.text(2, 0.83, '0.83', ha='center', va='center', fontsize=12, fontweight='bold', color='white')
-    ax.text(2, 0.71, 'Biomarkers:\nBreakthrough!', ha='center', va='top', fontsize=10)
+    ax.scatter([2], [0.848], s=500, c='#10b981', zorder=5, edgecolors='white', linewidth=3)
+    ax.text(2, 0.848, '0.85', ha='center', va='center', fontsize=12, fontweight='bold', color='white')
+    ax.text(2, 0.73, 'Biomarkers:\nBreakthrough!', ha='center', va='top', fontsize=10)
     
     # Draw arrows
     ax.annotate('', xy=(0.85, 0.65), xytext=(0.15, 0.52),
                 arrowprops=dict(arrowstyle='->', color='gray', lw=2))
-    ax.annotate('', xy=(1.85, 0.83), xytext=(1.15, 0.65),
+    ax.annotate('', xy=(1.85, 0.848), xytext=(1.15, 0.65),
                 arrowprops=dict(arrowstyle='->', color='green', lw=2))
     
     ax.set_xlim(-0.5, 2.5)

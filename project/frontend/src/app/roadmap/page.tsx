@@ -166,7 +166,7 @@ export default function RoadmapPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-600">
-                  <AnimatedCounter value={0.83} decimals={2} duration={1.5} />
+                  <AnimatedCounter value={0.848} decimals={3} duration={1.5} />
                 </div>
                 <div className="text-xs text-muted-foreground">Best AUC</div>
               </div>
@@ -262,7 +262,7 @@ export default function RoadmapPage() {
             title="🎯 Level-MAX: Biomarker Breakthrough"
             description="Enriched clinical features from 2D (Age/Sex) to 14D biological profile (CSF, APOE4, Hippocampus, 6 other volumetrics). Proved fusion works with quality features!"
             status="success"
-            result="✅ 0.81 AUC (+16.5% over MRI-only)"
+            result="✅ 0.808 AUC (+16.5% over MRI-only)"
             icon={Trophy}
             color="bg-emerald-500"
             delay={0.28}
@@ -295,7 +295,7 @@ export default function RoadmapPage() {
             title="Switched to Actual Biomarkers"
             description="Used hippocampus volume, ventricular size, entorhinal thickness from ADNIMERGE instead of CNN features. Focused on MCI cohort only."
             status="success"
-            result="✅ Biomarkers: 0.74 → 0.83 AUC"
+            result="✅ Biomarkers: 0.74 → 0.848 AUC"
             icon={Brain}
             color="bg-emerald-500"
             delay={0.42}
@@ -304,9 +304,9 @@ export default function RoadmapPage() {
           <TimelineStep
             step={11}
             title="Breakthrough: Longitudinal WORKS!"
-            description="Adding temporal change (atrophy rate) improved AUC by +9.5%. Hippocampus alone achieves 0.725 AUC. APOE4 carriers have 2x conversion risk."
+            description="Adding temporal change (atrophy rate) improved AUC by +11.2%. Hippocampus alone achieves 0.725 AUC. APOE4 carriers have 2x conversion risk. Random Forest outperformed all other models."
             status="success"
-            result="🏆 0.83 AUC with biomarkers!"
+            result="🏆 0.848 AUC with Random Forest!"
             icon={CheckCircle2}
             color="bg-emerald-600"
             isLast
@@ -329,10 +329,10 @@ export default function RoadmapPage() {
                   <CardTitle className="text-sm text-emerald-600">✅ What Worked</CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-1">
-                  <p>• Level-MAX biomarker fusion (0.81 AUC)</p>
+                  <p>• Level-MAX biomarker fusion (0.808 AUC)</p>
                   <p>• Hippocampus volume (0.725 AUC alone)</p>
-                  <p>• Longitudinal atrophy rate (+9.5%)</p>
-                  <p>• Simple logistic regression</p>
+                  <p>• Longitudinal atrophy rate (+11.2%)</p>
+                  <p>• Random Forest classifier (best model)</p>
                   <p>• Proper biomarker selection</p>
                 </CardContent>
               </SpotlightCard>
@@ -383,7 +383,7 @@ export default function RoadmapPage() {
             </motion.div>
             <div className="text-4xl font-bold">
               <TextGradient colors="from-emerald-400 via-cyan-400 to-blue-400">
-                <AnimatedCounter value={0.83} suffix=" AUC" decimals={2} duration={2} />
+                <AnimatedCounter value={0.848} suffix=" AUC" decimals={3} duration={2} />
               </TextGradient>
             </div>
             <p className="text-lg font-medium">

@@ -208,7 +208,7 @@ export default function ResultsPage() {
                   <Badge variant="outline" className="bg-amber-500/10">Aβ42, Tau, pTau (CSF)</Badge>
                 </div>
                 <p className="text-xs text-emerald-600 mt-3">
-                  ✅ <strong>Key Achievement:</strong> 0.81 AUC proves fusion works when given proper biological signals, not just weak demographics!
+                  ✅ <strong>Key Achievement:</strong> 0.808 AUC proves fusion works when given proper biological signals, not just weak demographics!
                 </p>
               </CardContent>
             </Card>
@@ -241,7 +241,7 @@ export default function ResultsPage() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-emerald-600 font-semibold">Level-MAX (Bio-Profile):</span>
-                      <span className="font-mono text-emerald-600 font-semibold">0.81 AUC → Fusion succeeds</span>
+                      <span className="font-mono text-emerald-600 font-semibold">0.808 AUC → Fusion succeeds</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-orange-600">Level-2 (MMSE/CDR-SB):</span>
@@ -407,7 +407,7 @@ export default function ResultsPage() {
                   </div>
                   <div className="flex justify-between text-sm font-bold">
                     <span>+ Longitudinal Δ</span>
-                    <span className="font-mono text-emerald-600">0.817 AUC</span>
+                    <span className="font-mono text-emerald-600">0.848 AUC</span>
                   </div>
                   <div className="p-2 bg-emerald-500/10 rounded-md border border-emerald-500/20">
                     <div className="flex justify-between text-sm font-bold text-emerald-700">
@@ -452,8 +452,8 @@ export default function ResultsPage() {
                   <CardTitle className="text-sm">📈 Longitudinal Boost</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-blue-600">+9.5%</div>
-                  <p className="text-xs text-muted-foreground">0.74 → 0.83 AUC</p>
+                  <div className="text-2xl font-bold text-blue-600">+11.2%</div>
+                  <p className="text-xs text-muted-foreground">0.74 → 0.848 AUC</p>
                 </CardContent>
               </Card>
 
@@ -463,7 +463,7 @@ export default function ResultsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-lg font-bold">Simple Wins</div>
-                  <p className="text-xs text-muted-foreground">LR (0.83) {">"} LSTM (0.44)</p>
+                  <p className="text-xs text-muted-foreground">RF (0.848) {">"} LSTM (0.44)</p>
                 </CardContent>
               </Card>
             </div>
@@ -475,7 +475,7 @@ export default function ResultsPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <p className="text-sm">
-                  <strong className="text-emerald-600">Longitudinal MRI data DOES help</strong> (+9.5% AUC)
+                  <strong className="text-emerald-600">Longitudinal MRI data DOES help</strong> (+11.2% AUC)
                   when using proper structural biomarkers (hippocampus, ventricles, entorhinal).
                 </p>
                 <p className="text-sm text-muted-foreground">

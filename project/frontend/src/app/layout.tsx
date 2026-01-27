@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: "NeuroScope | Advanced AI Dementia Detection Research by Vishesh Sanghvi",
     template: "%s | NeuroScope Research"
   },
-  description: "Pioneering deep learning research for early dementia detection by Vishesh Sanghvi. Featuring the novel 'Level-MAX' fusion architecture (0.81 AUC), this portal demonstrates robust biological biomarker integration and cross-dataset validation on 1,000+ subjects from OASIS & ADNI cohorts.",
+  description: "Pioneering deep learning research for early dementia detection by Vishesh Sanghvi. Featuring the novel 'Level-MAX' fusion architecture (0.808 AUC), this portal demonstrates robust biological biomarker integration and cross-dataset validation on 1,000+ subjects from OASIS & ADNI cohorts.",
   keywords: [
     "Vishesh Sanghvi",
     "Dementia AI",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     url: "https://neuroscope.vercel.app",
     siteName: "NeuroScope by Vishesh Sanghvi",
     title: "NeuroScope – Advanced AI for Early Dementia Detection",
-    description: "Explore the 0.81 AUC 'Level-MAX' model by Vishesh Sanghvi. A breakthrough in robust, biomarker-informed deep learning for Alzheimer's detection.",
+    description: "Explore the 0.808 AUC 'Level-MAX' model by Vishesh Sanghvi. A breakthrough in robust, biomarker-informed deep learning for Alzheimer's detection.",
     images: [
       {
         url: "/og-image.png",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "NeuroScope AI Research | Vishesh Sanghvi",
-    description: "Deep learning breakdown: How 'Level-MAX' fusion achieves 0.81 AUC in early dementia detection. Robust cross-dataset validation by Vishesh Sanghvi.",
+    description: "Deep learning breakdown: How 'Level-MAX' fusion achieves 0.808 AUC in early dementia detection. Robust cross-dataset validation by Vishesh Sanghvi.",
     images: ["/og-image.png"],
     creator: "@visheshsanghvi",
   },
@@ -157,7 +157,7 @@ export default function RootLayout({
               "@type": "ResearchProject",
               "name": "NeuroScope: Advanced Dementia AI",
               "alternateName": "Level-MAX Fusion Model",
-              "description": "A pioneering deep learning research initiative by Vishesh Sanghvi, demonstrating how 'Level-MAX' biomarker fusion achieves 0.81 AUC in honest early dementia detection using MRI and biological profiles.",
+              "description": "A pioneering deep learning research initiative by Vishesh Sanghvi, demonstrating how 'Level-MAX' biomarker fusion achieves 0.808 AUC in honest early dementia detection using MRI and biological profiles.",
               "url": "https://neuroscope.vercel.app",
               "author": {
                 "@type": "Person",

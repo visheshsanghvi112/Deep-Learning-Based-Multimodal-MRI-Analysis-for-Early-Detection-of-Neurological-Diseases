@@ -100,7 +100,7 @@ export default function Home() {
                 <div className="flex items-end gap-2">
                   <div className="text-2xl font-bold">
                     <TextGradient colors="from-emerald-400 to-cyan-400">
-                      <AnimatedCounter value={0.81} suffix=" AUC" duration={1.5} decimals={2} />
+                      <AnimatedCounter value={0.808} suffix=" AUC" duration={1.5} decimals={3} />
                     </TextGradient>
                   </div>
                   <div className="text-xs text-muted-foreground pb-1">(vs 0.60 baseline)</div>
@@ -222,7 +222,7 @@ export default function Home() {
                   <div className="flex items-start gap-2">
                     <Badge variant="outline" className="text-xs shrink-0 bg-emerald-500/10 text-emerald-600">✅ Solved</Badge>
                     <p className="text-emerald-600 font-semibold">
-                      Level-MAX: 0.81 AUC with CSF biomarkers (ABETA, TAU, PTAU) + APOE4 + Volumetrics
+                      Level-MAX: 0.808 AUC with CSF biomarkers (ABETA, TAU, PTAU) + APOE4 + Volumetrics
                     </p>
                   </div>
                 </CardContent>
@@ -280,7 +280,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-blue-500">💡</span>
-                    <p className="text-muted-foreground">Simple LR beats complex LSTM</p>
+                    <p className="text-muted-foreground">Random Forest beats complex LSTM</p>
                   </div>
                 </CardContent>
               </SpotlightCard>
