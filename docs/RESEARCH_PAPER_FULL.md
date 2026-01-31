@@ -1,24 +1,24 @@
-# Honest Evaluation of Multimodal Deep Learning for Early Dementia Detection: A Cross-Dataset Robustness Study
+# Feature Content, Not Fusion Architecture, Determines Multimodal Performance in Dementia Detection: A Cross-Dataset Evaluation Study
 
 **Authors:** Vishesh Sanghvi  
 **Affiliation:** [Your Institution]  
-**Date:** December 2025
+**Date:** January 2026
 
 ---
 
 ## Abstract
 
-Early detection of dementia using neuroimaging remains a challenging problem, with many reported deep learning approaches achieving high performance through the inclusion of cognitively downstream clinical measures such as MMSE or CDR-SB. While effective for diagnosis, such features introduce circularity and inflate performance, limiting real-world applicability. In this work, we present a rigorous evaluation of multimodal deep learning models for honest early dementia detection, explicitly excluding cognitively derived features and focusing on structural MRI and basic demographic information.
+Multimodal fusion is widely assumed to improve dementia detection by combining neuroimaging with clinical features. In this study, we investigated whether the choice of fusion architecture or the content of clinical features has greater impact on multimodal performance. Using two datasets (OASIS-1, N=205; ADNI-1, N=629), we evaluated MRI-only, late fusion, and attention-based fusion models under a three-tier protocol: Level-1 (demographics only), Level-MAX (biological biomarkers), and Level-2 (cognitive scores, circular).
 
-We conduct a comprehensive study using two widely adopted datasets: OASIS-1, a homogeneous single-site cohort labeled with Clinical Dementia Rating (CDR), and ADNI-1, a heterogeneous multi-site cohort labeled with clinical diagnosis (CN, MCI, AD). MRI features are extracted using a ResNet18-based 2.5D convolutional framework, and multimodal learning is evaluated using MRI-only, late fusion, and attention-based fusion models. Performance is assessed under both in-dataset and cross-dataset (zero-shot transfer) settings to measure robustness to dataset shift.
+Our central finding is that, within the tested architectures, **feature content explained substantially more performance variance than architecture choice**. Upgrading from demographic features (Age/Sex) to biological biomarkers (CSF proteins, volumetrics, APOE4) improved fusion AUC by +21% (0.598 → 0.808), while switching between fusion architectures under identical feature conditions yielded gains of <3%. This suggests that in our experiments, what features encode matters more than how they are fused.
 
-Our results show that while multimodal fusion yields marginal improvements in in-dataset evaluations (OASIS: 0.794 AUC vs 0.770 MRI-only), these gains are not statistically robust and frequently collapse under cross-dataset transfer. Notably, MRI-only models consistently demonstrate superior generalization compared to more complex fusion architectures, particularly attention-based methods, which exhibit pronounced instability. In OASIS→ADNI transfer, MRI-only achieved 0.607 AUC compared to fusion models at 0.575 and 0.557, representing a performance reversal despite fusion's in-dataset superiority.
+Supporting findings include: (1) fusion with weak demographic features (Level-1) provided only +1.5% AUC gain over MRI-only, which was not statistically significant; (2) fusion with biological biomarkers (Level-MAX) achieved +16.5% gain, demonstrating that fusion succeeds when features carry complementary biological signal; (3) attention-based fusion showed higher variance and worse cross-dataset transfer than late fusion, suggesting overfitting to dataset-specific patterns; (4) models trained on smaller homogeneous data (OASIS, N=205) achieved higher transfer AUC on ADNI than ADNI's own internal baseline, highlighting that data quality may matter more than size.
 
-Furthermore, models trained on high-quality single-site data (OASIS) generalize better to heterogeneous datasets (ADNI: 0.607 AUC) than ADNI's own internal baseline (0.583 AUC), suggesting that data quality and homogeneity are more critical than dataset size or diversity during training. Our honest baseline results (Level-1: 0.60 AUC on ADNI) starkly contrast with circular upper-bound performance (Level-2: 0.988 AUC), revealing the extent to which cognitive scores dominate reported performance in the literature. However, when enriching clinical features with biological biomarkers (APOE4, CSF proteins, volumetric measures) while maintaining honesty—termed **Level-MAX**—fusion achieves 0.808 AUC (+16.5% over MRI-only), demonstrating that fusion architectures work when provided with complementary biological signals rather than weak demographics alone.
+In a supplementary longitudinal experiment (2,262 scans), we found that ResNet features failed to capture disease progression (0.52 AUC), while longitudinal biomarker atrophy rates achieved 0.83 AUC, further supporting the primacy of feature content.
 
-These findings highlight the nuance of early dementia detection: while architectural complexity does not guarantee robustness, **feature validity** does. Additionally, we conducted a longitudinal progression experiment using all available ADNI follow-up scans (2,262 scans), finding that while ResNet features fail to capture progression (0.52 AUC), tracking **longitudinal biomarker atrophy rates** achieves **0.83 AUC**. We conclude that evaluation rigor, feature validity, and cross-dataset generalization are more critical than model sophistication, and that true early detection is achievable with the right biological inputs.
+These results do not imply that architecture is irrelevant—attention fusion underperformed late fusion by 5-8% in cross-dataset transfer—but they suggest that, in the tested model family, feature quality was the dominant factor. Our findings are bounded by the architectures evaluated (fully-connected fusion variants); whether more expressive architectures could extract additional signal from weak features remains an open question.
 
-**Keywords:** Early dementia detection, multimodal learning, MRI, dataset shift, cross-dataset generalization, ADNI, OASIS, robustness, longitudinal analysis, biomarkers
+**Keywords:** Early dementia detection, multimodal learning, MRI, feature content, fusion architecture, cross-dataset generalization, ADNI, OASIS, biomarkers, longitudinal analysis
 
 ---
 
@@ -66,15 +66,15 @@ To address these gaps, this work investigates the following research questions:
 
 This work makes the following contributions:
 
-1. **Honest Early-Detection Benchmark**: We establish Level-1 and Level-2 evaluation protocols, where Level-1 excludes all cognitive scores (honest early detection) and Level-2 includes them (circular upper-bound). This distinction clarifies the extent to which reported performance depends on circular features.
+1. **Primary Finding—Feature Content Outweighs Architecture (In Our Experiments)**: Within the tested model family (fully-connected fusion variants), the +21% AUC gain from upgrading features (Level-1 → Level-MAX) exceeded the <3% gain from any architectural variation. This suggests that, in these experiments, what features encode mattered more than how they were fused.
 
-2. **Large-Scale Cross-Dataset Evaluation**: We conduct comprehensive zero-shot transfer experiments between OASIS-1 (single-site, CDR-labeled) and ADNI-1 (multi-site, diagnosis-labeled), covering 834 baseline scans across both directions (OASIS→ADNI and ADNI→OASIS).
+2. **Three-Tier Evaluation Protocol**: We establish Level-1 (demographics, honest), Level-MAX (biomarkers, honest), and Level-2 (cognitive scores, circular) evaluation tiers. This framework distinguishes genuine early detection capability from circular reasoning.
 
-3. **Empirical Evidence of Fusion Fragility**: We demonstrate that multimodal fusion, while marginally beneficial in-dataset, frequently underperforms MRI-only models in cross-dataset transfer, particularly for attention-based architectures.
+3. **Cross-Dataset Evaluation**: We conduct zero-shot transfer experiments between OASIS-1 and ADNI-1, revealing that cross-dataset robustness varies by transfer direction and is confounded by label shift (CDR 0/0.5 vs CN/MCI+AD).
 
-4. **Methodological Audit**: We rigorously document data cleaning, leakage prevention, and feature selection decisions, providing a reproducible framework for honest evaluation of dementia detection models.
+4. **Conditional Fusion Benefit**: Fusion provides substantial gains (+16.5%) only when clinical features carry independent biological signal; with demographics alone, gains are marginal (+1.5%) and not statistically significant.
 
-5. **Data Quality Over Size**: We show that models trained on high-quality single-site data (OASIS) outperform models trained on larger but more heterogeneous multi-site data (ADNI) when tested on ADNI itself, highlighting the importance of data homogeneity.
+5. **Methodological Documentation**: We provide reproducible data cleaning, leakage prevention, and feature selection protocols that can serve as a template for honest evaluation of dementia detection models.
 
 ---
 
@@ -579,9 +579,11 @@ This demonstrates that reported high performance in dementia detection requires 
 
 ## 8. Discussion
 
-### 8.1 Why Fusion Fails With Weak Features (But Succeeds With Biomarkers)
+### 8.1 Feature Content as the Primary Determinant of Fusion Performance
 
-Our experiments reveal a dichotomy: fusion fails with weak demographics (Level-1) but succeeds with biomarkers (Level-MAX). We identify three root causes for the failure of weak-signal fusion:
+Our experiments reveal a consistent pattern: in this study, the choice of clinical features explained more performance variance than the choice of fusion architecture. Fusion with weak demographics (Level-1) yielded only +1.5% AUC gain, while fusion with biological biomarkers (Level-MAX) yielded +16.5%—using identical architectures. This +21% gap from feature content exceeded the <3% gap from any architectural variation we tested.
+
+We identify three factors that may explain why weak-signal fusion underperformed:
 
 **8.1.1 Weak Clinical Feature Signal**
 
@@ -635,17 +637,17 @@ A striking finding is the **asymmetric robustness** across transfer directions:
 - **ADNI as teacher**: Noisy training forces models to learn robust features, but fusion can aggregate weak modality signals when transferring to cleaner target
 - **Noise direction matters**: Transferring from clean→noisy favors simplicity (MRI-only), transferring from noisy→clean allows complexity (late fusion) to help
 
-### 8.3 Implications for Real-World Deployment
+### 8.3 Implications for Model Development
 
-Our findings have critical implications for deploying dementia detection models clinically:
+Our findings suggest several considerations for developing dementia detection models:
 
-**1. Beware of Circular Features**:
-- Models reporting AUC >0.90 likely include MMSE, CDR-SB, or ADAS-Cog
-- Such models are post-diagnostic classifiers, **not early detection systems**
-- Regulatory approval should require Level-1 (honest baseline) evaluation
+**1. Feature Selection May Warrant Priority**:
+- In our experiments, the +21% gain from feature content exceeded the <3% gain from architecture
+- This suggests that, for similar model families, feature engineering may yield larger returns than architecture search
+- However, this finding is bounded by the tested architectures
 
-**2. Cross-Dataset Validation is Essential**:
-- In-dataset performance (even with cross-validation) overestimates deployment performance
+**2. Cross-Dataset Validation Reveals Fragility**:
+- In-dataset performance (even with cross-validation) overestimated deployment performance in our experiments
 - Models must be tested on external cohorts with different acquisition protocols
 - Dataset shift is the norm, not the exception, in real-world deployment
 
@@ -668,40 +670,45 @@ Our findings have critical implications for deploying dementia detection models 
 
 ## 9. Limitations
 
-Despite rigorous methodology, our study has several limitations:
+Our study has several limitations that bound the interpretation of our findings:
 
-**1. Limited Availability of Biological Biomarkers in Cross-Dataset Design**:
+**1. Narrow Architectural Comparison**:
+- We tested only fully-connected fusion variants (late fusion, attention fusion)
+- More expressive architectures (transformers, GNNs, contrastive methods) were not evaluated
+- Our finding that feature content outweighed architecture applies within this tested family only
+
+**2. Limited Availability of Biological Biomarkers in Cross-Dataset Design**:
 - Our Level-1 honest baseline uses only Age and Sex
-- **Update**: Level-MAX experiment demonstrates that biological markers (CSF, APOE4, volumetrics) enable fusion to achieve 0.81 AUC
+- Level-MAX experiment shows that biological markers (CSF, APOE4, volumetrics) enable fusion to achieve 0.81 AUC
 - However, cross-dataset transfer with Level-MAX features remains untested (OASIS lacks CSF/APOE4)
-- Future work should test Level-MAX robustness across datasets with shared biomarker availability
+- The robustness of biomarker-based fusion is assumed, not demonstrated
 
-**2. Label Mismatch Between Datasets**:
+**3. Label Mismatch Between Datasets**:
 - OASIS labels (CDR 0 vs 0.5) differ from ADNI labels (CN vs MCI+AD)
 - This label shift complicates direct comparison and contributes to transfer performance drops
 - Ideally, both datasets would use identical diagnostic criteria
 
-**3. Small Sample Size for True Early Detection**:
+**4. Small Sample Size for True Early Detection**:
 - OASIS N=205 and ADNI N=629 are modest for deep learning
 - True early detection (pre-symptomatic stage) would require even larger cohorts tracked longitudinally
 - Our results reflect **very mild** dementia, not pre-clinical prediction
 
-**4. Absence of Longitudinal Modeling**:
+**5. Absence of Longitudinal Modeling in Main Experiments**:
 - Our study uses cross-sectional baseline scans only
 - Longitudinal progression modeling could improve early detection
 - Temporal patterns of atrophy are strong dementia signatures but introduce temporal leakage risk
 
-**5. 2.5D MRI Processing**:
+**6. 2.5D MRI Processing**:
 - We process sagittal slices only, potentially missing axial/coronal patterns
 - Full 3D CNN may capture richer spatial context but requires larger datasets and computational resources
 - Trade-off between spatial information and overfitting risk
 
-**6. Transfer Learning from ImageNet**:
+**7. Transfer Learning from ImageNet**:
 - ResNet18 pretrained on natural images may not be optimal for brain MRI
 - Self-supervised pretraining on larger MRI corpora (e.g., UK Biobank) could improve feature quality
 - Domain-specific architectures (e.g., MedicalNet) worth exploring
 
-**7. Single Geographic Region**:
+**8. Single Geographic Region**:
 - Both OASIS and ADNI recruited primarily from North America
 - Generalization to other populations (e.g., Asia, Europe) remains untested
 - Population diversity important for global clinical deployment
@@ -710,43 +717,46 @@ Despite rigorous methodology, our study has several limitations:
 
 ## 10. Conclusion
 
-This work presents an honest evaluation of multimodal deep learning for early dementia detection, explicitly excluding cognitively downstream features and rigorously testing cross-dataset robustness. Our findings challenge the prevailing assumption that multimodal fusion universally improves performance and robustness.
+This study investigated multimodal deep learning for early dementia detection across two datasets (OASIS-1, ADNI-1) using a three-tier evaluation protocol that distinguishes honest early detection from circular reasoning.
 
-**Key Takeaways**:
+**Primary Finding**: In our experiments, feature content explained substantially more multimodal performance variance than architecture choice. The +21% AUC gain from upgrading features (Level-1 → Level-MAX) exceeded the <3% gain from any architectural variation, using identical training procedures. This finding is bounded by the tested architectures (fully-connected fusion variants).
 
-1. **Honest early detection is possible with biomarkers**: While basic MRI+Demographics models achieve only ~0.60 AUC, enriching the feature set with biological biomarkers (CSF, APOE4, Volumetrics) while maintaining honesty (no cognitive scores) yields a robust **0.808 AUC** (Level-MAX), essentially matching clinical utility requirements without circularity.
+**Supporting Findings**:
 
-2. **Feature Quality defines Fusion Success**: Multimodal fusion failed (~0.60 AUC) when using weak signals (Age/Sex) but succeeded brilliantly (+16.5% gain) when provided with high-quality biological features. This proves that fusion architectures are effective but require informative inputs to justify their complexity.
+1. **Fusion success is conditional on feature quality**: With demographic features (Age/Sex), fusion gain was +1.5% (not statistically significant). With biological biomarkers (CSF, APOE4, volumetrics), fusion gain was +16.5% (statistically significant). Same architecture, different outcomes—explained by feature content.
 
-3. **Attention mechanisms require signal**: Attention-based fusion was unstable with weak features but performed on par with late fusion in the high-signal Level-MAX experiment, suggesting its instability was due to signal starvation rather than architectural flaw.
+2. **Attention-based fusion showed higher variance**: Attention fusion underperformed late fusion by 5-8% AUC in cross-dataset transfer, suggesting overfitting to source-specific patterns rather than fundamental architectural limits.
 
-4. **Data quality matters more than size**: Models trained on high-quality single-site OASIS data (N=205) outperform ADNI's own internal baseline (N=629) when tested on ADNI, highlighting the importance of data homogeneity and acquisition consistency.
+3. **Cross-dataset robustness varies asymmetrically**: MRI-only performed best for OASIS→ADNI transfer; late fusion performed best for ADNI→OASIS. No single model was universally robust, and results are confounded by label shift.
 
-5. **Evaluation rigor is critical**: The distinction between Level-1 (honest), Level-MAX (biomarker), and Level-2 (circular) evaluation is essential. We have established a new standard for honest evaluation that does not compromise on performance when the right data is available.
+4. **Data quality may matter more than size**: Models trained on smaller homogeneous data (OASIS, N=205) achieved higher transfer AUC on ADNI than ADNI's own baseline (N=629), though this comparison is confounded by label differences.
 
-**Research Implications**:
+5. **Longitudinal signal requires disease-specific features**: ResNet features failed for progression prediction (0.52 AUC), while volumetric biomarker deltas achieved 0.83 AUC.
 
-- **Adopt honest baselines**: Research community should standardize Level-1 evaluation without cognitive scores
-- **Mandate cross-dataset testing**: Single-dataset validation insufficient for clinical AI robustness claims
-- **Report feature lists transparently**: All input features should be explicitly documented
-- **Prioritize generalization metrics**: Cross-dataset AUC more informative than in-dataset cross-validation
+**Scope and Limitations**: These findings apply within the tested model family. Whether more expressive architectures (transformers, GNNs) could extract additional signal from weak features remains untested. Level-MAX cross-dataset transfer was not evaluated.
 
-**Clinical Implications**:
+**Implications for Research**:
 
-- **Temper deployment expectations**: Current MRI-based models fall short of clinical utility for true early detection
-- **Incorporate biological markers**: CSF proteins, genetics, PET amyloid needed for competitive performance
-- **Require external validation**: Regulatory pathways should mandate multi-site, cross-dataset evaluation
+- **Feature content warrants attention**: In our experiments, feature selection had larger effect than architecture selection. This suggests that, at least for similar model families, researchers may benefit from prioritizing feature engineering alongside architecture search.
+- **Three-tier evaluation aids interpretation**: Distinguishing Level-1 (honest), Level-MAX (biomarker), and Level-2 (circular) results clarifies what reported performance actually measures.
+- **Cross-dataset evaluation exposes fragility**: In-dataset cross-validation overestimated deployment performance in our experiments; external validation revealed dataset-specific overfitting.
+- **Negative results are informative**: The Level-1 failure combined with Level-MAX success enabled attribution that neither result alone would support.
 
-**Path Forward**:
+**Implications for Practice**:
 
-Future work should focus on:
-1. **Level-1.5 features**: Incorporate CSF biomarkers (ABETA, TAU, PTAU) and APOE4 genotype to achieve 0.72-0.75 AUC
-2. **Longitudinal modeling**: Leverage temporal disease progression without temporal leakage
-3. **Domain adaptation**: Transfer learning and unsupervised domain alignment techniques to mitigate dataset shift
-4. **Self-supervised MRI pretraining**: Large-scale MRI representation learning (e.g., contrastive learning on UK Biobank)
-5. **Interpretability**: Saliency maps, attention visualization, and feature importance analysis to understand model failures
+- **Biomarkers enable honest high performance**: In this study, fusion with biological biomarkers achieved 0.808 AUC without cognitive scores—approaching reported literature values but without circularity.
+- **Demographic features may not complement MRI**: Age and sex correlate with dementia but, in our experiments, did not provide complementary information beyond what MRI already captured.
+- **Cross-dataset validation is essential**: Models that performed well in-dataset showed reduced performance under transfer, suggesting that single-dataset validation may overestimate real-world utility.
 
-Early dementia detection remains an open challenge, and architectural sophistication alone will not solve it. Honest evaluation, robust validation, and biological feature integration are the path forward.
+**Open Questions**:
+
+Our findings raise several questions that warrant further investigation:
+1. **Architectural generalization**: Would more expressive architectures (transformers, GNNs, contrastive methods) change the balance between feature content and architecture?
+2. **Level-MAX robustness**: Does biomarker-based fusion maintain its advantage under cross-dataset transfer, or is it also subject to distribution shift?
+3. **Feature complementarity**: Can the independence between MRI and clinical features be directly quantified, rather than inferred from performance?
+4. **Sample size effects**: Would the relative importance of feature content vs. architecture change with larger datasets?
+
+Early dementia detection remains an open challenge. Our results suggest that, within the tested conditions, feature content was more important than architecture—but this finding should be interpreted as one data point, not a universal rule.
 
 ---
 
