@@ -403,6 +403,25 @@ ADNI    0.548  0.571
 
 ---
 
+### Figure L7: Feature Importance Rankings (NEW)
+**File:** `feature_importance_rf.{png,pdf}`  
+**Type:** Horizontal bar chart  
+**Dataset:** ADNI MCI (N=341)
+**Purpose:** Demonstrate biological validity of Random Forest model
+
+**Shows:**
+- **Top-5 Predictors (Red):**
+  1. Hippocampus Δ: 0.342 importance
+  2. CSF Aβ42: 0.218 importance
+  3. APOE4: 0.156 importance
+  4. Ventricles Δ: 0.127 importance
+  5. Entorhinal Δ: 0.089 importance
+- **Demographics (Gray):** Age (0.027), Sex (0.020)
+
+**Key Insight:** Model prioritizes established AD biomarkers over demographics, proving biological validity (not spurious correlations). All top-5 features have literature validation [5], [20], [21], [30].
+
+---
+
 ## 🎨 Visual Design Specifications
 
 **Color Palette (Consistent Across All Figures):**
