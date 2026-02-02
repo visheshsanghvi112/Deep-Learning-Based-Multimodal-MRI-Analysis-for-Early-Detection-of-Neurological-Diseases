@@ -345,9 +345,9 @@ export default function RoadmapPage() {
                 <CardContent className="text-xs text-muted-foreground space-y-1">
                   <p>• APOE4 carriers: 44% vs 23% conversion (2× risk)</p>
                   <p>• Hippocampus alone: 0.725 AUC</p>
-                  <p>• Simple RF > Complex LSTM (0.848 vs 0.441)</p>
+                  <p>• Simple RF {'>'}Complex LSTM (0.848 vs 0.441)</p>
                   <p>• Feature upgrade: +21% AUC</p>
-                  <p>• Architecture upgrade: <3% AUC</p>
+                  <p>• Architecture upgrade: {'<'}3% AUC</p>
                 </CardContent>
               </SpotlightCard>
             </Card3D>
