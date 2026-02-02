@@ -8,15 +8,19 @@
 
 ## 🎯 Quick Summary
 
-**Total Figures:** 23 PNG + 16 PDF (39 files total)
+**Total Figures:** 24 PNG + 17 PDF (41 files total)
 **Categories:** 
 - **Series A:** OASIS Results (2 figures)
 - **Series B:** ADNI Baseline Results (3 figures)
 - **Series C:** Cross-Dataset Transfer (3 figures)
 - **Series D:** Data Processing (5 figures)
 - **Series E:** Level-MAX Biomarker Fusion (3 figures)
-- **Series L:** Longitudinal Progression (6 figures)
+- **Series L:** Longitudinal Progression (7 figures) ← **Updated**
 - **Special:** ADNIMERGE Usage (1 figure)
+
+**Latest Additions (Feb 2026):**
+- ✅ Feature importance visualization (L7) - biological validity
+- ✅ Statistical validation supplement - p-values, effect sizes, power analysis
 
 **Output Formats:** PNG (300 DPI) + PDF (vector) for publication  
 **Color Scheme:** MRI-Only (blue), Late Fusion (green), Attention (orange)
@@ -501,10 +505,11 @@ figures/
     ├── L3_feature_combinations.png
     ├── L4_apoe4_risk.png
     ├── L5_longitudinal_improvement.png
-    └── L6_research_journey.png
+    ├── L6_research_journey.png
+    └── L7_feature_importance_rf.png
 ```
 
-### PDF Files (16 total, vector):
+### PDF Files (17 total, vector):
 ```
 figures/
 ├── A1_oasis_model_comparison.pdf
@@ -522,7 +527,8 @@ figures/
 ├── D5_feature_dimensions.pdf
 ├── E1_level_max_auc_comparison.pdf
 ├── E2_level_max_accuracy_comparison.pdf
-└── E3_level_max_summary.pdf
+├── E3_level_max_summary.pdf
+└── feature_importance_rf.pdf
 ```
 
 ---
