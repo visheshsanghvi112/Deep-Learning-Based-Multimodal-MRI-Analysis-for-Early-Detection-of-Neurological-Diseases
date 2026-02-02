@@ -345,7 +345,7 @@ Architecture: Late Fusion
   - MRI branch: 512 → 64
   - Clinical branch: 5 → 32
   - Concatenate → 96 → 64 → 2 (output)
-
+ 
 Training:
   - 80/20 subject-wise split
   - Adam optimizer, lr=0.001
