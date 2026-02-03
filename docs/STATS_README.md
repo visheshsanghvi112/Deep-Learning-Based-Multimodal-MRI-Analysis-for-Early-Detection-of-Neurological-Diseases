@@ -30,7 +30,7 @@ Feature importance visualization from Random Forest longitudinal model (0.848 AU
 | Level-1 → Level-MAX (+21% AUC) | p < 0.001, d=2.14, 95% CI [0.178, 0.242] |
 | Late → Attention (no gain) | p = 0.873, d=0.02 (not significant) |
 | Sample size (N=341) | Power: 95.2% (exceeds 80% threshold) |
-| Longitudinal RF (0.848 AUC) | 95% CI [0.823, 0.873] |
+| Longitudinal RF (0.848 AUC) | 95% CI [0.812, 0.883] |
 
 **Interpretation:** All claims are statistically robust and publication-ready.
 

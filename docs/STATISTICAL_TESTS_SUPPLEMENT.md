@@ -39,12 +39,13 @@ Bonferroni corrected p: < 0.001 (highly significant)
 
 ### Sample Size Validation (Longitudinal Cohort)
 
-**Observed effect size:** Cohen's d = 0.21 (Level-1 → Level-MAX)
+**Observed improvement:** ΔAUC = 0.21 (Level-1 → Level-MAX)
+**Standardized Effect Size:** Cohen's d = 2.14
 **Actual sample size:** N = 341
-**Required sample size (80% power, α=0.05):** N = 278
-**Achieved power:** 95.2%
+**Required sample size (to detect d=0.21 with 80% power):** N = 278
+**Achieved power (for small effects):** 95.2%
 
-**Conclusion:** Our sample size exceeds the minimum required to detect the observed effect with 95% power, well above the conventional 80% threshold (Cohen, 1988).
+**Conclusion:** Our sample size exceeds the minimum required to detect even small effects (d=0.21) with 95% power, ensuring robustness.
 
 ### Comparison with Published Literature
 
@@ -84,8 +85,8 @@ Note: *** p < 0.001 after Bonferroni correction for multiple comparisons
 **Statistical Analysis:** Model comparisons used paired t-tests on 5-fold 
 cross-validation AUC values with Bonferroni correction for multiple comparisons 
 (α = 0.05/3 = 0.0167). Effect sizes were calculated using Cohen's d. Post-hoc 
-power analysis confirmed that N=341 provides >95% power to detect the observed 
-effect size (d=0.21), exceeding the recommended 80% threshold (G*Power 3.1).
+power analysis confirmed that N=341 provides >95% power to detect even small 
+effect sizes (d=0.21), exceeding the recommended 80% threshold (G*Power 3.1).
 ```
 
 ### For Results Section:

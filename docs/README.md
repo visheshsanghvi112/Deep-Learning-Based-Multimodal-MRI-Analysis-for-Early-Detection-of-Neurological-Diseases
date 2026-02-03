@@ -1,26 +1,14 @@
-# Documentation
+# Documentation Navigation
 
-This folder contains all project documentation, research papers, reports, and planning files.
+## 🧠 Core Documentation (The Source of Truth)
+1. **[PROJECT_DOCUMENTATION.md](./PROJECT_DOCUMENTATION.md)** - The Bible. Everything about the project history, architecture, results, and implementation.
+2. **[FINAL_RESEARCH_PAPER.md](./FINAL_RESEARCH_PAPER.md)** - The final IEEE paper draft with all verified results (0.848 AUC). Only edit this for paper submissions.
+3. **[IMPLEMENTATION_PIPELINE.md](./IMPLEMENTATION_PIPELINE.md)** - Technical guide on how the pipeline actually works (code structure, scripts).
+4. **[TECHNICAL_GLOSSARY.md](./TECHNICAL_GLOSSARY.md)** - Definitions of all terms (Level-1, Level-MAX, honest fusion, etc.).
 
-## Contents
+## 📊 Statistical Proofs
+1. **[STATS_README.md](./STATS_README.md)** - Summary of statistical validation.
+2. **[STATISTICAL_TESTS_SUPPLEMENT.md](./STATISTICAL_TESTS_SUPPLEMENT.md)** - Detailed calculations, power analysis, and exact p-values/CIs verified against raw data.
 
-### Research Papers
-- **RESEARCH_PAPER_FULL.md** - Complete research paper with all sections
-- **RESEARCH_PAPER_IEEE_FORMAT.md** - Research paper formatted for IEEE submission
-
-### Project Documentation
-- **PROJECT_DOCUMENTATION.md** - Comprehensive project documentation
-- **DATA_CLEANING_AND_PREPROCESSING.md** - Data cleaning and preprocessing documentation
-- **DEPLOYMENT_GUIDE.md** - Deployment instructions and guidelines
-- **README_FIGURES.md** - Documentation for figures used in the project
-
-### Assessment & Reports
-- **PROJECT_INSPECTION_REPORT.md** - Detailed project inspection findings
-- **PROJECT_ASSESSMENT_HONEST_TAKE.md** - Honest assessment of project status
-- **REALISTIC_PATH_TO_PUBLICATION.md** - Roadmap for publication
-- **ADNIMERGE_USAGE_SUMMARY.md** - Summary of ADNIMERGE dataset usage
-
-### Planning & Results
-- **plan.txt** - Project planning notes
-- **adnimerge_usage_report.txt** - ADNIMERGE usage analysis
-- **robustness_results.txt** - Model robustness evaluation results
+## 🗄️ Archives
+* **[_archive/](./_archive/)** - Contains all old reports, audit logs, planning text files, and deprecated documents. Check here if you're looking for historical context or previous audit reports.

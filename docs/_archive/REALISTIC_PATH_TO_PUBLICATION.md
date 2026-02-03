@@ -1,6 +1,25 @@
+# ⚠️ OUTDATED DOCUMENT - ARCHIVED FOR HISTORICAL REFERENCE ONLY
+
+**THIS DOCUMENT IS NO LONGER CURRENT**
+
+This file was written in December 2025 when the project had achieved only **0.60 AUC** with basic demographic features.
+
+**CURRENT STATUS (January 2026):**
+- ✅ **Longitudinal Fusion Model: 0.848 AUC** (95% CI: 0.812-0.883)
+- ✅ **Level-MAX Model: 0.808 AUC** (95% CI: 0.739-0.870)
+- ✅ Results have **far exceeded** the target of 0.70-0.75 mentioned in this document
+- ✅ Project is ready for publication with competitive, honest results
+
+**For current project status, see:**
+- `PROJECT_DOCUMENTATION.md` - Full project details
+- `FINAL_RESEARCH_PAPER.md` - Complete research paper with final results
+- `IMPLEMENTATION_PIPELINE.md` - Technical implementation details
+
+---
+
 # REALISTIC PATH TO PUBLICATION: How to Actually Get This Accepted
 
-**Date:** December 24, 2025  
+**Date:** December 24, 2025 (ARCHIVED)  
 **Reality Check:** You're right. 0.60 AUC won't get published. Justifications don't matter.  
 **Solution:** Get competitive numbers (0.70-0.75) in 2-3 weeks with biomarkers.
 

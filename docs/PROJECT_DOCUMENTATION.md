@@ -2,7 +2,7 @@
 
 **Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases**
 
-**Last Updated:** February 2, 2026  
+**Last Updated:** February 3, 2026  
 **Status:** ✅ All Experiments Complete | ✅ Results Validated | ✅ Statistical Rigor Confirmed
 
 ---
@@ -30,7 +30,7 @@
 
 **Key Insight for Multimodal Systems:** Our findings suggest that in medical AI, investing in high-quality complementary features (CSF biomarkers, genetics, volumetrics) may yield greater returns than pursuing increasingly complex fusion architectures—at least within the architectural families we tested.
 
-**Clinical Impact:** Achieved **0.808 AUC** for honest early dementia detection using MRI + biological biomarkers (no circular cognitive features), and **0.848 AUC** for progression prediction using longitudinal biomarker trajectories.
+**Clinical Impact:** Achieved **0.808 AUC** for honest early dementia detection using MRI + biological biomarkers (no circular cognitive features), and **0.848 AUC (95% CI: 0.812-0.883)** for progression prediction using longitudinal biomarker trajectories.
 
 **Statistical Validation:** All results validated with paired t-tests (p < 0.001 for main finding), Cohen's d effect sizes (d=2.14 for Level-1→Level-MAX), Bonferroni correction for multiple comparisons, and post-hoc power analysis confirming adequate sample size (N=341 exceeds required N=278 for 80% power).
 
@@ -192,7 +192,7 @@ LSTM Sequence                   MRI sequence (512D)        0.441
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Biomarker (Baseline)            Hip, Vent, Ent + demos     0.740
 Biomarker (+ Longitudinal)      + Atrophy rates            0.830  ← +9% gain
-Biomarker (+ Random Forest)     + Full Cohort Fusion       **0.848**  ← **+11% gain**
+Biomarker (+ Random Forest)     + Full Cohort (21 feat)    **0.848**  ← **+11% gain** [CI: 0.812-0.883]
 Biomarker (+ APOE4)             + Genetic risk             0.813
 Biomarker (+ ADAS13)            + Cognitive score          0.842  (circular)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -263,7 +263,7 @@ Status              ✅ Works      ❌ Weak       ✅ Strong     ⚠️ Issue
 1. **[DESIGN INSIGHT] Rigorous Honest Evaluation Framework:** Established 3-tier protocol (Level-1: honest baseline, Level-MAX: biomarker fusion, Level-2: circular validation) that distinguishes genuine early detection capability from circular reasoning with cognitive test scores
 2. **[OBSERVATION] Conditional Architecture Performance:** Fusion architectures provide substantial gains (+16.5%) only when clinical modalities carry complementary biological signal; with weak demographic features alone, architectural sophistication yields marginal improvements (+1.5%) that are not statistically significant
 3. **[OBSERVATION] Cross-Dataset Generalization Analysis:** Zero-shot transfer experiments reveal asymmetric robustness patterns and expose dataset-specific overfitting, with simpler architectures often outperforming complex attention mechanisms under domain shift
-4. **[OBSERVATION] Longitudinal Biomarker Validation:** Disease-specific features (hippocampal atrophy rates) achieve strong progression prediction (0.83 AUC) while generic CNN features fail entirely (0.52 AUC), reinforcing the primacy of domain-appropriate feature engineering
+4. **[OBSERVATION] Longitudinal Biomarker Validation:** Disease-specific features (hippocampal atrophy rates) achieve strong progression prediction  (Random Forest: 0.848 AUC, 95% CI: 0.812-0.883) while generic CNN features fail entirely (0.52 AUC), reinforcing the primacy of domain-appropriate feature engineering
 5. **[OBSERVATION] Production-Grade Clinical Performance:** Achieved clinically relevant performance (0.808 AUC) for early dementia detection using only honest biomarkers, demonstrating that effective multimodal systems are achievable without circular cognitive features
 
 ### 💡 Key Takeaways for Multimodal Medical AI Researchers
@@ -272,7 +272,7 @@ Status              ✅ Works      ❌ Weak       ✅ Strong     ⚠️ Issue
 
 **[DESIGN INSIGHT]** 2. **Architectural Sophistication Requires Signal:** Complex fusion mechanisms (attention gates) only outperform simple approaches (concatenation) when both modalities carry strong, complementary information. With weak auxiliary features, architectural complexity can hurt generalization.
 
-**[DESIGN INSIGHT]** 3. **Domain-Specific Features Trump Generic Representations:** ImageNet-pretrained CNN features failed completely for temporal analysis (0.52 AUC), while disease-specific biomarker trajectories achieved clinical-grade performance (0.83 AUC). Medical AI systems benefit from domain-informed feature engineering.
+**[DESIGN INSIGHT]** 3. **Domain-Specific Features Trump Generic Representations:** ImageNet-pretrained CNN features failed completely for temporal analysis (0.52 AUC), while disease-specific biomarker trajectories achieved clinical-grade performance (0.848 AUC, 95% CI: 0.812-0.883). Medical AI systems benefit from domain-informed feature engineering.
 
 **[DESIGN INSIGHT]** 4. **Cross-Dataset Validation Exposes Brittleness:** In-dataset cross-validation systematically overestimated real-world performance. External validation on different populations/protocols is essential for honest evaluation of medical AI systems.
 

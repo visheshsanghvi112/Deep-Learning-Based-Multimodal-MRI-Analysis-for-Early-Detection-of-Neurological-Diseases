@@ -1,8 +1,10 @@
-# Feature Engineering Dominates Architectural Complexity in Multimodal Alzheimer's Detection: A Systematic 7× Impact Quantification
+# Deep Learning-Based Multimodal MRI Analysis for Early Detection of Neurological Diseases
 
-**Authors:** [Your Name], [Affiliation]
+**Subtitle:** Feature Engineering Dominates Architectural Complexity in Multimodal Alzheimer's Detection—A Systematic 7× Impact Quantification
 
-**Abstract**—Early detection of Alzheimer's disease (AD) remains a critical challenge in neuroimaging, with recent deep learning studies reporting near-perfect accuracies that are often inflated by circular features or data leakage. Through systematic ablation across 1,265 controlled experiments spanning 2 public datasets (OASIS-1: N=205, ADNI-1: N=629) and 3 fusion architectures, we quantify that feature engineering provides 7× greater performance impact (+21.0% AUC) than architectural modifications (+2.9% AUC) in multimodal biomarker fusion. We introduce a three-tier evaluation protocol that isolates genuine biological signal (Level-1: demographics, 0.598 AUC) from optimal honest fusion (Level-MAX: 14 biomarkers, 0.808 AUC) and circular validation (Level-2: cognitive scores, 0.988 AUC). In longitudinal analysis (N=341 MCI subjects, 2-year follow-up), domain-specific volumetric features (Random Forest: 0.848 AUC, 95% CI [0.823, 0.873]) dramatically outperformed generic CNN temporal modeling (LSTM: 0.441 AUC), with hippocampal atrophy rate emerging as the strongest single predictor (0.725 AUC). Cross-dataset transfer experiments revealed asymmetric robustness patterns, with simpler architectures generalizing better than complex attention mechanisms under domain shift. These findings challenge the field's emphasis on architectural novelty over biological feature curation, demonstrating that in small-to-medium medical imaging regimes, domain expertise in feature engineering significantly outweighs model sophistication.
+**Authors:** Vishesh Sanghvi
+
+**Abstract**—Early detection of Alzheimer's disease (AD) remains a critical challenge in neuroimaging, with recent deep learning studies reporting near-perfect accuracies that are often inflated by circular features or data leakage. Through systematic ablation across 1,265 controlled experiments spanning 2 public datasets (OASIS-1: N=205, ADNI-1: N=629) and 3 fusion architectures, we quantify that feature engineering provides 7× greater performance impact (+21.0% AUC) than architectural modifications (+2.9% AUC) in multimodal biomarker fusion. We introduce a three-tier evaluation protocol that isolates genuine biological signal (Level-1: demographics, 0.598 AUC) from optimal honest fusion (Level-MAX: 14 biomarkers, 0.808 AUC) and circular validation (Level-2: cognitive scores, 0.988 AUC). In longitudinal analysis (N=341 MCI subjects, 2-year follow-up), domain-specific volumetric features (Random Forest: 0.848 AUC, 95% CI [0.812, 0.883]) dramatically outperformed generic CNN temporal modeling (LSTM: 0.441 AUC), with hippocampal atrophy rate emerging as the strongest single predictor (0.725 AUC). Cross-dataset transfer experiments revealed asymmetric robustness patterns, with simpler architectures generalizing better than complex attention mechanisms under domain shift. These findings challenge the field's emphasis on architectural novelty over biological feature curation, demonstrating that in small-to-medium medical imaging regimes, domain expertise in feature engineering significantly outweighs model sophistication.
 
 **Index Terms**—Alzheimer's Disease, Multimodal Fusion, Feature Engineering, Deep Learning, MRI, Biomarkers, Longitudinal Analysis
 
@@ -109,6 +111,8 @@ For progression prediction:
 - **Key feature:** Hippocampal atrophy rate = Δvolume / Δtime (years)
 
 ### C. Model Architectures
+
+The implemented fusion architectures are illustrated in **Fig. 1**. We compared three primary configurations:
 
 **1) MRI-Only Baseline:**
 ```
@@ -241,9 +245,11 @@ Clinical features: Age, Education, nWBV, eTIV, ASF (5-dim, MMSE excluded)
 | Sequence model | MRI sequence (512×T) | LSTM | 0.441 | [0.39, 0.49] |
 | **Volumetric baseline** | **6 baseline volumes** | **Random Forest** | **0.740** | **[0.71, 0.77]** |
 | **Volumetric + delta** | **+ 6 atrophy rates** | **Random Forest** | **0.830** | **[0.80, 0.86]** |
-| **Full biomarker** | **21 features** | **Random Forest** | **0.848** | **[0.82, 0.87]** |
+| **Full biomarker** | **21 features** | **Random Forest** | **0.848** | **[0.812, 0.883]** |
 
 **Feature Importance (Random Forest, top 5):**
+
+The relative contribution of each biomarker is visualized in **Fig. 2**. Consistent with pathological models of AD, atrophy rates proved most predictive:
 
 | Feature | Importance | Gini Decrease |
 |---------|------------|---------------|
@@ -302,7 +308,7 @@ Our central finding—that feature quality (+21.0% AUC) outweighs architectural 
 
 **1) Resource Allocation:** Research investment in biological feature curation (CSF assays, genetic panels, volumetric pipelines) may yield greater clinical returns than pursing increasingly complex fusion architectures. Our Level-MAX biomarker panel (CSF + volumetrics + genetics) required 35% higher data collection cost but delivered 21% absolute AUC improvement.
 
-**2) Architectural Diminishing Returns:** Attention mechanisms, while theoretically elegant, provided no measurable benefit over simple concatenation on our datasets (N=205-629). This aligns with recent findings that tree-based models outperform deep learning on small-to-medium tabular data [23].
+**2) Architectural Diminishing Returns vs. Data Scale:** Attention mechanisms and Transformers are "data hungry" architectures requiring massive datasets (10k-100k+ samples) to learn invariant representations. In the small-to-medium data regime typical of clinical studies (N≈600), these complex models prone to overfitting and fail to extract signal that simple tree-based models can easily capture given rigorous feature engineering [23]. This creates a "complexity trap" where researchers deploy state-of-the-art architectures on insufficient data, yielding suboptimal results compared to domain-informed baselines.
 
 **3) Complementarity Requirement:** Fusion succeeds only when modalities encode distinct information. Level-1's failure (Age/Sex correlate with MRI atrophy) versus Level-MAX's success (CSF proteins measure orthogonal pathology) demonstrates this dependency.
 
@@ -333,6 +339,8 @@ The longitudinal experiment definitively shows that deep learning's strength (le
 This finding generalizes beyond AD: for medical tasks where the signal IS a measurable quantity (volume, intensity, shape), engineering explicit features may outperform end-to-end deep learning on small cohorts.
 
 ### D. Cross-Dataset Generalization Challenges
+        
+**Fig. 3** summarizes the performance drop when transferring models trained on OASIS to ADNI (and vice versa):
 
 Our transfer experiments reveal sobering realities:
 
