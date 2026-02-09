@@ -171,28 +171,52 @@
 
   ## 🚀 Quick Start
 
-  ### Option 1: View Live Demo
-  ```bash
-  Visit: https://neuroscope-mri.vercel.app
-  ```
+  ### 🌐 View Research (No Installation)
+  **Live Demo:** https://neuroscope-mri.vercel.app  
+  Complete research portal with all results, figures, and documentation.
 
-  ### Option 2: Run Locally
-
-  #### Frontend (Next.js):
+  ### 💻 Run Locally (Simple)
+  
+  **Frontend:**
   ```bash
+  git clone https://github.com/visheshsanghvi112/Deep-Learning-Based-Multimodal-MRI-Analysis-for-Early-Detection-of-Neurological-Diseases
   cd project/frontend
-  npm install
-  npm run dev
-  # Open http://localhost:3000
+  npm install && npm run dev
+  # → http://localhost:3000
   ```
 
-  #### Backend (FastAPI):
+  **Backend:**
   ```bash
   pip install -r requirements.txt
   cd project/backend
   uvicorn main:app --reload
-  # Open http://localhost:8000/docs
+  # → http://localhost:8000/docs
   ```
+
+  ### 🧪 Demo Inference (Included Sample Data)
+  ```bash
+  # Uses 10 sample subjects included in repo
+  python scripts/create_demo_data.py  # Already done
+  # Run inference on demo data
+  cd project_adni
+  python src/run_inference.py --data ../data/demo/
+  ```
+
+  **No 200GB download needed for demo!**
+
+  ---
+
+  ## 📦 What's Included in This Repo
+
+  ✅ **Complete Implementation** - All training, inference, and visualization code  
+  ✅ **Production-Ready Frontend** - Live at https://neuroscope-mri.vercel.app  
+  ✅ **Master Documentation** - 2,368-line comprehensive research doc  
+  ✅ **32 Publication Figures** - ROC curves, confusion matrices, feature importance  
+  ✅ **Demo Dataset** - 10 sample subjects (no 200GB download needed!)  
+  ✅ **Experiment Results** - JSON files proving 0.848 / 0.808 / 0.796 AUC  
+  ✅ **Train/Test Splits** - Exact CSVs used for reproducibility  
+
+  **Total Repo Size:** ~115 MB (vs 200GB raw data, available separately)
 
   ---
 
