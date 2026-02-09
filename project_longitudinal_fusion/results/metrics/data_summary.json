@@ -1,0 +1,16 @@
+{
+  "timestamp": "20260122_183349",
+  "train_samples": 251,
+  "test_samples": 50,
+  "train_positive_rate": 0.33067729083665337,
+  "test_positive_rate": 0.34,
+  "feature_dimensions": {
+    "baseline_resnet": 512,
+    "followup_resnet": 512,
+    "delta_resnet": 512,
+    "baseline_bio": 9,
+    "followup_bio": 6,
+    "delta_bio": 6
+  },
+  "total_features": 1557
+}

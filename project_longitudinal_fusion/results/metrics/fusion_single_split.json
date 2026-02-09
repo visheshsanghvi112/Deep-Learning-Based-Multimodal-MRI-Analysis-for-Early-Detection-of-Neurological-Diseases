@@ -1,0 +1,26 @@
+{
+  "best_val_auc": 0.6934046345811052,
+  "best_epoch": 4,
+  "final_metrics": {
+    "auc": 0.6934046345811052,
+    "accuracy": 0.44,
+    "balanced_accuracy": 0.5472370766488414,
+    "precision": 0.36585365853658536,
+    "recall": 0.8823529411764706,
+    "f1": 0.5172413793103449,
+    "specificity": 0.21212121212121213,
+    "npv": 0.7777777777777778,
+    "ppv": 0.36585365853658536,
+    "true_positives": 15,
+    "true_negatives": 7,
+    "false_positives": 26,
+    "false_negatives": 2,
+    "average_precision": 0.5000983206323001,
+    "optimal_threshold": 0.6063510179519653,
+    "youden_j": 0.4598930481283422
+  },
+  "auc_ci": {
+    "lower": 0.5260342564363143,
+    "upper": 0.8381321619556914
+  }
+}

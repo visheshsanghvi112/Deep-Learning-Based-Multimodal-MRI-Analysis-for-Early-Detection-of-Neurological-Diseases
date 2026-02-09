@@ -1,0 +1,11 @@
+subject_id,age,sex,diagnosis
+OAS1_0001_MR1,79,M,Normal
+OAS1_0002_MR1,81,F,Normal
+OAS1_0010_MR1,86,M,Normal
+OAS1_0011_MR1,60,F,Normal
+OAS1_0013_MR1,72,M,Normal
+OAS1_0028_MR1,76,F,Impaired
+OAS1_0031_MR1,60,M,Impaired
+OAS1_0035_MR1,66,F,Impaired
+OAS1_0052_MR1,63,M,Impaired
+OAS1_0053_MR1,81,F,Impaired

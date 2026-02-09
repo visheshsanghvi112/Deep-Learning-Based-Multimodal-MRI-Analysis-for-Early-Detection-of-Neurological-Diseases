@@ -20,9 +20,9 @@ build/
 
 # Raw Data Directories (root level only)
 /ADNI/
-disc*/
-extracted_features/
-/data/
+/data/disc*/
+/data/ADNI/
+/data/extracted_features/
 /downloads/
 
 # Project Data (Large Files)
@@ -92,3 +92,24 @@ project_adni/results/
 # Temporary Scripts (if any remain)
 temp/
 tmp/
+
+# ============================================
+# ALLOW ESSENTIAL FILES (Prove implementation)
+# ============================================
+
+# Train/test splits (reproducibility proof)
+!project_adni/data/features/train_*.csv
+!project_adni/data/features/test_*.csv
+!project_adni/data/features/subject_features.csv
+
+# Longitudinal results (0.848 AUC proof)
+!project_longitudinal_fusion/results/**/*.json
+!project_longitudinal_fusion/results/**/*.csv
+!project_longitudinal_fusion/results/**/*.md
+
+# Demo data (allows demonstration)
+!data/demo/
+!data/demo/**/*
+
+# Project evaluation results
+!project/results/evaluation/*.json
